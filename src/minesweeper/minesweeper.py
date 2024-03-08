@@ -30,7 +30,7 @@ class State(Enum):
     DEAD = "💥"
     EIGHT = " 8"
     FIVE = " 5"
-    FLAG = "🔖"
+    FLAG = "❌"
     FOUR = " 4"
     NINE = " 9"
     ONE = " 1"
