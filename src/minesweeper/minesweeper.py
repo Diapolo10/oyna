@@ -1,3 +1,4 @@
+import itertools
 import random
 import typing
 from enum import Enum
@@ -30,7 +31,7 @@ class State(Enum):
     DEAD = "💥"
     EIGHT = " 8"
     FIVE = " 5"
-    FLAG = "❌"
+    FLAG = "🔺"
     FOUR = " 4"
     NINE = " 9"
     ONE = " 1"
@@ -104,8 +105,7 @@ class Cell:
         if side_.state == State.WALL:
             return self
         else:
-            self.player_is_here = False
-            side_.player_is_here = True
+            self.player_is_here, side_.player_is_here = side_.player_is_here, self.player_is_here
             return side_
 
     def _click(self):
@@ -220,44 +220,43 @@ class Board:
         return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
 
     def player_win(self):
-        win_ = True
-        for rows in self.cells:
-            for cell in rows:
-                if cell.value >= 0 and cell.state != State.WALL:
-                    if not cell.seen:
-                        win_ = False
-                        break
-        return win_
+        for cell in itertools.chain(*self.cells):
+            if cell.value >= 0 and cell.state != State.WALL and not cell.seen:
+                return False
+        return True
 
 
 class Game:
     def __init__(self):
         self.board = Board(15)
 
+    def run(self):
+        self._bold_font()
+        while self.allow_continue():
+            self._print_board()
+            self.board.action(getch())
+        self.print_result()
+
+    @staticmethod
+    def _bold_font():
+        print("\033[1;10m")
+
     @staticmethod
     def clear_screen():
         print("\033[H\033[J", end="")
 
-    def run(self):
-        print("\033[1;10m")
-        while self.allow_continue():
-            self.clear_screen()
-            print(self.board)
-            c = getch()
-            self.board.action(c)
-        self.print_result()
+    def _print_board(self):
+        self.clear_screen()
+        print(self.board)
 
     def allow_continue(self):
         return self.board.player.state != State.BOMB and not self.board.player_win()
 
     def print_result(self):
-        for rows in self.board.cells:
-            for cell in rows:
-                if cell.value < 0:
-                    cell.state = State.WIN if self.board.player_win() else State.DEAD
-                    cell.player_is_here = False
-        self.clear_screen()
-        print(self.board)
+        for cell in filter(lambda c: c.value < 0, itertools.chain(*self.board.cells)):
+            cell.state = State.WIN if self.board.player_win() else State.DEAD
+            cell.player_is_here = False
+        self._print_board()
 
 
 if __name__ == "__main__":
