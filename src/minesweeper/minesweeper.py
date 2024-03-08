@@ -1,0 +1,264 @@
+import random
+import typing
+from enum import Enum
+
+
+def getch():
+    """Gets a single character"""
+    try:
+        import msvcrt
+
+        return msvcrt.getch
+    except ImportError:
+        import sys
+        import termios
+        import tty
+
+        fd = sys.stdin.fileno()
+        oldsettings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(fd)
+            ch = sys.stdin.read(1)
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, oldsettings)
+        return ch
+
+
+class State(Enum):
+    BLOCK = "⬛️"
+    BOMB = "💣"
+    DEAD = "💥"
+    EIGHT = " 8"
+    FIVE = " 5"
+    FLAG = "🔖"
+    FOUR = " 4"
+    NINE = " 9"
+    ONE = " 1"
+    PLAYER = "🟩"
+    SEVEN = " 7"
+    SIX = " 6"
+    THREE = " 3"
+    TWO = " 2"
+    WALL = "🍀"
+    WIN = "🏆"
+    ZERO = "  "
+
+    @classmethod
+    def create_from_number(cls, number: int) -> "State":
+        return {
+            0: cls.ZERO,
+            1: cls.ONE,
+            2: cls.TWO,
+            3: cls.THREE,
+            4: cls.FOUR,
+            5: cls.FIVE,
+            6: cls.SIX,
+            7: cls.SEVEN,
+            8: cls.EIGHT,
+            9: cls.NINE,
+        }[number]
+
+
+class Action(Enum):
+    CLICK = "click"
+    MOVE_DOWN = "down"
+    MOVE_LEFT = "left"
+    MOVE_RIGHT = "right"
+    MOVE_UP = "up"
+    SET_FLAG = "flag"
+
+
+class Cell:
+    def __init__(self, state: State = State.BLOCK) -> None:
+        self.player_is_here = False
+        self.seen = False
+        self.state = state
+        self.value = 0
+        self.down = None
+        self.up = None
+        self.right = None
+        self.left = None
+
+    def __str__(self) -> str:
+        return State.PLAYER.value if self.player_is_here else self.state.value
+
+    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+        self.down = down
+        self.up = up
+        self.right = right
+        self.left = left
+
+    def set_state(self, action: Action) -> "Cell":
+        match action:
+            case Action.SET_FLAG:
+                self._set_flag()
+                return self
+            case Action.CLICK:
+                self._click()
+                return self
+            case _:
+                return self._move_tile(action)
+
+    def _move_tile(self, action: Action) -> "Cell":
+        side_: "Cell" = getattr(self, action.value)
+        if side_.state == State.WALL:
+            return self
+        else:
+            self.player_is_here = False
+            side_.player_is_here = True
+            return side_
+
+    def _click(self):
+        if self._is_unseen_and_not_wall():
+            self.state = State.create_from_number(self.value) if self.value > -1 else State.BOMB
+            self.seen = True
+            if self._is_empty():
+                self._continue(Action.MOVE_DOWN)
+                self._continue(Action.MOVE_LEFT)
+                self._continue(Action.MOVE_RIGHT)
+                self._continue(Action.MOVE_UP)
+
+    def _is_unseen_and_not_wall(self):
+        return not self.seen and self.state != State.WALL
+
+    def _is_empty(self):
+        return self.value == 0
+
+    def _set_flag(self):
+        if not self.seen:
+            self.state = State.BLOCK if self.state == State.FLAG else State.FLAG
+
+    def _continue(self, side: Action) -> None:
+        side_: typing.Union["Cell", None] = getattr(self, side.value)
+        if side_ is not None:
+            side_.set_state(Action.CLICK)
+
+
+class Board:
+    def __init__(self, size: int) -> None:
+        self.start_player_position = size // 2
+        self.size = size
+        self.cells = self._cells()
+        self.set_initial()
+        self.player = self.cells[self.start_player_position][self.start_player_position]
+
+    def _cells(self) -> list[list[Cell]]:
+        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
+
+    @property
+    def main_size(self) -> int:
+        return self.size + 2
+
+    def set_initial(self) -> None:
+        self.set_horizontal_walls()
+        self.set_vertical_walls()
+        self.set_cells_neighboring()
+        self.set_player()
+        self.set_bombs()
+
+    def set_horizontal_walls(self) -> None:
+        for j in range(self.main_size):
+            self.cells[0][j].state = State.WALL
+            self.cells[self.main_size - 1][j].state = State.WALL
+
+    def set_vertical_walls(self) -> None:
+        for i in range(self.main_size):
+            self.cells[i][0].state = State.WALL
+            self.cells[i][self.main_size - 1].state = State.WALL
+
+    def set_cells_neighboring(self) -> None:
+        for i in range(1, self.main_size - 1):
+            for j in range(1, self.main_size - 1):
+                self.cells[i][j].set_neighbors(
+                    self.cells[i][j - 1],
+                    self.cells[i][j + 1],
+                    self.cells[i - 1][j],
+                    self.cells[i + 1][j],
+                )
+
+    def set_player(self):
+        self.cells[self.start_player_position][self.start_player_position].player_is_here = True
+
+    def set_bombs(self):
+        for _ in range(self.size + 2):
+            cell = self.cells[random.randint(2, self.size - 1)][random.randint(2, self.size - 1)]
+            if cell.value != -1:
+                cell.value = -1
+                self.increase_value(cell.down)
+                self.increase_value(cell.down.left)
+                self.increase_value(cell.down.right)
+                self.increase_value(cell.up)
+                self.increase_value(cell.up.left)
+                self.increase_value(cell.up.right)
+                self.increase_value(cell.left)
+                self.increase_value(cell.right)
+
+    @staticmethod
+    def increase_value(cell: Cell):
+        cell.value += 1 if cell.value != -1 else 0
+
+    def action(self, ch: str):
+        match ch:
+            case "w":
+                self.player = self.player.set_state(Action.MOVE_UP)
+            case "a":
+                self.player = self.player.set_state(Action.MOVE_LEFT)
+            case "s":
+                self.player = self.player.set_state(Action.MOVE_DOWN)
+            case "d":
+                self.player = self.player.set_state(Action.MOVE_RIGHT)
+            case "e":
+                self.player = self.player.set_state(Action.CLICK)
+            case "q":
+                self.player = self.player.set_state(Action.SET_FLAG)
+            case " ":
+                self.player.state = State.BOMB
+            case _:
+                pass
+
+    def __str__(self) -> str:
+        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+
+    def player_win(self):
+        win_ = True
+        for rows in self.cells:
+            for cell in rows:
+                if cell.value >= 0 and cell.state != State.WALL:
+                    if not cell.seen:
+                        win_ = False
+                        break
+        return win_
+
+
+class Game:
+    def __init__(self):
+        self.board = Board(15)
+
+    @staticmethod
+    def clear_screen():
+        print("\033[H\033[J", end="")
+
+    def run(self):
+        print("\033[1;10m")
+        while self.allow_continue():
+            self.clear_screen()
+            print(self.board)
+            c = getch()
+            self.board.action(c)
+        self.print_result()
+
+    def allow_continue(self):
+        return self.board.player.state != State.BOMB and not self.board.player_win()
+
+    def print_result(self):
+        for rows in self.board.cells:
+            for cell in rows:
+                if cell.value < 0:
+                    cell.state = State.WIN if self.board.player_win() else State.DEAD
+                    cell.player_is_here = False
+        self.clear_screen()
+        print(self.board)
+
+
+if __name__ == "__main__":
+    Game().run()
