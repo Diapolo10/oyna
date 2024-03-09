@@ -17,7 +17,7 @@ emojis = [
     "🍄",
     "🍇",
     "🍓",
-    "🫐",
+    "🍥",
     "🍒",
     "🍭",
     "🍉",
@@ -214,7 +214,7 @@ class Board:
         return self.selected_tile.value == self.player.value and self.selected_tile != self.player
 
     def __str__(self) -> str:
-        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+        return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
     def player_win(self):
         for cell in itertools.chain(*self.cells):
