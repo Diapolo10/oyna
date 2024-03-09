@@ -9,7 +9,8 @@
     "conventionalCommits.scopes": [
         "vscode",
         "poxly",
-        "minesweeper"
+        "minesweeper",
+        "matching"
     ],
     "python.testing.unittestArgs": [
         "-v",
