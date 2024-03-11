@@ -10,7 +10,8 @@
         "vscode",
         "poxly",
         "minesweeper",
-        "matching"
+        "matching",
+        "memory"
     ],
     "python.testing.unittestArgs": [
         "-v",
