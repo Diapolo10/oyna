@@ -11,7 +11,8 @@
         "poxly",
         "minesweeper",
         "matching",
-        "memory"
+        "memory",
+        "find_difference"
     ],
     "python.testing.unittestArgs": [
         "-v",
