@@ -38,7 +38,7 @@ def getch():
     try:
         import msvcrt
 
-        return msvcrt.getch
+        return msvcrt.getch().decode("utf-8")
     except ImportError:
         import sys
         import termios
@@ -55,7 +55,7 @@ def getch():
 
 
 class State(enum.Enum):
-    BLOCK = "⬛️"
+    BLOCK = "🟪"
     WALL = "🔹"
     PLAYER = "🟦"
     SOLVED = "🔸"
