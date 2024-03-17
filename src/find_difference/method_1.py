@@ -8,7 +8,7 @@ def getch():
     try:
         import msvcrt
 
-        return msvcrt.getch
+        return msvcrt.getch().decode("utf-8")
     except ImportError:
         import sys
         import termios
@@ -26,11 +26,11 @@ def getch():
 
 selected_emoji = random.choice(
     [
-        ("😀", "😃"),
+        ("😀", "😄"),
         ("😄", "😁"),
         ("😙", "😗"),
         ("🈹", "🈵"),
-        ("🥹", "🥺"),
+        ("🙂", "🙃"),
         ("😏", "😒"),
         ("😈", "👿"),
         ("🧒", "👨"),
@@ -38,7 +38,7 @@ selected_emoji = random.choice(
         ("😅", "🥲"),
         ("🤪", "😜"),
         ("🌍", "🌏"),
-        ("⭐️", "🌟"),
+        ("🤩", "😍"),
         ("😺", "😻"),
         ("🥇", "🏅"),
         ("😳", "🙄"),
