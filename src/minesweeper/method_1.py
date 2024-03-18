@@ -9,7 +9,7 @@ def getch():
     try:
         import msvcrt
 
-        return msvcrt.getch
+        return msvcrt.getch().decode("utf-8")
     except ImportError:
         import sys
         import termios
@@ -26,21 +26,21 @@ def getch():
 
 
 class State(Enum):
-    BLOCK = "⬛️"
+    BLOCK = "🟪"
     BOMB = "💣"
     DEAD = "💥"
     EIGHT = " 8"
     FIVE = " 5"
-    FLAG = "🔺"
+    FLAG = "❓"
     FOUR = " 4"
     NINE = " 9"
     ONE = " 1"
-    PLAYER = "🟩"
+    PLAYER = "🟦"
     SEVEN = " 7"
     SIX = " 6"
     THREE = " 3"
     TWO = " 2"
-    WALL = "🍀"
+    WALL = "🔹"
     WIN = "🏆"
     ZERO = "  "
 
@@ -105,7 +105,8 @@ class Cell:
         if side_.state == State.WALL:
             return self
         else:
-            self.player_is_here, side_.player_is_here = side_.player_is_here, self.player_is_here
+            self.player_is_here = False
+            side_.player_is_here = True
             return side_
 
     def _click(self):
