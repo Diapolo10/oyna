@@ -1,7 +1,5 @@
 import enum
-import itertools
 import random
-import typing
 from time import sleep
 
 
@@ -10,7 +8,7 @@ def getch():
     try:
         import msvcrt
 
-        return msvcrt.getch
+        return msvcrt.getch().decode("utf-8")
     except ImportError:
         import sys
         import termios
@@ -27,7 +25,7 @@ def getch():
 
 
 class State(enum.Enum):
-    BLOCK = "⬛️"
+    BLOCK = "🟪"
     BLOCK_PREVIEW = "🟩"
     CORRECT_ANSWER = "✅"
     INCORRECT_ANSWER = "🟥"
