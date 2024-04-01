@@ -12,7 +12,8 @@
         "minesweeper",
         "matching",
         "memory",
-        "find_difference"
+        "find_difference",
+        "maze"
     ],
     "python.testing.unittestArgs": [
         "-v",
