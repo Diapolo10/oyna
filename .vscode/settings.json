@@ -13,7 +13,8 @@
         "matching",
         "memory",
         "find_difference",
-        "maze"
+        "maze",
+        "sudoku"
     ],
     "python.testing.unittestArgs": [
         "-v",
