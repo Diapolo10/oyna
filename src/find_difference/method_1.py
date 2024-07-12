@@ -92,9 +92,13 @@ class Cell:
         self._state = state
 
     def __str__(self) -> str:
-        return str(State.PLAYER.value if self._player_is_here else self.state.value)
+        return str(
+            State.PLAYER.value if self._player_is_here else self.state.value
+        )
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self._down = down
         self._up = up
         self._right = right
@@ -116,7 +120,10 @@ class Cell:
         if side.state == State.WALL:
             return self
         else:
-            self._player_is_here, side._player_is_here = side._player_is_here, self._player_is_here
+            self._player_is_here, side._player_is_here = (
+                side._player_is_here,
+                self._player_is_here,
+            )
             return side
 
     def _click(self) -> None:
@@ -134,7 +141,10 @@ class Board:
         self.set_initial()
 
     def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
+        return [
+            [Cell() for _ in range(self.main_size)]
+            for _ in range(self.main_size)
+        ]
 
     @property
     def main_size(self) -> int:
@@ -189,7 +199,9 @@ class Board:
                 pass
 
     def __str__(self) -> str:
-        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+        return "\n".join(
+            ["".join([str(cell) for cell in rows]) for rows in self.cells]
+        )
 
     def player_win(self):
         return self.player.state == State.WIN
@@ -214,7 +226,10 @@ class Game:
         print(self.board)
 
     def allow_continue(self):
-        return self.board.player.state != State.EXIT and not self.board.player_win()
+        return (
+            self.board.player.state != State.EXIT
+            and not self.board.player_win()
+        )
 
     def print_result(self):
         self.board.player.player_is_here = False

@@ -51,9 +51,13 @@ class Cell:
         self.left: typing.Optional["Cell"] = None
 
     def __str__(self) -> str:
-        return str(State.PLAYER.value if self.player_is_here else self.state.value)
+        return str(
+            State.PLAYER.value if self.player_is_here else self.state.value
+        )
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self.down = down
         self.up = up
         self.right = right
@@ -94,7 +98,9 @@ class Board:
         self.set_path(self.player)
 
     def set_cells(self):
-        self.cells = [[Cell() for _ in range(self.size)] for _ in range(self.size)]
+        self.cells = [
+            [Cell() for _ in range(self.size)] for _ in range(self.size)
+        ]
 
     def set_walls(self) -> None:
         for i in range(self.size):
@@ -142,7 +148,9 @@ class Board:
         allowed_sides = []
         for side in ["left", "right", "up", "down"]:
             side_: Cell = getattr(cell, side)
-            side_side: Cell = getattr(side_, side) if hasattr(side_, side) else None
+            side_side: Cell = (
+                getattr(side_, side) if hasattr(side_, side) else None
+            )
             if (
                 side_side is not None
                 and side_side.state in [State.EMPTY, State.END]

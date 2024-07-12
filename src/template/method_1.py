@@ -50,9 +50,13 @@ class Cell:
         self.left: "Cell"
 
     def __str__(self) -> str:
-        return str(State.PLAYER.value if self.player_is_here else self.state.value)
+        return str(
+            State.PLAYER.value if self.player_is_here else self.state.value
+        )
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self.down = down
         self.up = up
         self.right = right
@@ -91,7 +95,9 @@ class Board:
         self.set_path()
 
     def set_cells(self):
-        self.cells = [[Cell() for _ in range(self.size)] for _ in range(self.size)]
+        self.cells = [
+            [Cell() for _ in range(self.size)] for _ in range(self.size)
+        ]
 
     def set_walls(self) -> None:
         for i in range(self.size):

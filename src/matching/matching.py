@@ -88,7 +88,9 @@ class Cell:
             return State.PLAYER.value
         return self.state.value
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self.down = down
         self.up = up
         self.right = right
@@ -123,10 +125,15 @@ class Board:
         self.cells = self._cells()
         self.set_initial()
         self.selected_tile: typing.Optional[Cell] = None
-        self.player = self.cells[self.start_player_position][self.start_player_position]
+        self.player = self.cells[self.start_player_position][
+            self.start_player_position
+        ]
 
     def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
+        return [
+            [Cell() for _ in range(self.main_size)]
+            for _ in range(self.main_size)
+        ]
 
     @property
     def main_size(self) -> int:
@@ -160,7 +167,9 @@ class Board:
                 )
 
     def set_player(self):
-        self.cells[self.start_player_position][self.start_player_position].set_player_is_here(True)
+        self.cells[self.start_player_position][
+            self.start_player_position
+        ].set_player_is_here(True)
 
     def set_cells_value(self):
         emoji_needs = divmod(pow(self.size, 2), 2 * len(emojis))
@@ -168,7 +177,9 @@ class Board:
         extra_emojis = emojis[: emoji_needs[1] // 2]
         emojis_ = 2 * (complete_emojis + extra_emojis)
         random.shuffle(emojis_)
-        emoji_cells = filter(lambda c: c.state != State.WALL, itertools.chain(*self.cells))
+        emoji_cells = filter(
+            lambda c: c.state != State.WALL, itertools.chain(*self.cells)
+        )
         for i, cell in enumerate(emoji_cells):
             cell.set_value(emojis_[i])
 
@@ -211,7 +222,10 @@ class Board:
         self.selected_tile = None
 
     def _matched(self):
-        return self.selected_tile.value == self.player.value and self.selected_tile != self.player
+        return (
+            self.selected_tile.value == self.player.value
+            and self.selected_tile != self.player
+        )
 
     def __str__(self) -> str:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
@@ -243,7 +257,10 @@ class Game:
         print(self.board)
 
     def allow_continue(self):
-        return not self.board.player_win() and self.board.player.state != State.EXIT
+        return (
+            not self.board.player_win()
+            and self.board.player.state != State.EXIT
+        )
 
     def print_result(self):
         self._print_board()

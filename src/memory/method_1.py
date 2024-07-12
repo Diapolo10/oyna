@@ -57,7 +57,9 @@ class Cell:
     def __str__(self) -> str:
         return State.PLAYER.value if self.player_is_here else self.state.value
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self.down = down
         self.up = up
         self.right = right
@@ -79,11 +81,16 @@ class Cell:
         if side_.state == State.WALL:
             return self
         else:
-            self.player_is_here, side_.player_is_here = side_.player_is_here, self.player_is_here
+            self.player_is_here, side_.player_is_here = (
+                side_.player_is_here,
+                self.player_is_here,
+            )
             return side_
 
     def _click(self) -> None:
-        self.state = State.CORRECT_ANSWER if self._correct() else State.INCORRECT_ANSWER
+        self.state = (
+            State.CORRECT_ANSWER if self._correct() else State.INCORRECT_ANSWER
+        )
 
     def _correct(self) -> bool:
         return self.value > 0
@@ -98,7 +105,10 @@ class Board:
         self.set_initial()
 
     def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
+        return [
+            [Cell() for _ in range(self.main_size)]
+            for _ in range(self.main_size)
+        ]
 
     @property
     def main_size(self) -> int:
@@ -136,7 +146,9 @@ class Board:
 
     def set_blocks(self) -> None:
         for _ in range(self.size // 2):
-            block = self.cells[random.randint(2, self.size - 1)][random.randint(2, self.size - 1)]
+            block = self.cells[random.randint(2, self.size - 1)][
+                random.randint(2, self.size - 1)
+            ]
             block.value = 1
             block.state = State.BLOCK_PREVIEW
             self.blocks.append(block)
@@ -159,7 +171,9 @@ class Board:
                 pass
 
     def __str__(self) -> str:
-        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+        return "\n".join(
+            ["".join([str(cell) for cell in rows]) for rows in self.cells]
+        )
 
     def player_win(self):
         for cell in self.blocks:
@@ -195,7 +209,10 @@ class Game:
         print(self.board)
 
     def allow_continue(self):
-        return self.board.player.state != State.EXIT and not self.board.player_win()
+        return (
+            self.board.player.state != State.EXIT
+            and not self.board.player_win()
+        )
 
     def print_result(self):
         self.player_is_here = False

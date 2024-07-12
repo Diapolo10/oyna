@@ -83,7 +83,9 @@ class Cell:
     def __str__(self) -> str:
         return State.PLAYER.value if self.player_is_here else self.state.value
 
-    def set_neighbors(self, left: "Cell", right: "Cell", up: "Cell", down: "Cell") -> None:
+    def set_neighbors(
+        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
+    ) -> None:
         self.down = down
         self.up = up
         self.right = right
@@ -111,7 +113,11 @@ class Cell:
 
     def _click(self):
         if self._is_unseen_and_not_wall():
-            self.state = State.create_from_number(self.value) if self.value > -1 else State.BOMB
+            self.state = (
+                State.create_from_number(self.value)
+                if self.value > -1
+                else State.BOMB
+            )
             self.seen = True
             if self._is_empty():
                 self._continue(Action.MOVE_DOWN)
@@ -127,7 +133,9 @@ class Cell:
 
     def _set_flag(self):
         if not self.seen:
-            self.state = State.BLOCK if self.state == State.FLAG else State.FLAG
+            self.state = (
+                State.BLOCK if self.state == State.FLAG else State.FLAG
+            )
 
     def _continue(self, side: Action) -> None:
         side_: typing.Union["Cell", None] = getattr(self, side.value)
@@ -141,10 +149,15 @@ class Board:
         self.size = size
         self.cells = self._cells()
         self.set_initial()
-        self.player = self.cells[self.start_player_position][self.start_player_position]
+        self.player = self.cells[self.start_player_position][
+            self.start_player_position
+        ]
 
     def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
+        return [
+            [Cell() for _ in range(self.main_size)]
+            for _ in range(self.main_size)
+        ]
 
     @property
     def main_size(self) -> int:
@@ -178,11 +191,15 @@ class Board:
                 )
 
     def set_player(self):
-        self.cells[self.start_player_position][self.start_player_position].player_is_here = True
+        self.cells[self.start_player_position][
+            self.start_player_position
+        ].player_is_here = True
 
     def set_bombs(self):
         for _ in range(self.size + 2):
-            cell = self.cells[random.randint(2, self.size - 1)][random.randint(2, self.size - 1)]
+            cell = self.cells[random.randint(2, self.size - 1)][
+                random.randint(2, self.size - 1)
+            ]
             if cell.value != -1:
                 cell.value = -1
                 self.increase_value(cell.down)
@@ -218,7 +235,9 @@ class Board:
                 pass
 
     def __str__(self) -> str:
-        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+        return "\n".join(
+            ["".join([str(cell) for cell in rows]) for rows in self.cells]
+        )
 
     def player_win(self):
         for cell in itertools.chain(*self.cells):
@@ -251,10 +270,15 @@ class Game:
         print(self.board)
 
     def allow_continue(self):
-        return self.board.player.state != State.BOMB and not self.board.player_win()
+        return (
+            self.board.player.state != State.BOMB
+            and not self.board.player_win()
+        )
 
     def print_result(self):
-        for cell in filter(lambda c: c.value < 0, itertools.chain(*self.board.cells)):
+        for cell in filter(
+            lambda c: c.value < 0, itertools.chain(*self.board.cells)
+        ):
             cell.state = State.WIN if self.board.player_win() else State.DEAD
             cell.player_is_here = False
         self._print_board()
