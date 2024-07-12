@@ -67,41 +67,25 @@ class Action(enum.Enum):
 
 class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
-        self._player_is_here = False
-        self._state = state
-        self._down = None
-        self._up = None
-        self._right = None
-        self._left = None
-
-    @property
-    def player_is_here(self):
-        return self._player_is_here
-
-    @player_is_here.setter
-    def player_is_here(self, value: bool = True):
-        self._player_is_here = value
-
-    @property
-    def state(self):
-        return self._state
-
-    @state.setter
-    def state(self, state: State) -> None:
-        self._state = state
+        self.player_is_here = False
+        self.state = state
+        self.down = None
+        self.up = None
+        self.right = None
+        self.left = None
 
     def __str__(self) -> str:
         return str(
-            State.PLAYER.value if self._player_is_here else self.state.value
+            State.PLAYER.value if self.player_is_here else self.state.value
         )
 
     def set_neighbors(
         self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
     ) -> None:
-        self._down = down
-        self._up = up
-        self._right = right
-        self._left = left
+        self.down = down
+        self.up = up
+        self.right = right
+        self.left = left
 
     def process(self, action: Action) -> "Cell":
         match action:
@@ -115,13 +99,13 @@ class Cell:
                 return self._move_tile(action)
 
     def _move_tile(self, action: Action) -> "Cell":
-        side: "Cell" = getattr(self, f"_{action.value}")
+        side: "Cell" = getattr(self, action.value)
         if side.state == State.WALL:
             return self
         else:
-            self._player_is_here, side._player_is_here = (
-                side._player_is_here,
-                self._player_is_here,
+            self.player_is_here, side.player_is_here = (
+                side.player_is_here,
+                self.player_is_here,
             )
             return side
 
@@ -173,7 +157,7 @@ class Board:
 
     def set_player(self) -> None:
         self.player = self.cells[self.main_size // 2][self.main_size // 2]
-        self.player._player_is_here = True
+        self.player.player_is_here = True
 
     def set_answer(self) -> None:
         i = random.randint(1, self.size)
