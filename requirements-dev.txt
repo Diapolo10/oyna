@@ -1,0 +1,4 @@
+tox
+pre-commit
+ruff
+setuptools
