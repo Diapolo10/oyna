@@ -1,6 +1,5 @@
 import enum
 import random
-from time import sleep
 
 
 def getch():
