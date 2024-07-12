@@ -4,15 +4,15 @@ import enum
 import math
 import random
 from random import sample
-from typing import Optional
+from typing import Generator, Optional
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -118,7 +118,7 @@ class Cell:
             case _:
                 return self.enter(action)
 
-    def enter(self, action) -> "Cell":
+    def enter(self, action: Action) -> "Cell":
         if self.state == State.EMPTY:
             self.user_value = action.value
         return self
@@ -154,7 +154,7 @@ class Board:
         self.set_empty_cells()
         self.set_player()
 
-    def set_cells(self):
+    def set_cells(self) -> None:
         self.cells = [
             [Cell() for _ in range(self.line_size)]
             for _ in range(self.line_size)
@@ -190,13 +190,13 @@ class Board:
         self.player = self.cells[1][1]
         self.player.player_is_here = True
 
-    def set_numbers(self):
+    def set_numbers(self) -> None:
         side = self.size * self.size
 
-        def pattern(r, c):
+        def pattern(r: int, c: int) -> int:
             return (self.size * (r % self.size) + r // self.size + c) % side
 
-        def shuffle(s):
+        def shuffle(s: range) -> list[int]:
             return sample(s, len(s))
 
         rBase = range(self.size)
@@ -216,7 +216,7 @@ class Board:
                 self.cells[i_][j_].value = value
                 self.cells[i_][j_].state = State.FIXED_NUMBER
 
-    def set_empty_cells(self):
+    def set_empty_cells(self) -> None:
         for row in self.cells:
             for cell in row:
                 cell.state = (
@@ -226,7 +226,7 @@ class Board:
                     else cell.state
                 )
 
-    def take(self, ch: str):
+    def take(self, ch: str) -> None:
         print(ch)
         self.player = self.player.take(
             {
@@ -250,12 +250,12 @@ class Board:
     def __str__(self) -> str:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
-    def player_has_reached_the_end(self):
+    def player_has_reached_the_end(self) -> bool:
         return self.player.state == State.END
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.board = Board()
 
     def run(self) -> None:
@@ -265,10 +265,10 @@ class Game:
             self.print_board()
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def print_board(self):
+    def print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 

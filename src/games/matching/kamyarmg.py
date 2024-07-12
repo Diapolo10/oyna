@@ -33,12 +33,12 @@ emojis = [
 ]
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -96,16 +96,16 @@ class Cell:
         self.right = right
         self.left = left
 
-    def set_value(self, value: str):
+    def set_value(self, value: str) -> None:
         self.value = value
 
-    def set_selected(self, selected: bool):
+    def set_selected(self, selected: bool) -> None:
         self.selected = selected
 
-    def set_player_is_here(self, player_is_here: bool):
+    def set_player_is_here(self, player_is_here: bool) -> None:
         self.player_is_here = player_is_here
 
-    def set_state(self, state: State):
+    def set_state(self, state: State) -> None:
         self.state = state
 
     def move_tile(self, action: Side) -> "Cell":
@@ -148,13 +148,13 @@ class Board:
 
     def set_horizontal_walls(self) -> None:
         for j in range(self.main_size):
-            self.cells[0][j].set_state(State.WALL)
-            self.cells[self.main_size - 1][j].set_state(State.WALL)
+            self.cells[0][j].state = State.WALL
+            self.cells[self.main_size - 1][j].state = State.WALL
 
     def set_vertical_walls(self) -> None:
         for i in range(self.main_size):
-            self.cells[i][0].set_state(State.WALL)
-            self.cells[i][self.main_size - 1].set_state(State.WALL)
+            self.cells[i][0].state = State.WALL
+            self.cells[i][self.main_size - 1].state = State.WALL
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.main_size - 1):
@@ -166,12 +166,12 @@ class Board:
                     self.cells[i + 1][j],
                 )
 
-    def set_player(self):
+    def set_player(self) -> None:
         self.cells[self.start_player_position][
             self.start_player_position
         ].set_player_is_here(True)
 
-    def set_cells_value(self):
+    def set_cells_value(self) -> None:
         emoji_needs = divmod(pow(self.size, 2), 2 * len(emojis))
         complete_emojis = emojis * emoji_needs[0]
         extra_emojis = emojis[: emoji_needs[1] // 2]
@@ -183,7 +183,7 @@ class Board:
         for i, cell in enumerate(emoji_cells):
             cell.set_value(emojis_[i])
 
-    def action(self, ch: str):
+    def action(self, ch: str) -> None:
         match ch:
             case "w":
                 self.player = self.player.move_tile(Side.UP)
@@ -203,25 +203,26 @@ class Board:
                     else:
                         self._select_new_tile()
             case " ":
-                self.player.set_state(State.EXIT)
+                self.player.state = State.EXIT
             case _:
                 pass
 
-    def _select_new_tile(self):
+    def _select_new_tile(self) -> None:
         self.selected_tile = self.player
         self.selected_tile.set_selected(True)
 
-    def _revert_selected_tile(self):
+    def _revert_selected_tile(self) -> None:
         self.selected_tile.set_selected(False)
         self._select_new_tile()
 
-    def _set_selected_tiles_as_solved(self):
-        self.selected_tile.set_state(State.SOLVED)
-        self.player.set_state(State.SOLVED)
-        self.selected_tile.set_selected(False)
+    def _set_selected_tiles_as_solved(self) -> None:
+        if self.selected_tile:
+            self.selected_tile.state = State.SOLVED
+            self.player.state = State.SOLVED
+            self.selected_tile.set_selected(False)
         self.selected_tile = None
 
-    def _matched(self):
+    def _matched(self) -> bool:
         return (
             self.selected_tile.value == self.player.value
             and self.selected_tile != self.player
@@ -230,7 +231,7 @@ class Board:
     def __str__(self) -> str:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
-    def player_win(self):
+    def player_win(self) -> bool:
         for cell in itertools.chain(*self.cells):
             if cell.state != State.SOLVED and cell.state != State.WALL:
                 return False
@@ -239,30 +240,30 @@ class Board:
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.board = Board(8)
 
-    def run(self):
+    def run(self) -> None:
         while self.allow_continue():
             self._print_board()
             self.board.action(getch())
         self.print_result()
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def _print_board(self):
+    def _print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 
-    def allow_continue(self):
+    def allow_continue(self) -> bool:
         return (
             not self.board.player_win()
             and self.board.player.state != State.EXIT
         )
 
-    def print_result(self):
+    def print_result(self) -> None:
         self._print_board()
 
 

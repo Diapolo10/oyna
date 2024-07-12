@@ -4,12 +4,12 @@ import typing
 from enum import Enum
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -111,7 +111,7 @@ class Cell:
             side_.player_is_here = True
             return side_
 
-    def _click(self):
+    def _click(self) -> None:
         if self._is_unseen_and_not_wall():
             self.state = (
                 State.create_from_number(self.value)
@@ -125,13 +125,13 @@ class Cell:
                 self._continue(Action.MOVE_RIGHT)
                 self._continue(Action.MOVE_UP)
 
-    def _is_unseen_and_not_wall(self):
+    def _is_unseen_and_not_wall(self) -> bool:
         return not self.seen and self.state != State.WALL
 
-    def _is_empty(self):
+    def _is_empty(self) -> bool:
         return self.value == 0
 
-    def _set_flag(self):
+    def _set_flag(self) -> None:
         if not self.seen:
             self.state = (
                 State.BLOCK if self.state == State.FLAG else State.FLAG
@@ -190,12 +190,12 @@ class Board:
                     self.cells[i + 1][j],
                 )
 
-    def set_player(self):
+    def set_player(self) -> None:
         self.cells[self.start_player_position][
             self.start_player_position
         ].player_is_here = True
 
-    def set_bombs(self):
+    def set_bombs(self) -> None:
         for _ in range(self.size + 2):
             cell = self.cells[random.randint(2, self.size - 1)][
                 random.randint(2, self.size - 1)
@@ -212,10 +212,10 @@ class Board:
                 self.increase_value(cell.right)
 
     @staticmethod
-    def increase_value(cell: Cell):
+    def increase_value(cell: Cell) -> None:
         cell.value += 1 if cell.value != -1 else 0
 
-    def action(self, ch: str):
+    def action(self, ch: str) -> None:
         match ch:
             case "w":
                 self.player = self.player.set_state(Action.MOVE_UP)
@@ -239,7 +239,7 @@ class Board:
             ["".join([str(cell) for cell in rows]) for rows in self.cells]
         )
 
-    def player_win(self):
+    def player_win(self) -> bool:
         for cell in itertools.chain(*self.cells):
             if cell.value >= 0 and cell.state != State.WALL and not cell.seen:
                 return False
@@ -247,10 +247,10 @@ class Board:
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.board = Board(15)
 
-    def run(self):
+    def run(self) -> None:
         self._bold_font()
         while self.allow_continue():
             self._print_board()
@@ -258,24 +258,24 @@ class Game:
         self.print_result()
 
     @staticmethod
-    def _bold_font():
+    def _bold_font() -> None:
         print("\033[1;10m")
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def _print_board(self):
+    def _print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 
-    def allow_continue(self):
+    def allow_continue(self) -> bool:
         return (
             self.board.player.state != State.BOMB
             and not self.board.player_win()
         )
 
-    def print_result(self):
+    def print_result(self) -> None:
         for cell in filter(
             lambda c: c.value < 0, itertools.chain(*self.board.cells)
         ):

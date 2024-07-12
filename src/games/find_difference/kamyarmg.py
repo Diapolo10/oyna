@@ -1,13 +1,15 @@
 import enum
 import random
+from math import ceil
+from typing import Optional
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -69,10 +71,10 @@ class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
         self.player_is_here = False
         self.state = state
-        self.down = None
-        self.up = None
-        self.right = None
-        self.left = None
+        self.down: Optional["Cell"] = None
+        self.up: Optional["Cell"] = None
+        self.right: Optional["Cell"] = None
+        self.left: Optional["Cell"] = None
 
     def __str__(self) -> str:
         return str(
@@ -164,7 +166,7 @@ class Board:
         j = random.randint(1, self.size)
         self.cells[i][j].state = State.ANSWER
 
-    def action(self, ch: str):
+    def action(self, ch: str) -> None:
         match ch:
             case "w":
                 self.player = self.player.process(Action.MOVE_UP)
@@ -186,12 +188,12 @@ class Board:
             ["".join([str(cell) for cell in rows]) for rows in self.cells]
         )
 
-    def player_win(self):
+    def player_win(self) -> bool:
         return self.player.state == State.WIN
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.board = Board(10)
 
     def run(self) -> None:
@@ -201,20 +203,20 @@ class Game:
         self.print_result()
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def _print_board(self):
+    def _print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 
-    def allow_continue(self):
+    def allow_continue(self) -> bool:
         return (
             self.board.player.state != State.EXIT
             and not self.board.player_win()
         )
 
-    def print_result(self):
+    def print_result(self) -> None:
         self.board.player.player_is_here = False
         self._print_board()
 

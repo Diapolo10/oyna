@@ -3,12 +3,12 @@ import random
 from time import sleep
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -153,7 +153,7 @@ class Board:
             block.state = State.BLOCK_PREVIEW
             self.blocks.append(block)
 
-    def action(self, ch: str):
+    def action(self, ch: str) -> None:
         match ch:
             case "w":
                 self.player = self.player.set_state(Action.MOVE_UP)
@@ -175,13 +175,13 @@ class Board:
             ["".join([str(cell) for cell in rows]) for rows in self.cells]
         )
 
-    def player_win(self):
+    def player_win(self) -> bool:
         for cell in self.blocks:
             if cell.state != State.CORRECT_ANSWER:
                 return False
         return True
 
-    def preview(self):
+    def preview(self) -> None:
         print(self)
         sleep(3)
         self.player.player_is_here = True
@@ -190,7 +190,7 @@ class Board:
 
 
 class Game:
-    def __init__(self):
+    def __init__(self) -> None:
         self.board = Board(15)
         self.board.preview()
 
@@ -201,20 +201,20 @@ class Game:
         self.print_result()
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def _print_board(self):
+    def _print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 
-    def allow_continue(self):
+    def allow_continue(self) -> bool:
         return (
             self.board.player.state != State.EXIT
             and not self.board.player_win()
         )
 
-    def print_result(self):
+    def print_result(self) -> None:
         self.player_is_here = False
         self._print_board()
 

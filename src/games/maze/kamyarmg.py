@@ -1,14 +1,14 @@
 import enum
 import random
-import typing
+from typing import Optional
 
 
-def getch():
+def getch() -> str:
     """Gets a single character"""
     try:
         import msvcrt
 
-        return msvcrt.getch().decode("utf-8")
+        return str(msvcrt.getch().decode("utf-8"))
     except ImportError:
         import sys
         import termios
@@ -44,11 +44,11 @@ class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
         self.player_is_here: bool = False
         self.state: State = state
-        self.parent: typing.Optional["Cell"] = None
-        self.down: typing.Optional["Cell"] = None
-        self.up: typing.Optional["Cell"] = None
-        self.right: typing.Optional["Cell"] = None
-        self.left: typing.Optional["Cell"] = None
+        self.parent: Optional["Cell"] = None
+        self.down: Optional["Cell"] = None
+        self.up: Optional["Cell"] = None
+        self.right: Optional["Cell"] = None
+        self.left: Optional["Cell"] = None
 
     def __str__(self) -> str:
         return str(
@@ -97,7 +97,7 @@ class Board:
         self.set_destination()
         self.set_path(self.player)
 
-    def set_cells(self):
+    def set_cells(self) -> None:
         self.cells = [
             [Cell() for _ in range(self.size)] for _ in range(self.size)
         ]
@@ -130,7 +130,7 @@ class Board:
             for j in range(1, self.size - 1, 2):
                 self.cells[i][j].state = State.EMPTY
 
-    def set_path(self, cell: Cell):
+    def set_path(self, cell: Cell) -> None:
         allowed_sides = self._allowed_sides(cell)
         if allowed_sides:
             side = random.choice(allowed_sides)
@@ -144,11 +144,11 @@ class Board:
             self.set_path(cell.parent)
 
     @staticmethod
-    def _allowed_sides(cell) -> list[str]:
+    def _allowed_sides(cell: Cell) -> list[str]:
         allowed_sides = []
         for side in ["left", "right", "up", "down"]:
             side_: Cell = getattr(cell, side)
-            side_side: Cell = (
+            side_side: Optional[Cell] = (
                 getattr(side_, side) if hasattr(side_, side) else None
             )
             if (
@@ -160,7 +160,7 @@ class Board:
                 allowed_sides.append(side)
         return allowed_sides
 
-    def take(self, ch: str):
+    def take(self, ch: str) -> None:
         self.player = self.player.take(
             {
                 "w": Action.MOVE_UP,
@@ -174,7 +174,7 @@ class Board:
     def __str__(self) -> str:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
-    def player_has_reached_the_end(self):
+    def player_has_reached_the_end(self) -> bool:
         return self.player.state == State.END
 
 
@@ -189,10 +189,10 @@ class Game:
         self.print_board()
 
     @staticmethod
-    def clear_screen():
+    def clear_screen() -> None:
         print("\033[H\033[J", end="")
 
-    def print_board(self):
+    def print_board(self) -> None:
         self.clear_screen()
         print(self.board)
 
