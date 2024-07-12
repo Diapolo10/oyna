@@ -120,8 +120,7 @@ class Board:
         self.player.player_is_here = True
 
     def set_path(self) -> None:
-        i = random.randint(1, self.size)
-        j = random.randint(1, self.size)
+        pass
 
     def take(self, ch: str):
         self.player = self.player.take(
