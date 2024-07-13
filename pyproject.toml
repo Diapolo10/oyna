@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 dynamic = ["version"]
 
 # name of project on PyPI
-name = "games"
+name = "oyna"
 
 # minimum version of Python that we support
 requires-python = ">= 3.10"
@@ -32,7 +32,7 @@ readme = "README.md"
 license = { file = "LICENSE" }
 
 # This will help PyPI’s search box to suggest your project when people search for these keywords.
-keywords = ["games", "python", "alghorithms", "data structures", "fun"]
+keywords = ["games", "python", "alghorithms", "data structures", "fun", "OYNA"]
 
 # A list of PyPI classifiers that apply to your project.
 classifiers = [
@@ -59,12 +59,12 @@ classifiers = [
 [project.urls]
 Homepage = "https://example.com"
 Documentation = "https://readthedocs.org"
-Repository = "https://github.com/kamyarmg/games"
-Issues = "https://github.com/kamyarmg/games/issues"
-Changelog = "https://github.com/kamyarmg/games/blob/master/CHANGELOG.md"
+Repository = "https://github.com/kamyarmg/oyna"
+Issues = "https://github.com/kamyarmg/oyna/issues"
+Changelog = "https://github.com/kamyarmg/oyna/blob/master/CHANGELOG.md"
 
 [project.scripts]
-games = "games:main"
+oyna = "oyna:main"
 
 [tool.ruff]
 line-length = 79

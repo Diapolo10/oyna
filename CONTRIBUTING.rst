@@ -1,4 +1,4 @@
-How to contribute to Games
+How to contribute to Oyna
 ==========================
 
-Thank you for considering contributing to Games!
+Thank you for considering contributing to Oyna!
