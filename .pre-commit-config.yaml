@@ -5,7 +5,7 @@ repos:
     rev: v0.4.7
     hooks:
       - id: ruff
-        entry: ruff check --select I --fix --per-file-ignores="__init__.py:F401, __init__.py:F403, *_pb2.py:E402"
+        entry: ruff check --select I --fix
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/pre-commit-hooks

@@ -4,7 +4,7 @@ import enum
 import math
 import random
 from random import sample
-from typing import Generator, Optional
+from typing import Optional
 
 
 def getch() -> str:
