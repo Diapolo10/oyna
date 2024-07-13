@@ -38,7 +38,7 @@ def getch() -> str:
     try:
         import msvcrt
 
-        return str(msvcrt.getch().decode("utf-8"))
+        return str(msvcrt.getch().decode("utf-8"))  # type: ignore
     except ImportError:
         import sys
         import termios
@@ -73,20 +73,20 @@ class Side(enum.Enum):
 class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
         self.player_is_here = False
-        self.state = state
-        self.selected = False
-        self.value = None
-        self.down = None
-        self.up = None
-        self.right = None
-        self.left = None
+        self.state: State = state
+        self.selected: bool = False
+        self.value: str = ""
+        self.down: "Cell"
+        self.up: "Cell"
+        self.right: "Cell"
+        self.left: "Cell"
 
     def __str__(self) -> str:
         if self.selected:
             return self.value
         elif self.player_is_here:
             return State.PLAYER.value
-        return self.state.value
+        return str(self.state.value)
 
     def set_neighbors(
         self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
@@ -95,12 +95,6 @@ class Cell:
         self.up = up
         self.right = right
         self.left = left
-
-    def set_value(self, value: str) -> None:
-        self.value = value
-
-    def set_selected(self, selected: bool) -> None:
-        self.selected = selected
 
     def set_player_is_here(self, player_is_here: bool) -> None:
         self.player_is_here = player_is_here
@@ -181,7 +175,7 @@ class Board:
             lambda c: c.state != State.WALL, itertools.chain(*self.cells)
         )
         for i, cell in enumerate(emoji_cells):
-            cell.set_value(emojis_[i])
+            cell.value = emojis_[i]
 
     def action(self, ch: str) -> None:
         match ch:
@@ -209,22 +203,22 @@ class Board:
 
     def _select_new_tile(self) -> None:
         self.selected_tile = self.player
-        self.selected_tile.set_selected(True)
+        self.selected_tile.selected = True
 
     def _revert_selected_tile(self) -> None:
-        self.selected_tile.set_selected(False)
+        setattr(self.selected_tile, "selected", False)
         self._select_new_tile()
 
     def _set_selected_tiles_as_solved(self) -> None:
         if self.selected_tile:
             self.selected_tile.state = State.SOLVED
             self.player.state = State.SOLVED
-            self.selected_tile.set_selected(False)
+            self.selected_tile.selected = False
         self.selected_tile = None
 
     def _matched(self) -> bool:
         return (
-            self.selected_tile.value == self.player.value
+            getattr(self.selected_tile, "value") == self.player.value
             and self.selected_tile != self.player
         )
 

@@ -8,7 +8,7 @@ def getch() -> str:
     try:
         import msvcrt
 
-        return str(msvcrt.getch().decode("utf-8"))
+        return str(msvcrt.getch().decode("utf-8"))  # type: ignore
     except ImportError:
         import sys
         import termios
@@ -49,13 +49,17 @@ class Cell:
         self.player_is_here = False
         self.state = state
         self.value = 0
-        self.down = None
-        self.up = None
-        self.right = None
-        self.left = None
+        self.down: "Cell"
+        self.up: "Cell"
+        self.right: "Cell"
+        self.left: "Cell"
 
     def __str__(self) -> str:
-        return State.PLAYER.value if self.player_is_here else self.state.value
+        return (
+            State.PLAYER.value
+            if self.player_is_here
+            else str(self.state.value)
+        )
 
     def set_neighbors(
         self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"

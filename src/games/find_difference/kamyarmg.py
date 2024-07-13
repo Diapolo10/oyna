@@ -1,6 +1,5 @@
 import enum
 import random
-from math import ceil
 from typing import Optional
 
 
@@ -9,7 +8,7 @@ def getch() -> str:
     try:
         import msvcrt
 
-        return str(msvcrt.getch().decode("utf-8"))
+        return str(msvcrt.getch().decode("utf-8"))  # type: ignore
     except ImportError:
         import sys
         import termios
