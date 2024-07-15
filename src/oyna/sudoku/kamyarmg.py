@@ -76,7 +76,12 @@ class Cell:
 
     def __str__(self) -> str:
         if self.player_is_here:
-            return State.PLAYER.value
+            v = (
+                self.value
+                if self.state == State.FIXED_NUMBER
+                else self.user_value or "  "
+            )
+            return f"\033[48;2;150;150;150m{v:2}\033[0m"
         elif self.state == State.FIXED_NUMBER:
             return f"{self.value:2}"
         elif self.state == State.EMPTY:
