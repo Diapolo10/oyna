@@ -66,7 +66,6 @@ class Cell:
     def __init__(self, state: State = State.BLOCK, value: int = -1) -> None:
         self.player_is_here: bool = False
         self.state: State = state
-        self.seen: bool = False
         self.value: int = value
         self.user_value: Optional[int] = None
         self.down: "Cell"
