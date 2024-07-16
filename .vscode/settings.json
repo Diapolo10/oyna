@@ -13,5 +13,14 @@
     "**/.tox/**": true,
     "**/.mypy_cache/**": true,
     "**/.ruff_cache/**": true
-  }
+  },
+  "conventionalCommits.scopes": [
+    "sudoku",
+    "memory",
+    "matching",
+    "find_difference",
+    "minesweeper",
+    "twenty_forty_eight",
+    "maze"
+  ]
 }
