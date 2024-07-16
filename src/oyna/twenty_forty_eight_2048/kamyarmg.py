@@ -39,11 +39,11 @@ class Action(enum.Enum):
     NOTHING = "nothing"
 
 
-def rgb_bg(r, g, b) -> str:
+def rgb_bg(r: int, g: int, b: int) -> str:
     return f"\033[48;2;{r};{g};{b}m"
 
 
-def rgb(r, g, b) -> str:
+def rgb(r: int, g: int, b: int) -> str:
     return f"\033[38;2;{r};{g};{b}m"
 
 
@@ -85,32 +85,32 @@ class Cell:
         elif self.left.value:
             value = str(self.left.value).center(6)[4:]
             return f"{value_color[self.left.value]}{value}{reset}"
-        value = (
+        margin_value = (
             self.down.value
             or self.up.value
             or (
-                getattr(self.down.left, "value")
+                getattr(self.down.left, "value", 0)
                 if hasattr(self.down, "left")
                 else 0
             )
             or (
-                getattr(self.down.right, "value")
+                getattr(self.down.right, "value", 0)
                 if hasattr(self.down, "right")
                 else 0
             )
             or (
-                getattr(self.up.right, "value")
+                getattr(self.up.right, "value", 0)
                 if hasattr(self.up, "right")
                 else 0
             )
-            or (
-                getattr(self.up.left, "value")
+            or int(
+                getattr(self.up.left, "value", 0)
                 if hasattr(self.up, "left")
                 else 0
             )
         )
-        if value:
-            return f"{value_color[value]}  {reset}"
+        if margin_value:
+            return f"{value_color[int(margin_value)]}  {reset}"
         return f"{rgb_bg(0, 0, 0)}  {reset}"
 
     def set_neighbors(
