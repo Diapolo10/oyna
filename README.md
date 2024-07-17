@@ -1,4 +1,4 @@
-# Oyna
+# Oyna 💃🏻🕺🏻💃🏿🕺🏿💃🕺
 This repository contains games in Python programming language. The purpose of creating this repository is to include simple computer games written in Python so that everyone can easily access them and learn Python and algorithms in a fun way.
 
 The games that have been added to this repository so far are as follows
