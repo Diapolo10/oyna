@@ -51,10 +51,10 @@ class State(enum.Enum):
     BLOCK = selected_emoji[0]
     ANSWER = selected_emoji[1]
     INCORRECT_ANSWER = "🟥"
-    PLAYER = "🟩"
-    WALL = "🍀"
+    PLAYER = "🟦"
+    WALL = "🔹"
     WIN = "🏆"
-    EXIT = "🟩"
+    EXIT = "🟦"
 
 
 class Action(enum.Enum):
@@ -77,7 +77,9 @@ class Cell:
 
     def __str__(self) -> str:
         return str(
-            State.PLAYER.value if self.player_is_here else self.state.value
+            f"\033[48;2;50;50;250m{self.state.value}\033[0m"
+            if self.player_is_here
+            else self.state.value
         )
 
     def set_neighbors(

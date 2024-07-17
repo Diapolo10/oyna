@@ -32,7 +32,7 @@ class State(enum.Enum):
     PLAYER = "🟦"
     WALL = "🔹"
     WIN = "🏆"
-    EXIT = enum.auto()
+    EXIT = ""
 
 
 class Action(enum.Enum):
