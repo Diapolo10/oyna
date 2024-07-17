@@ -8,17 +8,15 @@ The games that have been added to this repository so far are as follows
    <tr>
       <td><a href="./docs/sudoku.md"> Sudoku </a> </br><img src="./docs/images/sudoku.png" alt="Sudoku" style="width:250px;"/> </td>
       <td><a href="./docs/2048.md">2048</a> </br><img src="./docs/images/2048.png" alt="2048" style="width:250px;"/> </td>
+      <td><a href="./docs/matching.md">Matching</a> </br><img src="./docs/images/matching.png" alt="Matching" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td>Matching </br><img src="./docs/images/matching.png" alt="Matching" style="width:250px;"/> </td>
-      <td>Find Difference </br><img src="./docs/images/find_difference.png" alt="Find Difference" style="width:250px;"/> </td>
+      <td><a href="./docs/minesweeper.md"> Minesweeper </a></br><img src="./docs/images/minesweeper.png" alt="Minesweeper" style="width:250px;"/> </td>
+      <td><a href="./docs/find_difference.md">Find Difference </a></br><img src="./docs/images/find_difference.png" alt="Find Difference" style="width:250px;"/> </td>
+      <td><a href="./docs/maze.md"> Maze</a> </br><img src="./docs/images/maze.png" alt="Maze" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td>Minesweeper </br><img src="./docs/images/minesweeper.png" alt="Minesweeper" style="width:250px;"/> </td>
-   </tr>
-   <tr>
-      <td>Maze </br><img src="./docs/images/maze.png" alt="Maze" style="width:250px;"/> </td>
-      <td>Memory </br><img src="./docs/images/memory.png" alt="Memory" style="width:250px;"/> </td>
+      <td><a href="./docs/memory.md"> Memory </a></br><img src="./docs/images/memory.png" alt="Memory" style="width:250px;"/> </td>
    </tr>
 
 </table>
