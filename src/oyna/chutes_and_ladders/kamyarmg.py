@@ -1,9 +1,7 @@
 import enum
 import random
 from itertools import permutations
-from operator import le
 from time import sleep
-from typing import Optional
 
 
 def getch() -> str:
@@ -95,10 +93,10 @@ class Board:
         self.set_ladders()
         self.set_destination()
 
-    def set_destination(self):
+    def set_destination(self) -> None:
         self.cells[1][1].state = State.DESTINATION
 
-    def set_directions(self):
+    def set_directions(self) -> None:
         for i in range(1, self.size - 1):
             for j in range(1, self.size - 1):
                 self.cells[i][j].direction = (
@@ -107,7 +105,7 @@ class Board:
             j_ = self.size - 2 if i % 2 == 0 else 1
             self.cells[i][j_].direction = Direction.UP
 
-    def set_ladders(self):
+    def set_ladders(self) -> None:
         ladders = random.sample(
             list(permutations(range(1, self.size - 1), 2)),
             (self.size // 2) ** 2,
