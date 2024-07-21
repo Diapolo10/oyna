@@ -22,6 +22,7 @@
     "minesweeper",
     "twenty_forty_eight",
     "maze",
-    "chutes_and_ladders"
+    "chutes_and_ladders",
+    "global"
   ]
 }
