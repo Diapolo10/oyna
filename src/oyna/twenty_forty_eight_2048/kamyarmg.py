@@ -215,8 +215,8 @@ class Game:
         self.board = Board(4)
 
     def run(self) -> None:
+        self.print_board()
         while not self.board.player_state == State.END:
-            self.print_board()
             self.board.take(getch())
             self.print_board()
 

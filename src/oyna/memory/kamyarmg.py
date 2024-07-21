@@ -195,7 +195,7 @@ class Board:
 
 class Game:
     def __init__(self) -> None:
-        self.board = Board(15)
+        self.board = Board(6)
         self.board.preview()
 
     def run(self) -> None:
