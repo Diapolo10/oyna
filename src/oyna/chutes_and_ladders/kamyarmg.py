@@ -1,6 +1,7 @@
 import enum
 import random
 from itertools import permutations
+from operator import le
 from time import sleep
 from typing import Optional
 
@@ -28,15 +29,15 @@ def getch() -> str:
 
 class State(enum.Enum):
     BLOCK = "🟪"
-    DESTINATION = "🌳"
+    DESTINATION = "🍭"
     WALL = "🔹"
     UP = "⏫"
     DOWN = "⏬"
     LEFT = "⏪"
     RIGHT = "⏩"
-    PLAYER = "🐥"
-    ENEMY = "🎃"
-    END = ""
+    PLAYER = "😸"
+    ENEMY = "🐶"
+    END = "  "
 
 
 class Direction(enum.Enum):
@@ -50,7 +51,7 @@ class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
         self.player_is_here: bool = False
         self.enemy_is_here: bool = False
-        self.direction: Optional[Direction] = None
+        self.direction: Direction = Direction.LEFT
         self.state = state
         self.down: "Cell"
         self.up: "Cell"
@@ -92,6 +93,10 @@ class Board:
         self.set_cells_neighboring()
         self.set_players()
         self.set_ladders()
+        self.set_destination()
+
+    def set_destination(self):
+        self.cells[1][1].state = State.DESTINATION
 
     def set_directions(self):
         for i in range(1, self.size - 1):
@@ -107,6 +112,7 @@ class Board:
             list(permutations(range(1, self.size - 1), 2)),
             (self.size // 2) ** 2,
         )
+
         for ladder in ladders:
             cell = self.cells[ladder[0]][ladder[1]]
 
@@ -156,6 +162,7 @@ class Board:
             case _:
                 self.dice = random.randint(1, 6)
                 self.enemy_dice = random.randint(1, 6)
+
                 if self.check_allowed_move(self.player, self.dice):
                     for _ in range(self.dice):
                         move = getattr(
@@ -167,6 +174,7 @@ class Board:
                         sleep(0.3)
                         print(self)
                     self.player = self.move_on_ladder(self.player)
+
                 if self.check_allowed_move(self.enemy, self.enemy_dice):
                     for _ in range(self.enemy_dice):
                         move = getattr(self.enemy, self.enemy.direction.value)
@@ -211,13 +219,13 @@ class Board:
             + "\n".join(
                 ["".join([str(cell) for cell in rows]) for rows in self.cells]
             )
-            + f"\n🐥: {self.dice}🎃: {self.enemy_dice} "
+            + f"\n You 😸: {self.dice} Enemy  🐶: {self.enemy_dice} "
         )
 
 
 class Game:
     def __init__(self) -> None:
-        self.board = Board(6)
+        self.board = Board(10)
 
     def run(self) -> None:
         print(self.board)
