@@ -1,10 +1,9 @@
 # Oyna 💃🏻🕺🏻💃🏿🕺🏿💃🕺
 This repository contains games in Python programming language. The purpose of creating this repository is to include simple computer games written in Python so that everyone can easily access them and learn Python and algorithms in a fun way.
 
-The games that have been added to this repository so far are as follows
+The games that have been added to this repository so far are as follows:
 
 <table>
-   <caption>Games List</caption>
    <tr>
       <td><a href="./src/oyna/sudoku/"> Sudoku </a> </br><img src="./docs/images/sudoku.png" alt="Sudoku" style="width:250px;"/> </td>
       <td><a href="./src/oyna/twenty_forty_eight_2048/">2048</a> </br><img src="./docs/images/2048.png" alt="2048" style="width:250px;"/> </td>
