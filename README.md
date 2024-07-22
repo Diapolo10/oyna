@@ -4,7 +4,7 @@ This repository contains games in Python programming language. The purpose of cr
 The games that have been added to this repository so far are as follows
 
 <table>
-<th>Games List</th>
+   <caption>Games List</caption>
    <tr>
       <td><a href="./src/oyna/sudoku/"> Sudoku </a> </br><img src="./docs/images/sudoku.png" alt="Sudoku" style="width:250px;"/> </td>
       <td><a href="./src/oyna/twenty_forty_eight_2048/">2048</a> </br><img src="./docs/images/2048.png" alt="2048" style="width:250px;"/> </td>
