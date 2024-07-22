@@ -8,8 +8,8 @@ Provide a concise overview of the issue or rationale behind the proposed changes
 
 # Checklist
 - [ ] This PR targets the `main` branch. <!-- Backports will be evaluated and done by mergers, when necessary. -->
-- [ ] I have read and followed everything in the CONTRIBUTING.rst file.
+- [ ] I have read and followed everything in the [CONTRIBUTING.rst](../CONTRIBUTING.rst) file.
 - [ ] The commit message is written in past tense, mentions the issue number, and ends with a period.
 - [ ] I have added or updated relevant docs, including release notes if applicable.
-- [ ] Add an entry in CHANGES.rst summarizing the change and linking to the issue.
+- [ ] Add an entry in [CHANGES.rst](../CHANGES.rst) summarizing the change and linking to the issue.
 - [ ] I am ready to answer any questions about the merge request.
