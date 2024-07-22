@@ -17,6 +17,7 @@ The games that have been added to this repository so far are as follows
    </tr>
    <tr>
       <td><a href="./src/oyna/memory/"> Memory </a></br><img src="./docs/images/memory.png" alt="Memory" style="width:250px;"/> </td>
+      <td><a href="./src/oyna/snake/"> Snake </a></br><img src="./docs/images/snake.png" alt="Snake" style="width:250px;"/> </td>
       <td><a href="./src/oyna/chutes_and_ladders/"> Chutes and Ladders </a></br><img src="./docs/images/chutes_and_ladders.png" alt="Chutes and Ladders" style="width:250px;"/> </td>
    </tr>
 
