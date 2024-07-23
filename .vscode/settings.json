@@ -16,6 +16,7 @@
   },
   "conventionalCommits.scopes": [
     "chutes_and_ladders",
+    "dino",
     "find_difference",
     "global",
     "matching",
