@@ -119,15 +119,10 @@ class Board:
         self.cells = self._cells()
         self.set_initial()
         self.selected_tile: typing.Optional[Cell] = None
-        self.player = self.cells[self.start_player_position][
-            self.start_player_position
-        ]
+        self.player = self.cells[self.start_player_position][self.start_player_position]
 
     def _cells(self) -> list[list[Cell]]:
-        return [
-            [Cell() for _ in range(self.main_size)]
-            for _ in range(self.main_size)
-        ]
+        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
 
     @property
     def main_size(self) -> int:
@@ -252,10 +247,7 @@ class Game:
         print(self.board)
 
     def allow_continue(self) -> bool:
-        return (
-            not self.board.player_win()
-            and self.board.player.state != State.EXIT
-        )
+        return not self.board.player_win() and self.board.player.state != State.EXIT
 
     def print_result(self) -> None:
         self._print_board()

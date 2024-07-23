@@ -55,11 +55,7 @@ class Cell:
         self.left: "Cell"
 
     def __str__(self) -> str:
-        return (
-            State.PLAYER.value
-            if self.player_is_here
-            else str(self.state.value)
-        )
+        return State.PLAYER.value if self.player_is_here else str(self.state.value)
 
     def set_neighbors(
         self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
@@ -92,9 +88,7 @@ class Cell:
             return side_
 
     def _click(self) -> None:
-        self.state = (
-            State.CORRECT_ANSWER if self._correct() else State.INCORRECT_ANSWER
-        )
+        self.state = State.CORRECT_ANSWER if self._correct() else State.INCORRECT_ANSWER
 
     def _correct(self) -> bool:
         return self.value > 0
@@ -109,10 +103,7 @@ class Board:
         self.set_initial()
 
     def _cells(self) -> list[list[Cell]]:
-        return [
-            [Cell() for _ in range(self.main_size)]
-            for _ in range(self.main_size)
-        ]
+        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
 
     @property
     def main_size(self) -> int:
@@ -175,9 +166,7 @@ class Board:
                 pass
 
     def __str__(self) -> str:
-        return "\n".join(
-            ["".join([str(cell) for cell in rows]) for rows in self.cells]
-        )
+        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
 
     def player_win(self) -> bool:
         for cell in self.blocks:
@@ -213,10 +202,7 @@ class Game:
         print(self.board)
 
     def allow_continue(self) -> bool:
-        return (
-            self.board.player.state != State.EXIT
-            and not self.board.player_win()
-        )
+        return self.board.player.state != State.EXIT and not self.board.player_win()
 
     def print_result(self) -> None:
         self.player_is_here = False

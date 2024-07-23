@@ -89,25 +89,15 @@ class Cell:
             self.down.value
             or self.up.value
             or (
-                getattr(self.down.left, "value", 0)
-                if hasattr(self.down, "left")
-                else 0
+                getattr(self.down.left, "value", 0) if hasattr(self.down, "left") else 0
             )
             or (
                 getattr(self.down.right, "value", 0)
                 if hasattr(self.down, "right")
                 else 0
             )
-            or (
-                getattr(self.up.right, "value", 0)
-                if hasattr(self.up, "right")
-                else 0
-            )
-            or int(
-                getattr(self.up.left, "value", 0)
-                if hasattr(self.up, "left")
-                else 0
-            )
+            or (getattr(self.up.right, "value", 0) if hasattr(self.up, "right") else 0)
+            or int(getattr(self.up.left, "value", 0) if hasattr(self.up, "left") else 0)
         )
         if margin_value:
             return f"{value_color[int(margin_value)]}  {reset}"
@@ -138,9 +128,7 @@ class Board:
         self.set_init_value_cell()
 
     def set_cells(self) -> None:
-        self.cells = [
-            [Cell() for _ in range(self.size)] for _ in range(self.size)
-        ]
+        self.cells = [[Cell() for _ in range(self.size)] for _ in range(self.size)]
 
     def set_walls(self) -> None:
         for i in range(self.size):
@@ -182,9 +170,7 @@ class Board:
                     self.move(Action.MOVE_LEFT.value)
                 case "d":
                     self.move(Action.MOVE_RIGHT.value)
-        new_valuable_cell = list(
-            filter(lambda c: not c.value, self.valuable_cells)
-        )
+        new_valuable_cell = list(filter(lambda c: not c.value, self.valuable_cells))
         if new_valuable_cell:
             random.choice(new_valuable_cell).value = 2
         else:
@@ -193,9 +179,7 @@ class Board:
     def move(self, direction: str) -> None:
         for c in self.valuable_cells:
             if getattr(getattr(c, direction), direction).state == State.BLOCK:
-                d_cell = getattr(
-                    getattr(getattr(c, direction), direction), direction
-                )
+                d_cell = getattr(getattr(getattr(c, direction), direction), direction)
                 if d_cell.value == c.value:
                     d_cell.value += c.value
                     c.value = 0

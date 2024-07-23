@@ -67,7 +67,6 @@ Changelog = "https://github.com/kamyarmg/oyna/blob/master/CHANGELOG.md"
 oyna = "oyna:main"
 
 [tool.ruff]
-line-length = 79
 output-format = "full"
 show-fixes = true
 fix = false

@@ -85,11 +85,7 @@ class Cell:
             return f"{self.value:2}"
         elif self.state == State.EMPTY:
             if self.user_value:
-                color = (
-                    Color.CORRECT
-                    if self.value == self.user_value
-                    else Color.ERROR
-                )
+                color = Color.CORRECT if self.value == self.user_value else Color.ERROR
                 return f"{color}{self.user_value:2}{Color.NORMAL}"
             return str(self.state.value)
 
@@ -160,8 +156,7 @@ class Board:
 
     def set_cells(self) -> None:
         self.cells = [
-            [Cell() for _ in range(self.line_size)]
-            for _ in range(self.line_size)
+            [Cell() for _ in range(self.line_size)] for _ in range(self.line_size)
         ]
 
     def set_walls(self) -> None:
@@ -170,15 +165,11 @@ class Board:
                 self.cells[i][j].state = State.EXTERNAL_WALL
                 self.cells[j][i].state = State.EXTERNAL_WALL
 
-            for j in range(
-                self.size + 1, self.line_size - self.size, self.size + 1
-            ):
+            for j in range(self.size + 1, self.line_size - self.size, self.size + 1):
                 self.cells[i][j].state = State.INTERNAL_WALL
                 self.cells[j][i].state = State.INTERNAL_WALL
 
-        self.cells[self.line_size - 1][
-            self.line_size - 1
-        ].state = State.EXTERNAL_WALL
+        self.cells[self.line_size - 1][self.line_size - 1].state = State.EXTERNAL_WALL
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.line_size - 1):
@@ -204,12 +195,8 @@ class Board:
             return sample(s, len(s))
 
         rBase = range(self.size)
-        rows = [
-            g * self.size + r for g in shuffle(rBase) for r in shuffle(rBase)
-        ]
-        cols = [
-            g * self.size + c for g in shuffle(rBase) for c in shuffle(rBase)
-        ]
+        rows = [g * self.size + r for g in shuffle(rBase) for r in shuffle(rBase)]
+        cols = [g * self.size + c for g in shuffle(rBase) for c in shuffle(rBase)]
         nums = shuffle(range(1, self.size * self.size + 1))
 
         numbers = [[nums[pattern(r, c)] for c in cols] for r in rows]
@@ -225,8 +212,7 @@ class Board:
             for cell in row:
                 cell.state = (
                     State.EMPTY
-                    if cell.state == State.FIXED_NUMBER
-                    and random.randint(0, 7) > 2
+                    if cell.state == State.FIXED_NUMBER and random.randint(0, 7) > 2
                     else cell.state
                 )
 
