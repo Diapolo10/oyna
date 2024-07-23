@@ -13,10 +13,10 @@ From Wikipedia, the free encyclopedia
 
 
 ### How to Implement
-How to implement:
-This game is implemented as a grid table where elements are connected with their neighbors through links. If a direction is selected, all the elements will move in the selected direction and if their values are equal, they will be merged together.
+This game is implemented as a grid table where elements are connected with their neighbors through links. Each element of this table contains a `Cell`, a group of 9 of which displays a number.
+If a direction is selected, all the elements will move in the selected direction and if their values are equal, they will be merged together.
 
-<img align=right style="width:50%;" src="../../../docs/images/2048.png">
+<img align=right style="width:40%;" src="../../../docs/images/2048.png">
 
 
 ### How to Play:
