@@ -34,26 +34,14 @@ user_input = UserInput()
 def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
     key_ = key.char if isinstance(key, keyboard.KeyCode) else "d"
     match key_:
-        case "d":
-            user_input.value = (
-                Direction.RIGHT
-                if user_input.value != Direction.LEFT
-                else user_input.value
-            )
-        case "a":
-            user_input.value = (
-                Direction.LEFT
-                if user_input.value != Direction.RIGHT
-                else user_input.value
-            )
-        case "w":
-            user_input.value = (
-                Direction.UP if user_input.value != Direction.DOWN else user_input.value
-            )
-        case "s":
-            user_input.value = (
-                Direction.DOWN if user_input.value != Direction.UP else user_input.value
-            )
+        case key_ if key_ == "d" and user_input.value != Direction.LEFT:
+            user_input.value = Direction.RIGHT
+        case key_ if key_ == "a" and user_input.value != Direction.RIGHT:
+            user_input.value = Direction.LEFT
+        case key_ if key_ == "w" and user_input.value != Direction.DOWN:
+            user_input.value = Direction.UP
+        case key_ if key_ == "s" and user_input.value != Direction.UP:
+            user_input.value = Direction.DOWN
         case _:
             pass
 
