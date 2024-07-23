@@ -163,9 +163,7 @@ class Board:
 
                 if self.check_allowed_move(self.player, self.dice):
                     for _ in range(self.dice):
-                        move = getattr(
-                            self.player, self.player.direction.value
-                        )
+                        move = getattr(self.player, self.player.direction.value)
                         self.player.player_is_here = False
                         self.player = move
                         self.player.player_is_here = True
@@ -214,9 +212,7 @@ class Board:
     def __str__(self) -> str:
         return (
             "\033[H\033[J"
-            + "\n".join(
-                ["".join([str(cell) for cell in rows]) for rows in self.cells]
-            )
+            + "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
             + f"\n You 😸: {self.dice} Enemy  🐶: {self.enemy_dice} "
         )
 

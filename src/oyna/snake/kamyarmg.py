@@ -48,15 +48,11 @@ def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
             )
         case "w":
             user_input.value = (
-                Direction.UP
-                if user_input.value != Direction.DOWN
-                else user_input.value
+                Direction.UP if user_input.value != Direction.DOWN else user_input.value
             )
         case "s":
             user_input.value = (
-                Direction.DOWN
-                if user_input.value != Direction.UP
-                else user_input.value
+                Direction.DOWN if user_input.value != Direction.UP else user_input.value
             )
         case _:
             pass
@@ -80,9 +76,7 @@ class Board:
     def __init__(self, size: int) -> None:
         self.head: Cell
         self.size = size + 2
-        self.cells = [
-            [Cell() for _ in range(self.size)] for _ in range(self.size)
-        ]
+        self.cells = [[Cell() for _ in range(self.size)] for _ in range(self.size)]
         self.set_walls()
         self.set_cells_neighboring()
         self.set_player()
@@ -96,12 +90,7 @@ class Board:
 
     def set_apple(self) -> None:
         random.choice(
-            [
-                cell
-                for row in self.cells
-                for cell in row
-                if cell.state == State.BLOCK
-            ]
+            [cell for row in self.cells for cell in row if cell.state == State.BLOCK]
         ).state = State.APPLE
 
     def set_cells_neighboring(self) -> None:
@@ -150,9 +139,7 @@ class Board:
                 cell.direction = None
 
     def __str__(self) -> str:
-        return "\n".join(
-            ["".join([str(cell) for cell in rows]) for rows in self.cells]
-        )
+        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
 
 
 class Game:

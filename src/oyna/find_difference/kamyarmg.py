@@ -127,10 +127,7 @@ class Board:
         self.set_initial()
 
     def _cells(self) -> list[list[Cell]]:
-        return [
-            [Cell() for _ in range(self.main_size)]
-            for _ in range(self.main_size)
-        ]
+        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
 
     @property
     def main_size(self) -> int:
@@ -185,9 +182,7 @@ class Board:
                 pass
 
     def __str__(self) -> str:
-        return "\n".join(
-            ["".join([str(cell) for cell in rows]) for rows in self.cells]
-        )
+        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
 
     def player_win(self) -> bool:
         return self.player.state == State.WIN
@@ -212,10 +207,7 @@ class Game:
         print(self.board)
 
     def allow_continue(self) -> bool:
-        return (
-            self.board.player.state != State.EXIT
-            and not self.board.player_win()
-        )
+        return self.board.player.state != State.EXIT and not self.board.player_win()
 
     def print_result(self) -> None:
         self.board.player.player_is_here = False

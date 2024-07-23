@@ -41,7 +41,7 @@ class Cell:
 
 class Board:
     def __init__(self, height: int) -> None:
-        self.height, self.length = height, height * 4
+        self.height, self.length = height, height * 3
         self.cells: list[list[Cell]] = self.set_cells()
         self.player: Cell
         self.set_walls()
@@ -49,9 +49,7 @@ class Board:
         self.set_player()
 
     def set_cells(self) -> list[list[Cell]]:
-        return [
-            [Cell() for _ in range(self.length)] for _ in range(self.height)
-        ]
+        return [[Cell() for _ in range(self.length)] for _ in range(self.height)]
 
     def set_walls(self) -> None:
         for i in range(self.height):
@@ -82,9 +80,7 @@ class Board:
     def _move_player(self) -> None:
         if user_input.value > 0:
             self.player.state = State.BLOCK
-            self.player = (
-                self.player.up if user_input.value > 3 else self.player.down
-            )
+            self.player = self.player.up if user_input.value > 3 else self.player.down
             self.player.state = (
                 State.PLAYER if self.player.state == State.BLOCK else State.END
             )
@@ -112,7 +108,7 @@ class Board:
 
 class Game:
     def __init__(self) -> None:
-        self.board = Board(8)
+        self.board = Board(10)
 
     def run(self) -> None:
         listener = keyboard.Listener(on_press=set_user_input)
