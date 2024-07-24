@@ -49,7 +49,7 @@ def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
 class Cell:
     def __init__(self, state: State = State.BLOCK) -> None:
         self.direction: Optional[Direction] = None
-        self.state = state
+        self.state: State = state
         self.previous_cell: Optional["Cell"] = None
         self.down: "Cell"
         self.up: "Cell"
@@ -77,9 +77,21 @@ class Board:
                 self.cells[i][j].state = State.WALL
 
     def set_apple(self) -> None:
-        random.choice(
-            [cell for row in self.cells for cell in row if cell.state == State.BLOCK]
-        ).state = State.APPLE
+        for _ in range(5):
+            i = random.randint(1, self.size - 2)
+            j = random.randint(1, self.size - 2)
+            if self.cells[i][j].state == State.BLOCK:
+                self.cells[i][j].state = State.APPLE
+                break
+        else:
+            random.choice(
+                [
+                    cell
+                    for row in self.cells
+                    for cell in row
+                    if cell.state == State.BLOCK
+                ]
+            ).state = State.APPLE
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.size - 1):
@@ -130,19 +142,15 @@ class Board:
         return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
 
 
-class Game:
-    def __init__(self) -> None:
-        self.board = Board(20)
-
-    def run(self) -> None:
-        listener = keyboard.Listener(on_press=set_user_input)
-        listener.start()
-        while self.board.head.state != State.END:
-            print("\033[H\033[J")
-            print(self.board)
-            sleep(0.08)
-            self.board.move()
+def run() -> None:
+    listener = keyboard.Listener(on_press=set_user_input)
+    listener.start()
+    board = Board(20)
+    while board.head.state != State.END:
+        print(f"\033[H\033[J{board}")
+        sleep(0.08)
+        board.move()
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()

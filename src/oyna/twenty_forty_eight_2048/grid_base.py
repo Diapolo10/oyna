@@ -47,7 +47,9 @@ def rgb(r: int, g: int, b: int) -> str:
     return f"\033[38;2;{r};{g};{b}m"
 
 
-reset = "\033[0m"
+def reset() -> str:
+    return "\033[0m"
+
 
 value_color = {
     2: f"{rgb(0, 0, 0)}{rgb_bg(255, 255, 255)}",
@@ -74,42 +76,29 @@ class Cell:
         self.left: "Cell"
 
     def __str__(self) -> str:
-        if self.state == State.WALL:
-            return "🔹"
-        if self.value:
-            value = str(self.value).center(6)[2:4]
-            return f"{value_color[self.value]}{value}{reset}"
-        elif self.right.value:
-            value = str(self.right.value).center(6)[:2]
-            return f"{value_color[self.right.value]}{value}{reset}"
-        elif self.left.value:
-            value = str(self.left.value).center(6)[4:]
-            return f"{value_color[self.left.value]}{value}{reset}"
+        match self:
+            case self if self.state == State.WALL:
+                return "🔹"
+            case self if self.value:
+                value = str(self.value).center(6)[2:4]
+                return f"{value_color[self.value]}{value}{reset()}"
+            case self if self.right.value:
+                value = str(self.right.value).center(6)[:2]
+                return f"{value_color[self.right.value]}{value}{reset()}"
+            case self if self.left.value:
+                value = str(self.left.value).center(6)[4:]
+                return f"{value_color[self.left.value]}{value}{reset()}"
         margin_value = (
             self.down.value
             or self.up.value
-            or (
-                getattr(self.down.left, "value", 0) if hasattr(self.down, "left") else 0
-            )
-            or (
-                getattr(self.down.right, "value", 0)
-                if hasattr(self.down, "right")
-                else 0
-            )
-            or (getattr(self.up.right, "value", 0) if hasattr(self.up, "right") else 0)
-            or int(getattr(self.up.left, "value", 0) if hasattr(self.up, "left") else 0)
+            or (getattr(self.down.left, "value") if hasattr(self.down, "left") else 0)
+            or (getattr(self.down.right, "value") if hasattr(self.down, "right") else 0)
+            or (getattr(self.up.right, "value") if hasattr(self.up, "right") else 0)
+            or int(getattr(self.up.left, "value") if hasattr(self.up, "left") else 0)
         )
         if margin_value:
-            return f"{value_color[int(margin_value)]}  {reset}"
-        return f"{rgb_bg(0, 0, 0)}  {reset}"
-
-    def set_neighbors(
-        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
-    ) -> None:
-        self.down = down
-        self.up = up
-        self.right = right
-        self.left = left
+            return f"{value_color[int(margin_value)]}  {reset()}"
+        return f"{rgb_bg(0, 0, 0)}  {reset()}"
 
 
 class Board:
@@ -139,12 +128,10 @@ class Board:
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.size - 1):
             for j in range(1, self.size - 1):
-                self.cells[i][j].set_neighbors(
-                    self.cells[i][j - 1],
-                    self.cells[i][j + 1],
-                    self.cells[i - 1][j],
-                    self.cells[i + 1][j],
-                )
+                self.cells[i][j].left = self.cells[i][j - 1]
+                self.cells[i][j].right = self.cells[i][j + 1]
+                self.cells[i][j].up = self.cells[i - 1][j]
+                self.cells[i][j].down = self.cells[i + 1][j]
 
     def set_valuable_cells(self) -> None:
         self.valuable_cells = [
@@ -158,7 +145,7 @@ class Board:
         self.valuable_cells[-3].value = 2
 
     def take(self, ch: str) -> None:
-        for i in range(int(pow(len(self.valuable_cells), 0.5))):
+        for _ in range(int(pow(len(self.valuable_cells), 0.5))):
             match ch:
                 case " ":
                     self.player_state = State.END
@@ -194,24 +181,13 @@ class Board:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
 
-class Game:
-    def __init__(self) -> None:
-        self.board = Board(4)
-
-    def run(self) -> None:
-        self.print_board()
-        while not self.board.player_state == State.END:
-            self.board.take(getch())
-            self.print_board()
-
-    @staticmethod
-    def clear_screen() -> None:
-        print("\033[H\033[J", end="")
-
-    def print_board(self) -> None:
-        self.clear_screen()
-        print(self.board)
+def run() -> None:
+    board = Board(4)
+    print(f"\033[H\033[J{board}")
+    while board.player_state != State.END:
+        board.take(getch())
+        print(f"\033[H\033[J{board}")
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()

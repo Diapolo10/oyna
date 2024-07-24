@@ -1,7 +1,4 @@
-# # we use https://stackoverflow.com/a/56581709/8157102 solution written by https://stackoverflow.com/users/5237560/alain-t
-
 import enum
-import math
 import random
 from random import sample
 from typing import Optional
@@ -29,7 +26,6 @@ def getch() -> str:
 
 
 class State(enum.Enum):
-    BLOCK = "🟪"
     EMPTY = "  "
     PLAYER = "🟦"
     INTERNAL_WALL = "🔹"
@@ -45,25 +41,19 @@ class Action(enum.Enum):
     MOVE_UP = "up"
     EXIT = "exit"
     NOTHING = "nothing"
-    ONE = 1
-    TWO = 2
-    THREE = 3
-    FOUR = 4
-    FIVE = 5
-    SIX = 6
-    SEVEN = 7
-    EIGHT = 8
-    NINE = 9
-
-
-class Color:
-    CORRECT = "\033[92m"
-    ERROR = "\033[91m"
-    NORMAL = "\033[0m"
+    INSERT_ONE = 1
+    INSERT_TWO = 2
+    INSERT_THREE = 3
+    INSERT_FOUR = 4
+    INSERT_FIVE = 5
+    INSERT_SIX = 6
+    INSERT_SEVEN = 7
+    INSERT_EIGHT = 8
+    INSERT_NINE = 9
 
 
 class Cell:
-    def __init__(self, state: State = State.BLOCK, value: int = -1) -> None:
+    def __init__(self, state: State = State.EMPTY, value: int = -1) -> None:
         self.player_is_here: bool = False
         self.state: State = state
         self.value: int = value
@@ -74,31 +64,21 @@ class Cell:
         self.left: "Cell"
 
     def __str__(self) -> str:
-        if self.player_is_here:
-            v = (
-                self.value
-                if self.state == State.FIXED_NUMBER
-                else self.user_value or "  "
-            )
-            return f"\033[48;2;150;150;150m{v:2}\033[0m"
-        elif self.state == State.FIXED_NUMBER:
-            return f"{self.value:2}"
-        elif self.state == State.EMPTY:
-            if self.user_value:
-                color = Color.CORRECT if self.value == self.user_value else Color.ERROR
-                return f"{color}{self.user_value:2}{Color.NORMAL}"
-            return str(self.state.value)
-
-        else:
-            return str(self.state.value)
-
-    def set_neighbors(
-        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
-    ) -> None:
-        self.down = down
-        self.up = up
-        self.right = right
-        self.left = left
+        match self:
+            case self if self.player_is_here:
+                v = (
+                    self.value
+                    if self.state == State.FIXED_NUMBER
+                    else self.user_value or "  "
+                )
+                return f"\033[48;2;50;100;200m{v:2}\033[0m"
+            case self if self.state == State.FIXED_NUMBER:
+                return f"{self.value:2}"
+            case self if self.state == State.EMPTY and self.user_value is not None:
+                color = "\033[92m" if self.value == self.user_value else "\033[91m"
+                return f"{color}{self.user_value:2}\033[0m"
+            case _:
+                return str(self.state.value)
 
     def take(self, action: Action) -> "Cell":
         match action:
@@ -141,45 +121,40 @@ class Cell:
 class Board:
     def __init__(self) -> None:
         self.size = 3
-        self.player: Cell
-        self.line_size = self.size**2 + self.size + 1
+        self.width = self.size**2 + self.size + 1
         self.cells: list[list[Cell]]
-        self.set_initial()
+        self.player: Cell
+        self.set_up()
 
-    def set_initial(self) -> None:
+    def set_up(self) -> None:
         self.set_cells()
         self.set_walls()
         self.set_cells_neighboring()
         self.set_numbers()
-        self.set_empty_cells()
         self.set_player()
 
     def set_cells(self) -> None:
-        self.cells = [
-            [Cell() for _ in range(self.line_size)] for _ in range(self.line_size)
-        ]
+        self.cells = [[Cell() for _ in range(self.width)] for _ in range(self.width)]
 
     def set_walls(self) -> None:
-        for i in range(self.line_size - 1):
-            for j in [0, self.line_size - 1]:
+        for i in range(self.width - 1):
+            for j in [0, self.width - 1]:
                 self.cells[i][j].state = State.EXTERNAL_WALL
                 self.cells[j][i].state = State.EXTERNAL_WALL
 
-            for j in range(self.size + 1, self.line_size - self.size, self.size + 1):
+            for j in range(self.size + 1, self.width - self.size, self.size + 1):
                 self.cells[i][j].state = State.INTERNAL_WALL
                 self.cells[j][i].state = State.INTERNAL_WALL
 
-        self.cells[self.line_size - 1][self.line_size - 1].state = State.EXTERNAL_WALL
+        self.cells[self.width - 1][self.width - 1].state = State.EXTERNAL_WALL
 
     def set_cells_neighboring(self) -> None:
-        for i in range(1, self.line_size - 1):
-            for j in range(1, self.line_size - 1):
-                self.cells[i][j].set_neighbors(
-                    self.cells[i][j - 1],
-                    self.cells[i][j + 1],
-                    self.cells[i - 1][j],
-                    self.cells[i + 1][j],
-                )
+        for i in range(1, self.width - 1):
+            for j in range(1, self.width - 1):
+                self.cells[i][j].left = self.cells[i][j - 1]
+                self.cells[i][j].right = self.cells[i][j + 1]
+                self.cells[i][j].up = self.cells[i - 1][j]
+                self.cells[i][j].down = self.cells[i + 1][j]
 
     def set_player(self) -> None:
         self.player = self.cells[1][1]
@@ -202,22 +177,14 @@ class Board:
         numbers = [[nums[pattern(r, c)] for c in cols] for r in rows]
         for i, row in enumerate(numbers):
             for j, value in enumerate(row):
-                i_ = i + math.floor(i / self.size) + 1
-                j_ = j + math.floor(j / self.size) + 1
+                i_ = i + i // self.size + 1
+                j_ = j + j // self.size + 1
                 self.cells[i_][j_].value = value
-                self.cells[i_][j_].state = State.FIXED_NUMBER
-
-    def set_empty_cells(self) -> None:
-        for row in self.cells:
-            for cell in row:
-                cell.state = (
-                    State.EMPTY
-                    if cell.state == State.FIXED_NUMBER and random.randint(0, 7) > 2
-                    else cell.state
+                self.cells[i_][j_].state = (
+                    State.EMPTY if random.randint(0, 7) > 2 else State.FIXED_NUMBER
                 )
 
     def take(self, ch: str) -> None:
-        print(ch)
         self.player = self.player.take(
             {
                 "w": Action.MOVE_UP,
@@ -225,43 +192,29 @@ class Board:
                 "s": Action.MOVE_DOWN,
                 "d": Action.MOVE_RIGHT,
                 " ": Action.EXIT,
-                "1": Action.ONE,
-                "2": Action.TWO,
-                "3": Action.THREE,
-                "4": Action.FOUR,
-                "5": Action.FIVE,
-                "6": Action.SIX,
-                "7": Action.SEVEN,
-                "8": Action.EIGHT,
-                "9": Action.NINE,
+                "1": Action.INSERT_ONE,
+                "2": Action.INSERT_TWO,
+                "3": Action.INSERT_THREE,
+                "4": Action.INSERT_FOUR,
+                "5": Action.INSERT_FIVE,
+                "6": Action.INSERT_SIX,
+                "7": Action.INSERT_SEVEN,
+                "8": Action.INSERT_EIGHT,
+                "9": Action.INSERT_NINE,
             }.get(ch, Action.NOTHING)
         )
 
     def __str__(self) -> str:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
-    def player_has_reached_the_end(self) -> bool:
-        return self.player.state == State.END
 
-
-class Game:
-    def __init__(self) -> None:
-        self.board = Board()
-
-    def run(self) -> None:
-        while not self.board.player_has_reached_the_end():
-            self.print_board()
-            self.board.take(getch())
-            self.print_board()
-
-    @staticmethod
-    def clear_screen() -> None:
-        print("\033[H\033[J", end="")
-
-    def print_board(self) -> None:
-        self.clear_screen()
-        print(self.board)
+def run() -> None:
+    board = Board()
+    print(f"\033[H\033[J{board}")
+    while board.player.state != State.END:
+        board.take(getch())
+        print(f"\033[H\033[J{board}")
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()
