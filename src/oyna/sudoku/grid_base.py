@@ -208,9 +208,13 @@ class Board:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
 
-if __name__ == "__main__":
+def run() -> None:
     board = Board()
     print(f"\033[H\033[J{board}")
     while board.player.state != State.END:
         board.take(getch())
         print(f"\033[H\033[J{board}")
+
+
+if __name__ == "__main__":
+    run()
