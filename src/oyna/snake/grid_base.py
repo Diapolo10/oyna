@@ -77,9 +77,21 @@ class Board:
                 self.cells[i][j].state = State.WALL
 
     def set_apple(self) -> None:
-        random.choice(
-            [cell for row in self.cells for cell in row if cell.state == State.BLOCK]
-        ).state = State.APPLE
+        for _ in range(5):
+            i = random.randint(1, self.size - 2)
+            j = random.randint(1, self.size - 2)
+            if self.cells[i][j].state == State.BLOCK:
+                self.cells[i][j].state = State.APPLE
+                break
+        else:
+            random.choice(
+                [
+                    cell
+                    for row in self.cells
+                    for cell in row
+                    if cell.state == State.BLOCK
+                ]
+            ).state = State.APPLE
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.size - 1):
