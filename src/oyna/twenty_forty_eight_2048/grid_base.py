@@ -181,19 +181,13 @@ class Board:
         return "\n".join(["".join(map(str, rows)) for rows in self.cells])
 
 
-class Game:
-    def __init__(self) -> None:
-        self.board = Board(4)
-
-    def run(self) -> None:
-        self.print_board()
-        while not self.board.player_state == State.END:
-            self.board.take(getch())
-            self.print_board()
-
-    def print_board(self) -> None:
-        print(f"\033[H\033[J{self.board}")
+def run() -> None:
+    board = Board(4)
+    print(f"\033[H\033[J{board}")
+    while board.player_state != State.END:
+        board.take(getch())
+        print(f"\033[H\033[J{board}")
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()
