@@ -21,6 +21,7 @@ The games that have been added to this repository so far are as follows:
    </tr>
    <tr>
       <td><a href="./src/oyna/dino/"> Dino or Dinosaur Game </a></br><img src="./docs/images/dino.png" alt="Dino" style="width:250px;"/> </td>
+      <td><a href="./src/oyna/flappy_bird/"> Flappy Bird </a></br><img src="./docs/images/flappy_birds.png" alt="Flappy Bird" style="width:250px;"/> </td>
    </tr>
 
 </table>
