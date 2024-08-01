@@ -15,6 +15,7 @@
     "**/.ruff_cache/**": true
   },
   "conventionalCommits.scopes": [
+    "bubble_shooter",
     "chutes_and_ladders",
     "dino",
     "find_difference",
@@ -26,6 +27,6 @@
     "minesweeper",
     "snake",
     "sudoku",
-    "twenty_forty_eight"
+    "twenty_forty_eight",
   ]
 }
