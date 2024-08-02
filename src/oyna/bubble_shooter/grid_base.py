@@ -12,14 +12,9 @@ class State(enum.Enum):
     WALL = "🔹"
     END = "💥"
     COLOR_RED = "🔴"
-    COLOR_ORANGE = "🟠"
     COLOR_YELLOW = "🟡"
-    COLOR_GREEN = "🟢"
     COLOR_BLUE = "🔵"
-    COLOR_PURPLE = "🟣"
     COLOR_WHITE = "⚪️"
-    COLOR_BROWN = "🟤"
-    COLOR_BLACK = "⚫️"
 
 
 def colors_state() -> list[State]:
