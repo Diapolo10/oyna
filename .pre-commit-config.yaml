@@ -5,7 +5,7 @@ repos:
     rev: v0.4.7
     hooks:
       - id: ruff
-        entry: ruff check --select I --fix
+        entry: ruff check --extend-select I --fix
       - id: ruff-format
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
