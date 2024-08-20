@@ -98,7 +98,7 @@ class Board:
         )
 
     @property
-    def player_state(self):
+    def player_state(self) -> State:
         return self.cells[self.player[0]][self.player[1]]
 
     def __str__(self) -> str:
@@ -117,7 +117,7 @@ class Board:
         )
 
 
-def run():
+def run() -> None:
     board = Board(10)
     print(f"\033[H\033[J{board}")
     while board.player_state not in [State.EXIT, State.WIN]:
