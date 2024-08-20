@@ -1,6 +1,5 @@
 import enum
 import random
-from typing import Optional
 
 
 def getch() -> str:
@@ -29,20 +28,11 @@ selected_emoji = random.choice(
         ("😀", "😄"),
         ("😄", "😁"),
         ("😙", "😗"),
-        ("🈹", "🈵"),
         ("🙂", "🙃"),
         ("😏", "😒"),
-        ("😈", "👿"),
-        ("🧒", "👨"),
-        ("🌔", "🌖"),
-        ("😅", "🥲"),
         ("🤪", "😜"),
-        ("🌍", "🌏"),
         ("🤩", "😍"),
-        ("😺", "😻"),
-        ("🥇", "🏅"),
         ("😳", "🙄"),
-        ("🕐", "🕚"),
     ]
 )
 
@@ -57,162 +47,83 @@ class State(enum.Enum):
     EXIT = "🟦"
 
 
-class Action(enum.Enum):
-    CLICK = "click"
-    MOVE_DOWN = "down"
-    MOVE_LEFT = "left"
-    MOVE_RIGHT = "right"
-    MOVE_UP = "up"
-    EXIT = "exit"
-
-
-class Cell:
-    def __init__(self, state: State = State.BLOCK) -> None:
-        self.player_is_here = False
-        self.state = state
-        self.down: Optional["Cell"] = None
-        self.up: Optional["Cell"] = None
-        self.right: Optional["Cell"] = None
-        self.left: Optional["Cell"] = None
-
-    def __str__(self) -> str:
-        return str(
-            f"\033[48;2;50;50;250m{self.state.value}\033[0m"
-            if self.player_is_here
-            else self.state.value
-        )
-
-    def set_neighbors(
-        self, left: "Cell", right: "Cell", up: "Cell", down: "Cell"
-    ) -> None:
-        self.down = down
-        self.up = up
-        self.right = right
-        self.left = left
-
-    def process(self, action: Action) -> "Cell":
-        match action:
-            case Action.CLICK:
-                self._click()
-                return self
-            case Action.EXIT:
-                self.state = State.EXIT
-                return self
-            case _:
-                return self._move_tile(action)
-
-    def _move_tile(self, action: Action) -> "Cell":
-        side: "Cell" = getattr(self, action.value)
-        if side.state == State.WALL:
-            return self
-        else:
-            self.player_is_here, side.player_is_here = (
-                side.player_is_here,
-                self.player_is_here,
-            )
-            return side
-
-    def _click(self) -> None:
-        self.state = State.WIN if self._correct() else State.INCORRECT_ANSWER
-
-    def _correct(self) -> bool:
-        return self.state == State.ANSWER
-
-
 class Board:
     def __init__(self, size: int) -> None:
-        self.player: Cell
-        self.size = size
+        self.size = size + 2
+        self.player: tuple[int, int] = (self.size // 2, self.size // 2)
         self.cells = self._cells()
-        self.set_initial()
-
-    def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
-
-    @property
-    def main_size(self) -> int:
-        return self.size + 2
-
-    def set_initial(self) -> None:
         self.set_walls()
-        self.set_cells_neighboring()
-        self.set_player()
         self.set_answer()
 
+    def _cells(self) -> list[list[State]]:
+        return [[State.BLOCK for _ in range(self.size)] for _ in range(self.size)]
+
     def set_walls(self) -> None:
-        for i in range(self.main_size):
-            for j in [0, self.main_size - 1]:
-                self.cells[j][i].state = State.WALL
-                self.cells[i][j].state = State.WALL
-
-    def set_cells_neighboring(self) -> None:
-        for i in range(1, self.main_size - 1):
-            for j in range(1, self.main_size - 1):
-                self.cells[i][j].set_neighbors(
-                    self.cells[i][j - 1],
-                    self.cells[i][j + 1],
-                    self.cells[i - 1][j],
-                    self.cells[i + 1][j],
-                )
-
-    def set_player(self) -> None:
-        self.player = self.cells[self.main_size // 2][self.main_size // 2]
-        self.player.player_is_here = True
+        for i in range(self.size):
+            for j in [0, self.size - 1]:
+                self.cells[j][i] = State.WALL
+                self.cells[i][j] = State.WALL
 
     def set_answer(self) -> None:
-        i = random.randint(1, self.size)
-        j = random.randint(1, self.size)
-        self.cells[i][j].state = State.ANSWER
+        i = random.randint(1, self.size - 2)
+        j = random.randint(1, self.size - 2)
+        self.cells[i][j] = State.ANSWER
 
     def action(self, ch: str) -> None:
         match ch:
             case "w":
-                self.player = self.player.process(Action.MOVE_UP)
+                self._move_tile(-1, 0)
             case "a":
-                self.player = self.player.process(Action.MOVE_LEFT)
+                self._move_tile(0, -1)
             case "s":
-                self.player = self.player.process(Action.MOVE_DOWN)
+                self._move_tile(1, 0)
             case "d":
-                self.player = self.player.process(Action.MOVE_RIGHT)
+                self._move_tile(0, 1)
             case "e":
-                self.player = self.player.process(Action.CLICK)
+                self.cells[self.player[0]][self.player[1]] = (
+                    State.WIN
+                    if self.player_state == State.ANSWER
+                    else State.INCORRECT_ANSWER
+                )
             case " ":
-                self.player = self.player.process(Action.EXIT)
+                self.cells[self.player[0]][self.player[1]] = State.EXIT
             case _:
                 pass
 
+    def _move_tile(self, x: int = 0, y: int = 0) -> None:
+        self.player = (
+            (self.player[0] + x, self.player[1] + y)
+            if self.cells[self.player[0] + x][self.player[1] + y] != State.WALL
+            else self.player
+        )
+
+    @property
+    def player_state(self):
+        return self.cells[self.player[0]][self.player[1]]
+
     def __str__(self) -> str:
-        return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
+        return "\n".join(
+            [
+                "".join(
+                    [
+                        f"\033[48;2;50;50;250m{self.cells[row][col].value}\033[0m"
+                        if self.player == (row, col)
+                        else str(self.cells[row][col].value)
+                        for col in range(self.size)
+                    ]
+                )
+                for row in range(self.size)
+            ]
+        )
 
-    def player_win(self) -> bool:
-        return self.player.state == State.WIN
 
-
-class Game:
-    def __init__(self) -> None:
-        self.board = Board(10)
-
-    def run(self) -> None:
-        while self.allow_continue():
-            self._print_board()
-            self.board.action(getch())
-        self.print_result()
-
-    @staticmethod
-    def clear_screen() -> None:
-        print("\033[H\033[J", end="")
-
-    def _print_board(self) -> None:
-        self.clear_screen()
-        print(self.board)
-
-    def allow_continue(self) -> bool:
-        return self.board.player.state != State.EXIT and not self.board.player_win()
-
-    def print_result(self) -> None:
-        self.board.player.player_is_here = False
-        self._print_board()
+def run():
+    board = Board(10)
+    print(f"\033[H\033[J{board}")
+    while board.player_state not in [State.EXIT, State.WIN]:
+        board.action(getch())
+        print(f"\033[H\033[J{board}")
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()
