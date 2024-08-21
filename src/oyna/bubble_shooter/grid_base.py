@@ -45,7 +45,7 @@ def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
             user_input.value = Action.RIGHT
         case "a":
             user_input.value = Action.LEFT
-        case "w":
+        case "e":
             user_input.value = Action.FIRE
         case "s":
             user_input.value = Action.CHANGE
@@ -124,13 +124,25 @@ class Board:
                 self.player.state = random.choice(colors_state())
             case _:
                 pass
+        self._create_new_bubbles(step)
+        self._clear_zombie_cells()
+        user_input.value = None
+
+    def _create_new_bubbles(self, step) -> None:
         if step % (self.size**2) == 0:
             self._pull_down(1)
 
             for cell in self.cells[1][1:-1]:
                 cell.state = random.choice(colors_state())
 
-        user_input.value = None
+    def _clear_zombie_cells(self) -> None:
+        for row in self.cells[1:-1]:
+            for cell in row[1:-1]:
+                cell.state = (
+                    State.EMPTY
+                    if cell != self.player and cell.up.state == State.EMPTY
+                    else cell.state
+                )
 
     def _pull_down(self, row_index) -> None:
         if row_index == self.size - 3:
@@ -183,8 +195,7 @@ def run() -> None:
     board = Board(15)
     step = 0
     while board.player.state != State.END:
-        # print(f"\033[H\033[J{board}")
-        sleep(0.05)
+        sleep(0.03)
         board.move(step)
         print(f"\033[H\033[J{board}")
         step += 1
