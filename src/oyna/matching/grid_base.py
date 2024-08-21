@@ -4,12 +4,9 @@ import random
 import typing
 
 emojis = [
-    "🧁",
-    "🐣",
     "🍰",
     "🍨",
     "🦄",
-    "🐝",
     "🍀",
     "🍹",
     "🍬",
@@ -21,14 +18,12 @@ emojis = [
     "🍒",
     "🍭",
     "🍉",
-    "🥗",
     "🧀",
     "🍩",
     "🌭",
     "🍌",
     "🥥",
     "🐢",
-    "🍿",
     "🍕",
 ]
 
@@ -60,7 +55,6 @@ class State(enum.Enum):
     PLAYER = "🟦"
     SOLVED = "🔸"
     WIN = "🏆"
-    EXIT = enum.auto()
 
 
 class Side(enum.Enum):
@@ -115,35 +109,28 @@ class Cell:
 class Board:
     def __init__(self, size: int) -> None:
         self.start_player_position = size // 2
-        self.size = size + (size % 2)
+        self.size: int = size + (size % 2)
+        self.main_size: int = self.size + 2
         self.cells = self._cells()
         self.set_initial()
         self.selected_tile: typing.Optional[Cell] = None
         self.player = self.cells[self.start_player_position][self.start_player_position]
 
     def _cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.main_size)] for _ in range(self.main_size)]
-
-    @property
-    def main_size(self) -> int:
-        return self.size + 2
+        return [
+            [
+                Cell(State.WALL)
+                if j in [0, self.main_size - 1] or i in [0, self.main_size - 1]
+                else Cell(State.BLOCK)
+                for j in range(self.main_size)
+            ]
+            for i in range(self.main_size)
+        ]
 
     def set_initial(self) -> None:
-        self.set_horizontal_walls()
-        self.set_vertical_walls()
         self.set_cells_value()
         self.set_cells_neighboring()
         self.set_player()
-
-    def set_horizontal_walls(self) -> None:
-        for j in range(self.main_size):
-            self.cells[0][j].state = State.WALL
-            self.cells[self.main_size - 1][j].state = State.WALL
-
-    def set_vertical_walls(self) -> None:
-        for i in range(self.main_size):
-            self.cells[i][0].state = State.WALL
-            self.cells[i][self.main_size - 1].state = State.WALL
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.main_size - 1):
@@ -192,7 +179,7 @@ class Board:
                     else:
                         self._select_new_tile()
             case " ":
-                self.player.state = State.EXIT
+                exit()
             case _:
                 pass
 
@@ -228,30 +215,13 @@ class Board:
         return True
 
 
-class Game:
-    def __init__(self) -> None:
-        self.board = Board(8)
-
-    def run(self) -> None:
-        while self.allow_continue():
-            self._print_board()
-            self.board.action(getch())
-        self.print_result()
-
-    @staticmethod
-    def clear_screen() -> None:
-        print("\033[H\033[J", end="")
-
-    def _print_board(self) -> None:
-        self.clear_screen()
-        print(self.board)
-
-    def allow_continue(self) -> bool:
-        return not self.board.player_win() and self.board.player.state != State.EXIT
-
-    def print_result(self) -> None:
-        self._print_board()
+def run() -> None:
+    board = Board(8)
+    print(f"\033[H\033[J{board}")
+    while not board.player_win():
+        board.action(getch())
+        print(f"\033[H\033[J{board}")
 
 
 if __name__ == "__main__":
-    Game().run()
+    run()
