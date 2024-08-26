@@ -93,7 +93,7 @@ class Board:
         self.player = self.cells[self.size - 2][self.size // 2]
         self.player.state = random.choice(colors_state())
 
-    def set_bubbles(self):
+    def set_bubbles(self) -> None:
         for row in self.cells[1 : self.size // 5]:
             for cell in row[1:-1]:
                 cell.state = random.choice(colors_state())
@@ -121,16 +121,16 @@ class Board:
         self._create_new_bubbles(step)
         self._clear_zombie_cells()
 
-    def _change_player_color(self):
+    def _change_player_color(self) -> None:
         self.player.state = random.choice(colors_state())
 
-    def _move(self, side: Literal["left", "right"]):
+    def _move(self, side: Literal["left", "right"]) -> None:
         if getattr(self.player, side).state != State.WALL:
             getattr(self.player, side).state = self.player.state
             self.player.state = State.EMPTY
             self.player = getattr(self.player, side)
 
-    def _create_new_bubbles(self, step) -> None:
+    def _create_new_bubbles(self, step: int) -> None:
         if step % (self.size**2) == 0:
             self._pull_down(1)
 
@@ -146,7 +146,7 @@ class Board:
                     else cell.state
                 )
 
-    def _pull_down(self, row_index) -> None:
+    def _pull_down(self, row_index: int) -> None:
         if row_index == self.size - 3:
             self.player.state = (
                 State.END
@@ -169,8 +169,8 @@ class Board:
             ):
                 self._clean_bubbles(getattr(cell, direction))
 
-    def _matched(self, cell) -> bool:
-        return (
+    def _matched(self, cell: Cell) -> bool:
+        is_matched: bool = (
             sum(
                 [
                     cell.left.state == cell.state,
@@ -186,6 +186,7 @@ class Board:
             )
             > 3
         )
+        return is_matched
 
     def __str__(self) -> str:
         return "\n".join(["".join([str(cell) for cell in rows]) for rows in self.cells])
