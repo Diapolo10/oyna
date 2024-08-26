@@ -2,7 +2,7 @@ import enum
 import random
 from dataclasses import dataclass
 from time import sleep
-from typing import Optional
+from typing import Literal, Optional
 
 from pynput import keyboard
 
@@ -40,12 +40,12 @@ def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
     key_ = key.char if isinstance(key, keyboard.KeyCode) else "d"
     match key_:
         case key_ if user_input.value is not None:
-            pass
+            user_input.value = None
         case "d":
             user_input.value = Action.RIGHT
         case "a":
             user_input.value = Action.LEFT
-        case "e":
+        case "w":
             user_input.value = Action.FIRE
         case "s":
             user_input.value = Action.CHANGE
@@ -98,18 +98,12 @@ class Board:
             for cell in row[1:-1]:
                 cell.state = random.choice(colors_state())
 
-    def move(self, step: int) -> None:
+    def update(self, step: int) -> None:
         match user_input.value:
             case Action.LEFT:
-                if self.player.left.state != State.WALL:
-                    self.player.left.state = self.player.state
-                    self.player.state = State.EMPTY
-                    self.player = self.player.left
+                self._move("left")
             case Action.RIGHT:
-                if self.player.right.state != State.WALL:
-                    self.player.right.state = self.player.state
-                    self.player.state = State.EMPTY
-                    self.player = self.player.right
+                self._move("right")
             case Action.FIRE:
                 shooter = self.player
                 while shooter.up.state == State.EMPTY:
@@ -121,12 +115,20 @@ class Board:
                 self.player.state = random.choice(colors_state())
 
             case Action.CHANGE:
-                self.player.state = random.choice(colors_state())
+                self._change_player_color()
             case _:
                 pass
         self._create_new_bubbles(step)
         self._clear_zombie_cells()
-        user_input.value = None
+
+    def _change_player_color(self):
+        self.player.state = random.choice(colors_state())
+
+    def _move(self, side: Literal["left", "right"]):
+        if getattr(self.player, side).state != State.WALL:
+            getattr(self.player, side).state = self.player.state
+            self.player.state = State.EMPTY
+            self.player = getattr(self.player, side)
 
     def _create_new_bubbles(self, step) -> None:
         if step % (self.size**2) == 0:
@@ -156,7 +158,7 @@ class Board:
             for cell in self.cells[row_index][1:-1]:
                 cell.down.state = cell.state
 
-    def _clean_bubbles(self, cell: Cell):
+    def _clean_bubbles(self, cell: Cell) -> None:
         pr = cell.state
         cell.state = State.EMPTY
 
@@ -182,7 +184,7 @@ class Board:
                     ],
                 ]
             )
-            > 4
+            > 3
         )
 
     def __str__(self) -> str:
@@ -196,8 +198,9 @@ def run() -> None:
     step = 0
     while board.player.state != State.END:
         sleep(0.03)
-        board.move(step)
-        print(f"\033[H\033[J{board}")
+        board.update(step)
+        user_input.value = None
+        print(f"\033[H\033[J{board}\nScores: {step // 33}")
         step += 1
 
 
