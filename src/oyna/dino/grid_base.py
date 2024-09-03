@@ -41,24 +41,22 @@ class Cell:
 
 class Board:
     def __init__(self, height: int) -> None:
-        self.height, self.length = height, height * 3
-        self.cells: list[list[Cell]] = self.set_cells()
+        self.height, self.length = height, height * 4
+        self.cells: list[list[Cell]] = self._cells()
         self.player: Cell
-        self.set_walls()
         self.set_cells_neighboring()
         self.set_player()
 
-    def set_cells(self) -> list[list[Cell]]:
-        return [[Cell() for _ in range(self.length)] for _ in range(self.height)]
-
-    def set_walls(self) -> None:
-        for i in range(self.height):
-            for j in [0, self.length - 1]:
-                self.cells[i][j].state = State.WALL
-
-        for j in range(self.length):
-            for i in [0, self.height - 1]:
-                self.cells[i][j].state = State.WALL
+    def _cells(self) -> list[list[Cell]]:
+        return [
+            [
+                Cell(State.WALL)
+                if j in [0, self.length - 1] or i in [0, self.height - 1]
+                else Cell()
+                for j in range(self.length)
+            ]
+            for i in range(self.height)
+        ]
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.height - 1):
