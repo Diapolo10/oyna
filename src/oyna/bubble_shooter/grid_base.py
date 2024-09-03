@@ -1,10 +1,11 @@
 import enum
 import random
-from dataclasses import dataclass
 from time import sleep
 from typing import Literal, Optional
 
 from pynput import keyboard
+
+user_input: Optional[str] = None
 
 
 class State(enum.Enum):
@@ -15,42 +16,16 @@ class State(enum.Enum):
     COLOR_YELLOW = "🟡"
     COLOR_BLUE = "🔵"
     COLOR_WHITE = "⚪️"
+    COLOR_PURPLE = "🟣"
 
 
 def colors_state() -> list[State]:
     return [state for state in State if state.name.startswith("COLOR")]
 
 
-class Action(enum.Enum):
-    LEFT = "left"
-    RIGHT = "right"
-    CHANGE = "change"
-    FIRE = "fire"
-
-
-@dataclass
-class UserInput:
-    value: Optional[Action] = None
-
-
-user_input = UserInput()
-
-
 def set_user_input(key: Optional[keyboard.KeyCode | keyboard.Key]) -> None:
-    key_ = key.char if isinstance(key, keyboard.KeyCode) else "d"
-    match key_:
-        case key_ if user_input.value is not None:
-            user_input.value = None
-        case "d":
-            user_input.value = Action.RIGHT
-        case "a":
-            user_input.value = Action.LEFT
-        case "w":
-            user_input.value = Action.FIRE
-        case "s":
-            user_input.value = Action.CHANGE
-        case _:
-            pass
+    global user_input
+    user_input = key.char if isinstance(key, keyboard.KeyCode) else None
 
 
 class Cell:
@@ -69,17 +44,21 @@ class Board:
     def __init__(self, size: int) -> None:
         self.player: Cell
         self.size = size + 2
-        self.cells = [[Cell() for _ in range(self.size)] for _ in range(self.size)]
-        self.set_walls()
+        self.cells = self._cells()
         self.set_cells_neighboring()
         self.set_bubbles()
         self.set_player()
 
-    def set_walls(self) -> None:
-        for i in range(self.size):
-            for j in [0, self.size - 1]:
-                self.cells[i][j].state = State.WALL
-                self.cells[j][i].state = State.WALL
+    def _cells(self) -> list[list[Cell]]:
+        return [
+            [
+                Cell(State.WALL)
+                if j in [0, self.size - 1] or i in [0, self.size - 1]
+                else Cell(State.EMPTY)
+                for j in range(self.size)
+            ]
+            for i in range(self.size)
+        ]
 
     def set_cells_neighboring(self) -> None:
         for i in range(1, self.size - 1):
@@ -99,12 +78,12 @@ class Board:
                 cell.state = random.choice(colors_state())
 
     def update(self, step: int) -> None:
-        match user_input.value:
-            case Action.LEFT:
+        match user_input:
+            case "a":
                 self._move("left")
-            case Action.RIGHT:
+            case "d":
                 self._move("right")
-            case Action.FIRE:
+            case "w":
                 shooter = self.player
                 while shooter.up.state == State.EMPTY:
                     shooter.up.state = shooter.state
@@ -114,10 +93,9 @@ class Board:
                     self._clean_bubbles(shooter)
                 self.player.state = random.choice(colors_state())
 
-            case Action.CHANGE:
+            case "s":
                 self._change_player_color()
-            case _:
-                pass
+        set_user_input(None)
         self._create_new_bubbles(step)
         self._clear_zombie_cells()
 
@@ -200,7 +178,6 @@ def run() -> None:
     while board.player.state != State.END:
         sleep(0.03)
         board.update(step)
-        user_input.value = None
         print(f"\033[H\033[J{board}\nScores: {step // 33}")
         step += 1
 
