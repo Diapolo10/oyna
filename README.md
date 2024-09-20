@@ -20,7 +20,8 @@ The games that have been added to this repository so far are as follows:
       <td><a href="./src/oyna/chutes_and_ladders/"> Chutes and Ladders </a></br><img src="./docs/images/chutes_and_ladders.png" alt="Chutes and Ladders" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="./src/oyna/dino/"> Dino or Dinosaur Game </a></br><img src="./docs/images/dino.png" alt="Dino" style="width:250px;"/> </td>
+      <td><a href="./src/oyna/dino/"> Dino or Dinosaur Game </a></br><img src="./docs/images/dino.png" alt="Dino" style="width:250px;"/></td>
+      <td><a href="./src/oyna/bubble_shooter/"> Bubble Shooter </a></br><img src="./docs/images/bubble_shooter.png" alt="Bubble Shooter" style="width:250px;"/></td>
       <td><a href="./src/oyna/flappy_bird/"> Flappy Bird </a></br><img src="./docs/images/flappy_birds.png" alt="Flappy Bird" style="width:250px;"/> </td>
    </tr>
 
