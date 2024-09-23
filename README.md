@@ -24,6 +24,9 @@ The games that have been added to this repository so far are as follows:
       <td><a href="./src/oyna/bubble_shooter/"> Bubble Shooter </a></br><img src="./docs/images/bubble_shooter.png" alt="Bubble Shooter" style="width:250px;"/></td>
       <td><a href="./src/oyna/flappy_bird/"> Flappy Bird </a></br><img src="./docs/images/flappy_birds.png" alt="Flappy Bird" style="width:250px;"/> </td>
    </tr>
+   <tr>
+      <td><a href="./src/oyna/falling_tower/"> Falling Tower </a></br><img src="./docs/images/falling_tower.png" alt="Falling Tower" style="width:250px;"/></td>
+   </tr>
 
 </table>
 
