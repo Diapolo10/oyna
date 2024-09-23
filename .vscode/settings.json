@@ -18,6 +18,7 @@
     "bubble_shooter",
     "chutes_and_ladders",
     "dino",
+    "falling_tower",
     "find_difference",
     "flappy_birds",
     "global",
@@ -27,6 +28,6 @@
     "minesweeper",
     "snake",
     "sudoku",
-    "twenty_forty_eight",
+    "twenty_forty_eight"
   ]
 }
