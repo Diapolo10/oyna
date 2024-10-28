@@ -15,7 +15,7 @@ The games that have been added to this repository so far are as follows:
       <td><a href="./src/oyna/maze/"> Maze</a> </br><img src="./docs/images/maze.png" alt="Maze" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="./src/oyna/chimp/"> Memory </a></br><img src="./docs/images/chimp.png" alt="Chimp" style="width:250px;"/> </td>
+      <td><a href="./src/oyna/chimp/"> Chimp </a></br><img src="./docs/images/chimp.png" alt="Chimp" style="width:250px;"/> </td>
       <td><a href="./src/oyna/snake/"> Snake </a></br><img src="./docs/images/snake.png" alt="Snake" style="width:250px;"/> </td>
       <td><a href="./src/oyna/chutes_and_ladders/"> Chutes and Ladders </a></br><img src="./docs/images/chutes_and_ladders.png" alt="Chutes and Ladders" style="width:250px;"/> </td>
    </tr>
