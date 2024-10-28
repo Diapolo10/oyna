@@ -27,7 +27,7 @@ class Board:
     def __init__(self, size: int) -> None:
         self.size = size + 2
         self.player = 1, 0
-        self.result = []
+        self.result: list[int] = []
         self.cells = self._cells()
         self.set_values()
 
@@ -75,7 +75,7 @@ class Board:
             case _:
                 pass
 
-    def print_board(self, preview) -> None:
+    def print_board(self, preview: bool) -> None:
         pr = ""
         for i in range(self.size):
             for j in range(self.size):
@@ -95,7 +95,7 @@ class Board:
         print(pr)
 
 
-def run():
+def run() -> None:
     board = Board(10)
     board.print_board(True)
     while True:
