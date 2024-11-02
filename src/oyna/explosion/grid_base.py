@@ -46,7 +46,7 @@ class Board:
         else:
             exit()
 
-    def move(self, step):
+    def move(self, step: int) -> None:
         for i in range(step):
             self.cells[self.player[0]][self.player[1]] = "  "
 
@@ -61,7 +61,7 @@ class Board:
             sleep(0.05)
         self._boom()
 
-    def _boom(self):
+    def _boom(self) -> None:
         for i in range((self.height + 1) // 2):
             self.cells[self.player[0]][self.player[1] - i] = "💥"
         print(self)
@@ -73,7 +73,7 @@ class Board:
         self.create_castle()
         print(self)
 
-    def create_castle(self):
+    def create_castle(self) -> None:
         for cell in self.cells[-2]:
             if cell == "🏠":
                 break
@@ -88,7 +88,7 @@ class Board:
         )
 
 
-def run():
+def run() -> None:
     board = Board(15)
     print(board)
 
