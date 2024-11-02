@@ -27,9 +27,9 @@ def getch() -> str:
 class State(enum.Enum):
     BLOCK = "🟪"
     EMPTY = "  "
-    PLAYER = "🟦"
+    PLAYER = "🐥"
     WALL = "🔹"
-    END = "🟩"
+    END = "🍓"
 
 
 class Action(enum.Enum):
@@ -115,7 +115,7 @@ class Board:
                 )
 
     def set_player(self) -> None:
-        self.player = self.cells[1][1]
+        self.player = self.cells[self.size // 2][self.size // 2]
         self.player.player_is_here = True
 
     def set_destination(self) -> None:
