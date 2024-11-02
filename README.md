@@ -27,6 +27,7 @@ The games that have been added to this repository so far are as follows:
    <tr>
       <td><a href="./src/oyna/falling_tower/"> Falling Tower </a></br><img src="./docs/images/falling_tower.png" alt="Falling Tower" style="width:250px;"/></td>
       <td><a href="./src/oyna/shoot_colors/"> Shoot Colors </a></br><img src="./docs/images/shoot_colors.png" alt="Shoot Colors" style="width:250px;"/></td>
+      <td><a href="./src/oyna/explosion/"> Explosion </a></br><img src="./docs/images/explosion.png" alt="Explosion" style="width:250px;"/></td>
    </tr>
 
 </table>

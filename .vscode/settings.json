@@ -16,9 +16,11 @@
   },
   "conventionalCommits.scopes": [
     "bubble_shooter",
+    "candy_crush",
     "chimp",
     "chutes_and_ladders",
     "dino",
+    "explosion",
     "falling_tower",
     "find_difference",
     "flappy_birds",
