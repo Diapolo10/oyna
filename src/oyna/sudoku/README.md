@@ -1,46 +1,80 @@
-# Sudoku
+### Sudoku Game Documentation
 
+#### Game Overview
 
-# [Sudoku](https://en.wikipedia.org/wiki/Sudoku)
+This is a **text-based Sudoku game** where the player interacts with the board to fill in numbers while adhering to the classic Sudoku rules. The game is implemented in Python, and the board layout is dynamically generated. The objective is to move around a grid, inserting numbers (1-9) into empty cells, avoiding conflicts, and solving the puzzle.
 
-From Wikipedia, the free encyclopedia
+#### How to Play
 
-Sudoku (/suːˈdoʊkuː, -ˈdɒk-, sə-/; Japanese: 数独, romanized: sūdoku, lit. 'digit-single'; originally called Number Place)[1] is a logic-based, combinatorial number-placement puzzle. In classic Sudoku, the objective is to fill a 9 × 9 grid with digits so that each column, each row, and each of the nine 3 × 3 subgrids that compose the grid (also called "boxes", "blocks", or "regions") contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which for a well-posed puzzle has a single solution.
+1. **Movement**: The player moves around the grid using the following keys:
+    - **w**: Move up
+    - **a**: Move left
+    - **s**: Move down
+    - **d**: Move right
 
-French newspapers featured variations of the Sudoku puzzles in the 19th century, and the puzzle has appeared since 1979 in puzzle books under the name Number Place. However, the modern Sudoku only began to gain widespread popularity in 1986 when it was published by the Japanese puzzle company Nikoli under the name Sudoku, meaning "single number". It first appeared in a U.S. newspaper, and then The Times (London), in 2004, thanks to the efforts of Wayne Gould, who devised a computer program to rapidly produce unique puzzles.
+2. **Inserting Numbers**: While navigating the grid, the player can insert numbers by pressing:
+    - **1**: Insert number 1
+    - **2**: Insert number 2
+    - **3**: Insert number 3
+    - **4**: Insert number 4
+    - **5**: Insert number 5
+    - **6**: Insert number 6
+    - **7**: Insert number 7
+    - **8**: Insert number 8
+    - **9**: Insert number 9
 
+3. **Exit**: Press the **Space** key to end the game.
 
+#### Algorithm Implementation
 
-## [Grid Base:](./grid_base.py)
+1. **Board Setup**:
+    - The game creates a **3x3 Sudoku grid** using cells that may contain numbers (1-9), walls, or be empty.
+    - The grid is filled with numbers, and some of them are marked as **fixed** (not editable by the player).
 
-<div style="text-align: justify;">
+2. **Cells**:
+    - Each cell in the board can have different states such as `EMPTY`, `PLAYER`, `INTERNAL_WALL`, `EXTERNAL_WALL`, `FIXED_NUMBER`, and `END`.
+    - The player is represented by a special marker ("🟦") that moves around the grid.
 
+3. **Movement**:
+    - The player can move up, down, left, or right unless blocked by a wall. The player’s position is updated as they move through the grid.
 
-### How to Implement
-This game is implemented as a grid table where elements are connected with their neighbors through links. Each element of this table contains a `Cell`, Each `Cell` has different states, based on which the state of the number or character is displayed.
-Based on the [alain-t method](https://stackoverflow.com/a/56581709/8157102), a sudoku table is created and several cell are randomly hidden and the user must enter them to solve the sudoku.
+4. **Input Handling**:
+    - The game reads input from the player (e.g., key presses for movement and number insertion) and updates the state of the game accordingly.
+    - The game keeps track of the player's actions, validating their moves and numbers.
 
+5. **End Condition**:
+    - The game ends when the player solved the puzzle.
 
-<img align=right style="width:40%;" src="../../../docs/images/sudoku.png">
+#### How to Install and Run the Code
 
+To run this game, you'll need to have Python installed on your machine. Follow the steps below to get started:
 
-### How to Play:
-•  Press `w` to move up
+1. **Install Python**:
+    - Ensure that you have **Python 3.10 or higher** installed. You can download it from the [official Python website](https://www.python.org/downloads/).
 
-•  Press `s` to move down
+2. **Run the Game**:
+    - Open a terminal or command prompt in the directory where your `grid_base.py` file is saved.
+    - Run the game by executing:
+      ```bash
+      python grid_base.py
+      ```
 
-•  Press `a` to move left
+3. **Playing the Game**:
+    - Once the game is running, use the keyboard to navigate the grid and fill in numbers.
+    - Follow the instructions on the screen to play and solve the puzzle.
 
-•  Press `d` to move right
+#### Code Structure and Explanation
 
-•  Press `1`-`9` to insert numbers
+1. **Imports**:
+    - `enum`: Used for defining states and actions.
+    - `random`: Used for randomizing the board setup.
+    - `typing.Optional`: Used for type hinting optional values for cells.
 
-•  Press `space` to exit
+2. **Classes**:
+    - `State`: An enumeration of different cell states (empty, player, wall, fixed number, etc.).
+    - `Action`: An enumeration of different actions a player can take (move, insert numbers, exit).
+    - `Cell`: Represents a single cell in the Sudoku grid, handling its state, value, and neighboring cells.
+    - `Board`: The main class for setting up and managing the Sudoku board. It includes logic for placing walls, setting numbers, and handling player input.
 
-
-### Requirements:
-None
-
-### How to Run
-Run the command: `python ./grid_base.py`
-</div>
+3. **Game Loop**:
+    - The game runs in a loop, where it continuously checks for player input, updates the board, and prints the updated state to the screen.

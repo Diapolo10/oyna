@@ -1,42 +1,101 @@
-# [Snake](https://en.wikipedia.org/wiki/Snake_(video_game_genre))
+# Snake Game Documentation
 
-From Wikipedia, the free encyclopedia
+## Overview
+This is a simple implementation of the classic Snake game using Python. The game runs in the console, where you control a snake that moves around the board, eats apples to grow, and avoids hitting walls or its own body. The game continues until the snake hits a wall or its own body.
 
+### How to Play
+- You control the snake using the `w`, `a`, `s`, and `d` keys:
+  - `w` moves the snake up.
+  - `a` moves the snake left.
+  - `s` moves the snake down.
+  - `d` moves the snake right.
+- The goal is to eat the apples (🍎) that appear on the board. Each apple you eat makes the snake grow longer.
+- The game ends when the snake hits a wall (🔹) or its own body (🟪).
 
-Snake is a genre of action video games where the player maneuvers the end of a growing line, often themed as a snake.
+## Game Implementation
 
-The player must keep the snake from colliding with both other obstacles and itself, which gets harder as the snake lengthens. It originated in the 1976 two-player arcade video game Blockade from Gremlin Industries where the goal is to survive longer than the other player. The concept evolved into a single-player variant where a snake gets longer with each piece of food eaten—often apples or eggs. The simplicity and low technical requirements of snake games have resulted in hundreds of versions—some of which have the word snake or worm in the title—for many platforms.
+### 1. **Game Elements (Classes)**
 
+- **State Enum**: Defines the possible states of each cell on the board:
+  - `BLOCK`: An empty block where the snake can move.
+  - `APPLE`: A cell that contains an apple (🍎).
+  - `WALL`: The border of the game area (🔹).
+  - `PLAYER`: Part of the snake's body (🟪).
+  - `HEAD`: The snake's head (🟨).
+  - `END`: Indicates the end of the game when the snake hits something fatal.
 
-## [Grid Base:](./grid_base.py)
+- **Direction Enum**: Defines the directions the snake can move:
+  - `LEFT`
+  - `RIGHT`
+  - `DOWN`
+  - `UP`
 
-<div style="text-align: justify;">
+- **Cell Class**: Represents each cell in the game board. Each cell has a state and can have neighboring cells (up, down, left, right) for movement.
 
+- **Board Class**: Manages the game board. It creates the board, places walls, the snake, and apples, and handles movement. The board is a 2D grid of cells, and it has methods to:
+  - Set walls around the edges.
+  - Set apple positions.
+  - Handle the snake's movement.
+  - Check for collisions.
+  - Update the game state.
 
-### How to Implement
-This game is implemented as a grid table where elements are connected with their neighbors through links. Each element of this table contains a `Cell`, Each `Cell` has different states and directions.
+- **UserInput Class**: Keeps track of the player's input (direction of movement).
 
-By pointing to the head of the snake, which is kept as `head`, if the user chooses a direction, the head of the snake will go to that direction and will inform the rest of the snake's body to move. When moving the head of the snake, it informs the relevant Cell, if the body of the snake reaches this element, it will direct it in a specific direction.
+### 2. **Game Algorithm**
 
+- **Board Setup**: The board is created with a specified size. It automatically places walls around the edges and places the snake’s initial position in the center. An apple is placed randomly on the board.
 
-<img align=right style="width:40%;" src="../../../docs/images/snake.png">
+- **Movement**: The snake's head moves in the direction specified by the player. If the snake eats an apple, it grows, and a new apple is placed randomly. If the snake hits a wall or its own body, the game ends.
 
+- **Collision Handling**: When the snake's head moves to a new cell:
+  - If the cell contains an apple, the snake eats it and grows.
+  - If the cell is a wall or the snake’s own body, the game ends.
+  - If the cell is an empty block, the snake simply moves to that cell, and the previous cell becomes empty.
 
-### How to Play:
-•  Press `w` to move up
+- **Game Loop**: The game runs in a loop where it constantly updates the snake's position, checks for collisions, and redraws the board.
 
-•  Press `s` to move down
+### 3. **Installation and Running the Game**
 
-•  Press `a` to move left
+To run the game, follow these steps:
 
-•  Press `d` to move right
+#### Step 1: Install Python
+Ensure that you have Python installed on your machine. You can download Python from [here](https://www.python.org/downloads/).
 
-•  Press `ctrl + c` to exit
+#### Step 2: Install Dependencies
+You will need the `pynput` library for handling keyboard inputs. Install it via pip:
+```bash
+pip install pynput
+```
 
+#### Step 3: Run the Game
+1. Save the code into a file, for example, `grid_base.py`.
+2. Open a terminal or command prompt in the folder where the file is saved.
+3. Run the game by executing:
+   ```bash
+   python grid_base.py
+   ```
+4. The game will start in your terminal. Use the `w`, `a`, `s`, `d` keys to control the snake.
 
-### Requirements:
-`pynput`
+### 4. **How to Play**
+- Use the arrow keys or `w`, `a`, `s`, `d` to move the snake around the board.
+- Try to eat as many apples as possible without hitting the walls or your own body.
+- The game will end when the snake crashes into a wall or itself.
 
-### How to Run
-Run the command: `python ./grid_base.py`
-</div>
+### 5. **Game Over**
+- When the game ends, the snake will stop moving, and the program will exit. The final state of the board will show the snake’s last position.
+
+### Example Output
+```
+🔹🔹🔹🔹🔹🔹🔹
+🔹🟪🟨    🍎🔹
+🔹🟪🟪🟪🟪🟪🔹
+🔹🔹🔹🔹🔹🔹🔹
+```
+
+In this example:
+- The snake is represented by `🟪` and its head is `🟨`.
+- The apple is represented by `🍎`.
+- The walls are represented by `🔹`.
+
+### Conclusion
+This game provides a fun way to practice basic Python programming concepts, including classes, enums, and handling user input. Enjoy playing the Snake game in your console and try to beat your own high score!
