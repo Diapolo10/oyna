@@ -1,3 +1,4 @@
+# Maze
 import enum
 import random
 from typing import Optional

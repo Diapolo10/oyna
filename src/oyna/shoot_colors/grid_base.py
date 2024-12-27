@@ -1,3 +1,4 @@
+# Shoot color
 import enum
 import random
 from time import sleep
