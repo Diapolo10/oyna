@@ -1,13 +1,13 @@
-### Documentation for the Game Code
+# Find Difference Documentation
 
 ---
 
-#### **Game Description**
+## **Game Description**
 This is a simple text-based grid game where the player navigates a board using keyboard input. The goal is to reach the target emoji (which is different from other emojis
 ).
 ---
 
-#### **How to Play**
+## **How to Play**
 1. **Start the Game:**
    - Run the script to initialize the game board.
    - The player (`🟦`) starts in the middle of the grid.
@@ -73,10 +73,27 @@ This is a simple text-based grid game where the player navigates a board using k
 
 ---
 
+
 #### **Known Issues**
 - The game currently uses blocking input methods, which may not work well in some IDEs. Running the game in a terminal is recommended.
 - For non-Windows systems, `getch` uses a custom implementation that may behave differently on some Linux distributions.
 
 ---
+
+## Example Output:
+```
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪😜🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+```
 
 Enjoy the game and happy navigating! 🎮

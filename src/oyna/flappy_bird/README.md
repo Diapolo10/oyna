@@ -98,20 +98,20 @@ python grid_base.py
 When the game starts, you'll see something like this:
 
 ```
-🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
-🔹  🐣            🟪           🔹
-🔹                🟪           🔹
-🔹                🟪           🔹
-🔹                🟪           🔹
-🔹                             🔹
-🔹                             🔹
-🔹                             🔹
-🔹                🟪           🔹
-🔹                🟪           🔹
-🔹                🟪           🔹
-🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹        🟪                  🟪                                       🟪                  🟪  🔹
+🔹    🐣                      🟪                                       🟪                      🔹
+🔹                                                                     🟪                      🔹
+🔹                                                                     🟪                      🔹
+🔹        🟪                                                           🟪                  🟪  🔹
+🔹        🟪                  🟪                                       🟪                  🟪  🔹
+🔹        🟪                  🟪                                                           🟪  🔹
+🔹        🟪                  🟪                                                           🟪  🔹
+🔹        🟪                  🟪                                                           🟪  🔹
+🔹        🟪                  🟪                                       🟪                  🟪  🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 
-        Your(🐣) Scores: 0
+        Your(🐣) Scores: 15
 ```
 
 Press keys to move 🐣 upward. Survive as long as possible to achieve a high score!

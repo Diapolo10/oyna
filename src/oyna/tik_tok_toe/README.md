@@ -93,7 +93,7 @@ The game follows a simple structure with the following core elements:
 🔹🔹🔹🔹🔹
 🔹      🔹
 🔹 ❌   🔹
-🔹      🔹
+🔹    ⭕️🔹
 🔹🔹🔹🔹🔹
 
 Your Move (WASD to move, E to place, Space to exit):

@@ -78,3 +78,21 @@ To run this game, you'll need to have Python installed on your machine. Follow t
 
 3. **Game Loop**:
     - The game runs in a loop, where it continuously checks for player input, updates the board, and prints the updated state to the screen.
+
+
+## Example Output:
+```
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
+🔸      🔹 8 5 4🔹 2 3   🔸
+🔸   3  🔹      🔹      4🔸
+🔸 5 8 4🔹      🔹       🔸
+🔸🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔸
+🔸 3    🔹   9  🔹      5🔸
+🔸 8   5🔹 6    🔹 9    1🔸
+🔸      🔹   8  🔹    6 2🔸
+🔸🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔸
+🔸   5 9🔹      🔹       🔸
+🔸   2 8🔹 1   3🔹 4    9🔸
+🔸   1  🔹 5   9🔹 7     🔸
+🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
+```

@@ -78,3 +78,24 @@ This code represents a basic **Minesweeper-style** game where the player navigat
 ### Conclusion
 
 This game provides a simple yet fun implementation of a Minesweeper-style game in Python. It uses basic programming concepts such as classes, enums, and event-driven logic to create a playable game. The user interacts with the game via the terminal, making it an easy-to-run and straightforward gaming experience.
+
+## Example Output:
+```
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹                               🔹
+🔹 1 1 1   1 1 2 1 1   1 1 1     🔹
+🔹🟪🟪 2   1🟪🟪🟪 1   1🟪 1     🔹
+🔹🟪🟪 2   1 1 2 1 1   2🟪 2     🔹
+🔹🟪🟪🟪 1 1           1🟪🟪 1 1 🔹
+🔹🟪🟪🟪❓ 1           1 1🟪🟪🟪 🔹
+🔹🟪🟪🟪 3 1               1 1 1 🔹
+🔹🟪🟪🟪 3 1 1                   🔹
+🔹🟪🟪🟪 3❓ 1                   🔹
+🔹🟪🟪🟪🟪🟪 2 1       1 1 1     🔹
+🔹🟪🟪🟦 1🟪❓ 1       1🟪 1     🔹
+🔹🟪🟪 1   1 1 1       2🟪 2     🔹
+🔹 1 1 1               1🟪 1     🔹
+🔹                     1 1 1     🔹
+🔹                               🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+```

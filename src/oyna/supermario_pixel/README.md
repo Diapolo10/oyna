@@ -56,4 +56,25 @@ This is a simple Python program that displays animated Super Mario art using ASC
 - If the terminal window is too small, the images may not display correctly.
 - This is a fun animation program and not a traditional interactive game.
 
+## Example Output:
+```
+
+          🟥🟥🟥🟥🟥    🟨🟨🟨
+        🟥🟥🟥🟥🟥🟥🟥🟥🟥🟨🟨
+        🟫🟫🟫🟨🟨⬛️🟨  🟥🟥🟥
+      🟫🟨🟫🟨🟨🟨⬛️🟨🟨🟨🟥🟥
+      🟫🟨🟫🟫🟨🟨🟨⬛️🟨🟨🟨🟥
+        🟫🟨🟨🟨🟨⬛️⬛️⬛️⬛️🟥🟥    ♥️  SUPER MARIO ♥️
+          🟨🟨🟨🟨🟨🟨🟥🟥🟥
+        🟥🟥🟦🟥🟥🟦🟥🟥🟥
+      🟥🟥🟥🟦🟥🟥🟦🟥🟥🟥
+    🟥🟥🟥🟥🟦🟥🟥🟦🟥🟥
+    🟨🟨🟥🟥🟦🟦🟦🟦🟥🟥
+    🟨🟨🟨🟦🟦🟦🟦🟦🟦🟦
+    🟨🟨🟦🟦🟦🟦🟦🟦🟦🟦
+        🟦🟦🟦    🟦🟦🟦
+      🟫🟫🟫        🟫🟫🟫
+    🟫🟫🟫🟫        🟫🟫🟫🟫
+```
+
 Enjoy watching the Super Mario animation in your terminal!

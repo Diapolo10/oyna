@@ -69,3 +69,27 @@ Shoot Color is a simple game in which the player controls a character that moves
 ### Conclusion
 
 Shoot Color is a fun and simple game where you aim to match colored bubbles by controlling a player on a grid. It offers a mix of action and strategy, as you need to think quickly and plan your moves to create bubble combinations and clear the grid.
+
+
+## Example Output:
+```
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹⚪️🔴🟡🔴⚪️🔵🟣🔵🟡🟣⚪️🔴🟣🔵🔴🔴🟣🔹
+🔹                                 🟣🔹
+🔹🟣🔴⚪️🟣🟣🔵🟡🔵🔴⚪️🟣⚪️🔵🟡🟡🟡🔵🔹
+🔹🟣                                 🔹
+🔹🔵🟡🔴🔵🔵🟡🔵🔵🟡🔵🔵🟡🔴🔵🟣⚪️🔴🔹
+🔹                                 ⚪️🔹
+🔹⚪️🔴🔵⚪️🔴🔴🟡🔴🟡🟣🔵🔵🔵⚪️⚪️🟡🔴🔹
+🔹⚪️                                 🔹
+🔹🟡🟡🔵🔴🔴🔵⚪️🔴🔵🟡⚪️⚪️🟣⚪️⚪️🔵🔴🔹
+🔹                                 🟡🔹
+🔹🟣⚪️🟣🔴⚪️🟣🟡🔵🟡🟣🟣🔵🟡🟣🔵🟡🟣🔹
+🔹🔵                                 🔹
+🔹🟡🔴🔴🟣⚪️⚪️🟣🟣🟡🟡🔴🟡⚪️🟣🔴⚪️🔴🔹
+🔹                                 🟣🔹
+🔹      ⚪️🟣🔵🟣🔵🟡🔴🔵🟡🔴🟡🔵🟡🔴🔹
+🔹                                   🔹
+🔹          🟣                       🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+```
