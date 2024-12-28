@@ -77,6 +77,21 @@ The **Dino Game** is a simple text-based game where the player controls a charac
 - **_create_new_cactus()**: Adds new cacti to the board at random intervals.
 - **_move_cactus()**: Moves the cacti from right to left. If a cactus reaches the player's position, the game ends.
 
+## Example OutPut:
+```
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹                                                                             🔹
+🔹    🐥              🌵          🌵                      🌵          🌵       🔹
+🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
+
+    Your(🐥) Scores: 56
+```
 ## Troubleshooting:
 - **If the game doesn't start:** Ensure Python and `pynput` are correctly installed.
 - **If the controls don't work:** Make sure you are pressing the correct keys (up or down arrows) to move the chick.
