@@ -42,7 +42,7 @@ class Board:
         self.player = (self.game_size // 2, self.game_size // 2)
         self.cells = self._cells()
         self.state: Literal[Emoji.WIN, Emoji.LOSS, Emoji.DRAW] | None = None
-        self.memo: dict[tuple, float] = {}
+        self.memo: dict[tuple[tuple[str, ...], ...], float] = {}
 
     def _cells(self) -> list[list[str]]:
         return [
@@ -130,7 +130,7 @@ class Board:
 
         return False
 
-    def minimax(self, is_maximizing, alpha, beta) -> float:
+    def minimax(self, is_maximizing: bool, alpha: float, beta: float) -> float:
         board_tuple = tuple(tuple(row) for row in self.cells)
         if board_tuple in self.memo:
             return self.memo[board_tuple]
