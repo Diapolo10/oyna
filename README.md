@@ -30,8 +30,10 @@ The games that have been added to this repository so far are as follows:
       <td><a href="./src/oyna/explosion/">UFO Explosion </a></br><img src="./docs/images/explosion.png" alt="UFO Explosion" style="width:250px;"/></td>
    </tr>
    <tr>
-      <td><a href="./src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="./docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
       <td><a href="./src/oyna/supermario_pixel/"> SuperMario Pixel </a></br><img src="./docs/images/supermario_pixel.png" alt="SuperMario Pixel" style="width:250px;"/></td>
+      <td><a href="./src/oyna/tetris/"> Tetris </a></br><img src="./docs/images/tetris.png" alt="Tetris" style="width:250px;"/>
+      </td>
+      <td><a href="./src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="./docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
 
    </tr>
 
