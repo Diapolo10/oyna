@@ -162,7 +162,7 @@ class Board:
     def computer_move(self) -> tuple[int, int]:
         return random.choice(self.get_valid_moves(Emoji.COMPUTER))
 
-    def action(self, char) -> None:
+    def action(self, char: str) -> None:
         move = (0, 0)
         match char:
             case "a":
