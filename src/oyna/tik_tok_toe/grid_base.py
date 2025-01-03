@@ -26,7 +26,7 @@ def getch() -> str:
         return ch
 
 
-class Emoji(enum.StrEnum):
+class Emoji(enum.Enum):
     PLAYER = "❌"
     COMPUTER = "⭕️"
     EMPTY = "  "
@@ -47,9 +47,9 @@ class Board:
     def _cells(self) -> list[list[str]]:
         return [
             [
-                Emoji.WALL
+                Emoji.WALL.value
                 if j in [0, self.game_size - 1] or i in [0, self.game_size - 1]
-                else Emoji.EMPTY
+                else Emoji.EMPTY.value
                 for j in range(self.game_size)
             ]
             for i in range(self.game_size)
@@ -66,8 +66,8 @@ class Board:
             case "d":
                 self.player = self.player[0], self.player[1] + 1
             case "e":
-                if self.cells[self.player[0]][self.player[1]] == Emoji.EMPTY:
-                    self.cells[self.player[0]][self.player[1]] = Emoji.PLAYER
+                if self.cells[self.player[0]][self.player[1]] == Emoji.EMPTY.value:
+                    self.cells[self.player[0]][self.player[1]] = Emoji.PLAYER.value
                     self.play_game()
             case " ":
                 exit()
@@ -82,7 +82,7 @@ class Board:
                 self.state = Emoji.DRAW
             else:
                 row, col = self.computer_move()
-                self.cells[row][col] = Emoji.COMPUTER
+                self.cells[row][col] = Emoji.COMPUTER.value
                 if self.check_winner(Emoji.COMPUTER):
                     self.state = Emoji.LOSS
 
@@ -145,9 +145,9 @@ class Board:
         if is_maximizing:
             best = -math.inf
             for row, col in self.get_empty_cells():
-                self.cells[row][col] = Emoji.COMPUTER
+                self.cells[row][col] = Emoji.COMPUTER.value
                 best = max(best, self.minimax(False, alpha, beta))
-                self.cells[row][col] = Emoji.EMPTY
+                self.cells[row][col] = Emoji.EMPTY.value
                 alpha = max(alpha, best)
                 if beta <= alpha:
                     break  # Pruning
@@ -157,9 +157,9 @@ class Board:
         else:
             best = math.inf
             for row, col in self.get_empty_cells():
-                self.cells[row][col] = Emoji.PLAYER
+                self.cells[row][col] = Emoji.PLAYER.value
                 best = min(best, self.minimax(True, alpha, beta))
-                self.cells[row][col] = Emoji.EMPTY
+                self.cells[row][col] = Emoji.EMPTY.value
                 beta = min(beta, best)
                 if beta <= alpha:
                     break  # Pruning
@@ -172,9 +172,9 @@ class Board:
         empties = self.get_empty_cells()
         random.shuffle(empties)
         for row, col in empties:
-            self.cells[row][col] = Emoji.COMPUTER
+            self.cells[row][col] = Emoji.COMPUTER.value
             move_value = self.minimax(False, -math.inf, math.inf)
-            self.cells[row][col] = Emoji.EMPTY
+            self.cells[row][col] = Emoji.EMPTY.value
 
             if move_value > best_value:
                 best_value = move_value
