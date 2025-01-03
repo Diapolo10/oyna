@@ -28,6 +28,7 @@
     "matching",
     "maze",
     "minesweeper",
+    "reversi",
     "shoot_colors",
     "snake",
     "sudoku",
