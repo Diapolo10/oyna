@@ -37,7 +37,8 @@ The games that have been added to this repository so far are as follows:
       <td><a href="./src/oyna/explosion/">UFO Explosion </a></br><img src="./docs/images/explosion.png" alt="UFO Explosion" style="width:250px;"/></td>
    </tr>
    <tr>
-      <td><a href="./src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="./docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
+      <td><a href="./src/oyna/reverse_slide_puzzle/"> Reverse Slide Puzzle </a></br><img src="./docs/images/reverse_slide_puzzle.png" alt="Reverse Slide Puzzle" style="width:250px;height:250px"/>
+      </td><td><a href="./src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="./docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
 
    </tr>
 

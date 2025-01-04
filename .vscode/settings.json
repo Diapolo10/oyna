@@ -29,6 +29,7 @@
     "maze",
     "minesweeper",
     "reversi",
+    "reverse_slide_puzzle",
     "shoot_colors",
     "snake",
     "sudoku",
