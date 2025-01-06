@@ -1,62 +1,58 @@
-# Contributing to Oyna
+Contributing to Oyna
+=====================
 
-Thank you for your interest in contributing to **Oyna**, a project aimed at making learning Python enjoyable through the creation of simple games. Below are guidelines to help you contribute effectively while keeping the project's goals in mind.
+Thank you for considering contributing to the **Oyna** project! This guide outlines the steps and guidelines for contributing effectively to ensure the project's goals are met and the process remains enjoyable for everyone involved.
 
----
+Project Goals
+-------------
+The primary goal of this project is to help individuals learn Python by building simple and enjoyable games. Therefore, simplicity is prioritized over strict adherence to software engineering principles. When in doubt, choose simplicity.
 
-## Purpose of the Project
-
-The primary goal of **Oyna** is to help individuals learn Python by creating simple games that are easy to understand and enjoyable. In this project:
-
-- **Simplicity** takes precedence over strict adherence to software engineering principles.
-- When faced with a choice between simplicity and complex engineering practices, always prioritize simplicity to ensure code readability and accessibility for beginners.
-
----
-
-## How to Contribute
-
-### 1. Enhancing Existing Games
-If you have a new solution or improvement for an existing game:
-- Add your solution in the relevant game folder.
-- Name the file as you wish, ensuring it is descriptive.
-- Update the folder's `README.md` to include your approach, alongside the existing ones.
-- Submit a **merge request** with your changes.
+How to Contribute
+------------------
+### 1. Improving Existing Games
+- If you have a new approach for an existing game, create a new file in the corresponding folder with a name of your choice.
+- Update the folder's `README.md` file to include your solution alongside the existing method.
+- Submit a pull request (PR) with your changes.
 
 ### 2. Adding a New Game
-If you have a new game idea:
-- Create a new folder for the game.
-- Add your Python file with a descriptive name in this folder.
-- Write a `README.md` file in the same folder. The `README.md` should include:
-  - The name of the file.
-  - A brief description of the algorithm used.
-  - Instructions on how to play the game.
-  - Any dependencies or libraries required.
-- You can refer to examples in other folders for guidance.
+- Create a new folder for your game.
+- Add your Python file with a name of your choice in the folder.
+- Create a `README.md` file in the same folder. At a minimum, include:
+  - The name of the Python file.
+  - The algorithm used.
+  - How to play the game.
+  - Any dependencies or special instructions.
+- Refer to the examples in other folders for guidance.
+- Submit a PR with your additions.
 
 ### 3. Sharing Game Ideas
-If you have an idea for a game, even if you cannot implement it yourself, feel free to share it with us. We would love to hear your creative thoughts!
+- If you have an idea for a new game, we'd love to hear it! Please open an issue to share your idea.
 
 ### 4. Keeping Games Simple
-To align with the project’s purpose, keep the games as simple as possible. Avoid adding unnecessary complexities such as:
-- Elaborate menus or user guides.
-- Extensive input validation.
-- Features outside the core game mechanics that might make the algorithm harder to understand.
+- Keep the games as simple as possible.
+- Avoid adding complex features such as:
+  - Menus or extensive help displays.
+  - Overly detailed user input validation.
+  - Non-essential features that could make understanding the algorithm harder.
 
-### 5. Fixing Bugs and Enhancing the Project
-This project wasn’t started by professionals, and we welcome any contributions to:
-- Improve the quality of the codebase.
-- Fix bugs or inefficiencies.
-- Add helpful comments or rename variables for clarity.
-- Any other small or large enhancements that raise the project’s overall quality.
+### 5. General Improvements
+- The project was started by non-professionals. Any contributions to enhance the project are highly appreciated, even small ones like:
+  - Adding comments.
+  - Renaming variables for clarity.
+  - Fixing typos.
 
----
+Code of Conduct
+----------------
+- Be respectful and supportive in all interactions.
+- Aim to foster a welcoming and inclusive community.
 
-## Guidelines for Pull Requests
-- Ensure your code follows the simplicity-first principle.
-- Include relevant documentation or comments to explain your changes.
-- Test your changes to ensure they work as intended.
-- Be respectful and collaborative during discussions and code reviews.
+Getting Started
+----------------
+1. Fork the repository and clone it to your local machine.
+2. Make your changes.
+3. Test your code to ensure it works as expected.
+4. Submit a pull request with a clear description of your changes.
 
----
+We look forward to your contributions and hope you enjoy being a part of **Oyna**!
 
-We deeply appreciate your contributions, no matter how small. Your efforts help us create a better learning experience for everyone. Thank you for being a part of **Oyna**!
+For any questions, feel free to reach out by opening an issue or contacting the maintainers directly.
