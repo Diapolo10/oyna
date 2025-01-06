@@ -10,11 +10,13 @@ The primary goal of this project is to help individuals learn Python by building
 How to Contribute
 ------------------
 1. Improving Existing Games
+
 - If you have a new approach for an existing game, create a new file in the corresponding folder with a name of your choice.
 - Update the folder's `README.md` file to include your solution alongside the existing method.
 - Submit a pull request (PR) with your changes.
 
 2. Adding a New Game
+
 - Create a new folder for your game.
 - Add your Python file with a name of your choice in the folder.
 - Create a `README.md` file in the same folder. At a minimum, include:
@@ -26,9 +28,11 @@ How to Contribute
 - Submit a PR with your additions.
 
 3. Sharing Game Ideas
+
 - If you have an idea for a new game, we'd love to hear it! Please open an issue to share your idea.
 
 4. Keeping Games Simple
+
 - Keep the games as simple as possible.
 - Avoid adding complex features such as:
   - Menus or extensive help displays.
