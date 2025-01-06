@@ -46,4 +46,4 @@ The games that have been added to this repository so far are as follows:
 
 
 
-To add a game, you can read the [CONTRIBUTING.rst](./CONTRIBUTING.rst) file and then proceed to create a new game and send a pull request.
+To add or refactor a game or any other feature, please read the[CONTRIBUTING.md](./CONTRIBUTING.md) file first. After that, you can create a new game or make changes and submit a pull request.
