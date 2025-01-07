@@ -6,10 +6,10 @@ Bubble Shooter is a dynamic arcade-style game where players aim to shoot colored
 ## How to Play
 1. **Objective**: Clear as many bubbles as possible by shooting bubbles of the same color into groups.
 2. **Controls**:
-   - **W**: Shoot the bubble upward.
-   - **A**: Move the shooter left.
-   - **D**: Move the shooter right.
-   - **S**: Change the color of the bubble being shot.
+   - **`w`**: Shoot the bubble upward.
+   - **`a`**: Move the shooter left.
+   - **`d`**: Move the shooter right.
+   - **`s`**: Change the color of the bubble being shot.
 3. **Game Loop**:
    - Aim to shoot bubbles of the same color to form a cluster of three or more.
    - Avoid letting the bubbles reach your position; otherwise, the game ends.
