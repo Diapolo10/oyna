@@ -5,7 +5,7 @@ Changelog
 1.0.0 (2025-01-10)
 ================
 
-Enhancements
+New Feature
 ------------
 
 - Add the bubble_shooter Game.
