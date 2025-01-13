@@ -6,8 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 # When a field is dynamic, it is the build backend’s responsibility to fill it
 # https://packaging.python.org/en/latest/specifications/version-specifiers/
-dynamic = ["version"]
-
+version = "1.0.0"
 # name of project on PyPI
 name = "oyna"
 
@@ -54,14 +53,14 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
 ]
 
 [project.urls]
 Homepage = "https://example.com"
-Documentation = "https://readthedocs.org"
 Repository = "https://github.com/kamyarmg/oyna"
 Issues = "https://github.com/kamyarmg/oyna/issues"
-Changelog = "https://github.com/kamyarmg/oyna/blob/master/CHANGELOG.md"
+Changelog = "https://github.com/kamyarmg/oyna/blob/master/CHANGES.rst"
 
 [project.scripts]
 oyna = "oyna:main"
