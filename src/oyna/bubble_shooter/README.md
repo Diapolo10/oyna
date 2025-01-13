@@ -2,8 +2,9 @@
 
 ## Overview of the Game
 Bubble Shooter is a dynamic arcade-style game where players aim to shoot colored bubbles into a grid of existing bubbles. The objective is to clear matching groups of bubbles by forming clusters of three or more bubbles of the same color. The game challenges your strategy and reflexes as new bubbles continuously appear, gradually moving closer to the player’s position.
+## [grid base](./grid_base.py)
 
-## How to Play
+### How to Play
 1. **Objective**: Clear as many bubbles as possible by shooting bubbles of the same color into groups.
 2. **Controls**:
    - **`w`**: Shoot the bubble upward.
@@ -15,10 +16,10 @@ Bubble Shooter is a dynamic arcade-style game where players aim to shoot colored
    - Avoid letting the bubbles reach your position; otherwise, the game ends.
 4. **Scoring**: Points are awarded based on the number of bubbles cleared. The score is displayed at the bottom of the screen.
 
-## Code Implementation
+### Code Implementation
 The code is structured into several classes and functions for modularity and ease of understanding.
 
-### Key Components
+#### Key Components
 1. **`State` Enum**:
    - Defines various states of the game, such as different bubble colors, walls, and the end state.
    - Provides a visual representation of each state using emojis.
@@ -70,11 +71,11 @@ When you run the script:
 - The game continues until bubbles reach the shooter’s position.
 
 
-## Dependencies
+### Dependencies
 - **Python 3.10+**
 - **`pynput` Library**: Used to capture keyboard inputs.
 
-## Running the Game
+### Running the Game
 1. Install the required dependencies:
    ```bash
    pip install pynput
@@ -85,7 +86,7 @@ When you run the script:
    ```
 3. Enjoy the game!
 
-## Game Output:
+### Game Output:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹🔵🟡🟣🔴🔴🟡🟣🟣🔵🔴🔵🟣🔴🟣🔵🔹

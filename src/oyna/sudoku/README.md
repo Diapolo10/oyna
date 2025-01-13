@@ -1,31 +1,33 @@
-### Sudoku Game Documentation
+# Sudoku
 
-#### Game Overview
+
+## Game Overview
 
 This is a **text-based Sudoku game** where the player interacts with the board to fill in numbers while adhering to the classic Sudoku rules. The game is implemented in Python, and the board layout is dynamically generated. The objective is to move around a grid, inserting numbers (1-9) into empty cells, avoiding conflicts, and solving the puzzle.
 
-#### How to Play
+## [grid base](./grid_base.py)
+### How to Play
 
 1. **Movement**: The player moves around the grid using the following keys:
-    - **w**: Move up
-    - **a**: Move left
-    - **s**: Move down
-    - **d**: Move right
+    - **`w`**: Move up
+    - **`a`**: Move left
+    - **`s`**: Move down
+    - **`d`**: Move right
 
 2. **Inserting Numbers**: While navigating the grid, the player can insert numbers by pressing:
-    - **1**: Insert number 1
-    - **2**: Insert number 2
-    - **3**: Insert number 3
-    - **4**: Insert number 4
-    - **5**: Insert number 5
-    - **6**: Insert number 6
-    - **7**: Insert number 7
-    - **8**: Insert number 8
-    - **9**: Insert number 9
+    - **`1`**: Insert number 1
+    - **`2`**: Insert number 2
+    - **`3`**: Insert number 3
+    - **`4`**: Insert number 4
+    - **`5`**: Insert number 5
+    - **`6`**: Insert number 6
+    - **`7`**: Insert number 7
+    - **`8`**: Insert number 8
+    - **`9`**: Insert number 9
 
-3. **Exit**: Press the **Space** key to end the game.
+3. **Exit**: Press the **`Space`** key to end the game.
 
-#### Algorithm Implementation
+### Algorithm Implementation
 
 1. **Board Setup**:
     - The game creates a **3x3 Sudoku grid** using cells that may contain numbers (1-9), walls, or be empty.
@@ -45,7 +47,7 @@ This is a **text-based Sudoku game** where the player interacts with the board t
 5. **End Condition**:
     - The game ends when the player solved the puzzle.
 
-#### How to Install and Run the Code
+### How to Install and Run the Code
 
 To run this game, you'll need to have Python installed on your machine. Follow the steps below to get started:
 
@@ -63,7 +65,7 @@ To run this game, you'll need to have Python installed on your machine. Follow t
     - Once the game is running, use the keyboard to navigate the grid and fill in numbers.
     - Follow the instructions on the screen to play and solve the puzzle.
 
-#### Code Structure and Explanation
+### Code Structure and Explanation
 
 1. **Imports**:
     - `enum`: Used for defining states and actions.
@@ -80,7 +82,7 @@ To run this game, you'll need to have Python installed on your machine. Follow t
     - The game runs in a loop, where it continuously checks for player input, updates the board, and prints the updated state to the screen.
 
 
-## Example Output:
+### Example Output:
 ```
 🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸
 🔸      🔹 8 5 4🔹 2 3   🔸

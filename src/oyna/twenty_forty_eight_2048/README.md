@@ -1,9 +1,11 @@
-### 2048 Game: Console Version Documentation
+# 2048
 
-#### Overview:
+## Overview:
 The 2048 game is a popular puzzle game where players combine tiles with the same value to reach the tile with the number 2048. In this console-based version, you control the game using keyboard inputs to move the tiles on a grid, merging them to achieve higher values. The game ends when no more moves can be made or when the tile with the value of 2048 is reached.
 
-#### How to Play:
+## [grid base](./grid_base.py)
+
+### How to Play:
 1. **Objective**: The goal of the game is to combine tiles of the same value to form larger tiles. The game ends when the 2048 tile is reached or when there are no possible moves left.
 2. **Controls**:
    - **w**: Move tiles up.
@@ -17,7 +19,7 @@ The 2048 game is a popular puzzle game where players combine tiles with the same
    - After every move, a new tile with the value 2 will appear in an empty cell.
    - The game continues until either the 2048 tile is formed, or no more moves can be made.
 
-#### How to Install and Run:
+### How to Install and Run:
 1. **Requirements**:
    - Python 3.x is required to run this game.
    - The game uses the `msvcrt` module on Windows for capturing key presses, and the `termios` module for Unix-based systems (Linux/macOS).
@@ -35,7 +37,7 @@ The 2048 game is a popular puzzle game where players combine tiles with the same
      ```
    - The game will start, and you can begin playing by using the arrow keys (W, A, S, D) or the spacebar to quit.
 
-#### Algorithm and Implementation:
+### Algorithm and Implementation:
 
 The code for the game consists of several key components:
 1. **Cell Class**:
@@ -55,7 +57,7 @@ The code for the game consists of several key components:
    - `rgb()`: Changes the text color of the terminal output.
    - `reset()`: Resets the color formatting in the terminal after each tile display.
 
-#### Code Walkthrough:
+### Code Walkthrough:
 - **Initialization**:
    - The `Board` is initialized with a 4x4 grid (adjustable size) and walls around the edges.
    - The initial value of `2` is placed in some random cells.
@@ -68,7 +70,7 @@ The code for the game consists of several key components:
 - **End Condition**:
    - The game ends when the 2048 tile is formed or when there are no more moves possible.
 
-#### Key Concepts and Functions:
+### Key Concepts and Functions:
 1. **getch()**:
    - This function captures user input (single character) in a way that works across different operating systems (Windows and Unix-based).
 
@@ -81,5 +83,5 @@ The code for the game consists of several key components:
 4. **Cell Value Display**:
    - Each cell in the game grid can display its value with different colors based on the tile's value. This is done using ANSI escape codes.
 
-#### Conclusion:
+### Conclusion:
 This console-based 2048 game is a simple yet fun implementation of the popular puzzle game. By following the instructions above, you can easily run and play the game in your terminal. The game's logic involves moving and merging tiles, with a random tile appearing after each move, and the game ends either when you reach the 2048 tile or when no more moves are possible.

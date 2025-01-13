@@ -1,13 +1,13 @@
-# Find Difference Documentation
+# Find Difference
 
----
 
 ## **Game Description**
 This is a simple text-based grid game where the player navigates a board using keyboard input. The goal is to reach the target emoji (which is different from other emojis
 ).
----
 
-## **How to Play**
+## [grid base](./grid_base.py)
+
+### **How to Play**
 1. **Start the Game:**
    - Run the script to initialize the game board.
    - The player (`🟦`) starts in the middle of the grid.
@@ -28,9 +28,9 @@ This is a simple text-based grid game where the player navigates a board using k
    - You win if you reach the `ANSWER` tile.
    - You can also exit manually by pressing the space bar.
 
----
 
-#### **Code Algorithm**
+
+### **Code Algorithm**
 1. **Game Initialization:**
    - The `Board` class creates a grid of cells (`size x size`) with walls around the edges.
    - One cell is randomly designated as the `ANSWER` tile.
@@ -45,9 +45,9 @@ This is a simple text-based grid game where the player navigates a board using k
    - The `ANSWER` tile is placed at a random position on the board at the start.
    - Emojis for the `ANSWER` and `BLOCK` tiles are randomized.
 
----
 
-#### **Installation and Setup**
+
+### **Installation and Setup**
 1. **Prerequisites:**
    - Python 3.10 or higher.
    - Required only Python standard libraries .
@@ -61,9 +61,9 @@ This is a simple text-based grid game where the player navigates a board using k
      python grid_base.py
      ```
 
----
 
-#### **Customizations**
+
+### **Customizations**
 - **Grid Size:**
   - Modify the `size` parameter in `Board` initialization to change the game board's dimensions.
 - **Emojis:**
@@ -71,16 +71,16 @@ This is a simple text-based grid game where the player navigates a board using k
 - **Player Start Position:**
   - Adjust the `player` attribute in the `Board` class to change the initial location.
 
----
 
 
-#### **Known Issues**
+
+### **Known Issues**
 - The game currently uses blocking input methods, which may not work well in some IDEs. Running the game in a terminal is recommended.
 - For non-Windows systems, `getch` uses a custom implementation that may behave differently on some Linux distributions.
 
----
 
-## Example Output:
+
+### Example Output:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹🤪🤪🤪🤪🤪🤪🤪🤪🤪🤪🔹

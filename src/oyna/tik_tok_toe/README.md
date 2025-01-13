@@ -1,9 +1,10 @@
-### Game Documentation: Tic-Tac-Toe with AI
+# Tic-Tac-Toe
 
-#### Game Overview:
+## Game Overview:
 This is a console-based Tic-Tac-Toe game, where you play against an AI opponent. The game is played on a nxn( default 3x3) grid, where each player (you and the computer) takes turns to mark a cell with an "X" or "O". The objective is to get three of your marks in a row, either horizontally, vertically, or diagonally. The game will continue until there is a winner, a draw, or the game is exited.
 
-#### How to Play:
+## [grid base](./grid_base.py)
+### How to Play:
 - You control the "X" (❌) and the computer controls the "O" (⭕️).
 - You can move using the following keys:
   - **w**: Move up
@@ -14,7 +15,7 @@ This is a console-based Tic-Tac-Toe game, where you play against an AI opponent.
   - **Space**: Exit the game
 - The game ends when either you or the computer win (3 marks in a row), the board is full (a draw), or you choose to exit.
 
-#### Installation and Execution:
+### Installation and Execution:
 To run the game on your system:
 
 1. **Install Python**:
@@ -28,7 +29,7 @@ To run the game on your system:
      ```
    - The game will start and will ask you for input based on the commands mentioned earlier.
 
-#### Algorithm Description:
+### Algorithm Description:
 The game follows a simple structure with the following core elements:
 
 1. **Board Representation**:
@@ -53,7 +54,7 @@ The game follows a simple structure with the following core elements:
 6. **Exit Option**:
    - Press the **Space** key to exit the game anytime during gameplay.
 
-#### Code Breakdown:
+### Code Breakdown:
 1. **Imports**:
    - `enum`: Used for defining constant values for the game (e.g., Emoji for marks like `❌`, `⭕️`).
    - `math`, `random`, `platform`, `sys`: These libraries help with the AI logic, random moves, and platform-specific functionalities.
@@ -70,7 +71,7 @@ The game follows a simple structure with the following core elements:
 3. **Main Function** (`run()`):
    - The game loop that runs until the game ends or is exited. It continuously updates the board and accepts player input.
 
-#### Example of How to Play:
+### Example of How to Play:
 1. The game starts with the board looking like this (with walls and empty cells):
    ```
    🔹🔹🔹🔹🔹
@@ -88,7 +89,7 @@ The game follows a simple structure with the following core elements:
 
 5. You can exit anytime by pressing the **Space** bar.
 
-#### Example Output:
+### Example Output:
 ```
 🔹🔹🔹🔹🔹
 🔹      🔹
@@ -99,5 +100,5 @@ The game follows a simple structure with the following core elements:
 Your Move (WASD to move, E to place, Space to exit):
 ```
 
-#### Conclusion:
+### Conclusion:
 This Tic-Tac-Toe game offers a fun challenge with an AI opponent that uses a sophisticated algorithm to compete. Whether you're a beginner or an advanced user, the game can be enjoyed by anyone who likes strategic games.

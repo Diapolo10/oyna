@@ -1,8 +1,9 @@
-# Snake Game Documentation
+# Snake
 
 ## Overview
 This is a simple implementation of the classic Snake game using Python. The game runs in the console, where you control a snake that moves around the board, eats apples to grow, and avoids hitting walls or its own body. The game continues until the snake hits a wall or its own body.
 
+## [grid base](./grid_base.py)
 ### How to Play
 - You control the snake using the `w`, `a`, `s`, and `d` keys:
   - `w` moves the snake up.
@@ -12,9 +13,8 @@ This is a simple implementation of the classic Snake game using Python. The game
 - The goal is to eat the apples (🍎) that appear on the board. Each apple you eat makes the snake grow longer.
 - The game ends when the snake hits a wall (🔹) or its own body (🟪).
 
-## Game Implementation
 
-### 1. **Game Elements (Classes)**
+### Game Elements (Classes)
 
 - **State Enum**: Defines the possible states of each cell on the board:
   - `BLOCK`: An empty block where the snake can move.
@@ -41,7 +41,7 @@ This is a simple implementation of the classic Snake game using Python. The game
 
 - **UserInput Class**: Keeps track of the player's input (direction of movement).
 
-### 2. **Game Algorithm**
+### Game Algorithm
 
 - **Board Setup**: The board is created with a specified size. It automatically places walls around the edges and places the snake’s initial position in the center. An apple is placed randomly on the board.
 
@@ -54,20 +54,20 @@ This is a simple implementation of the classic Snake game using Python. The game
 
 - **Game Loop**: The game runs in a loop where it constantly updates the snake's position, checks for collisions, and redraws the board.
 
-### 3. **Installation and Running the Game**
+### Installation and Running the Game
 
 To run the game, follow these steps:
 
-#### Step 1: Install Python
+ **Step 1: Install Python**
 Ensure that you have Python installed on your machine. You can download Python from [here](https://www.python.org/downloads/).
 
-#### Step 2: Install Dependencies
+**Step 2: Install Dependencies**
 You will need the `pynput` library for handling keyboard inputs. Install it via pip:
 ```bash
 pip install pynput
 ```
 
-#### Step 3: Run the Game
+**Step 3: Run the Game**
 1. Save the code into a file, for example, `grid_base.py`.
 2. Open a terminal or command prompt in the folder where the file is saved.
 3. Run the game by executing:
@@ -76,12 +76,12 @@ pip install pynput
    ```
 4. The game will start in your terminal. Use the `w`, `a`, `s`, `d` keys to control the snake.
 
-### 4. **How to Play**
+### How to Play
 - Use the arrow keys or `w`, `a`, `s`, `d` to move the snake around the board.
 - Try to eat as many apples as possible without hitting the walls or your own body.
 - The game will end when the snake crashes into a wall or itself.
 
-### 5. **Game Over**
+**Game Over**
 - When the game ends, the snake will stop moving, and the program will exit. The final state of the board will show the snake’s last position.
 
 ### Example Output

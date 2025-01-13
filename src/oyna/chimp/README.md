@@ -1,9 +1,10 @@
-# Documentation for Chimp
+# Chimp
 
 ## Overview
 This is a simple grid-based board game where the player navigates through a board to collect numbered tiles in ascending order. The game is interactive and text-based, providing a unique and challenging experience.
+## [grid base](./grid_base.py)
 
-## How to Play
+### How to Play
 1. **Objective**: Collect the numbers on the board in ascending order (1, 2, 3, ...) to win the game.
 2. **Movement Controls**:
    - `w`: Move up
@@ -15,7 +16,7 @@ This is a simple grid-based board game where the player navigates through a boar
 3. **Winning Condition**: Collect all the numbers in the correct order to win.
 4. **Losing Condition**: If you collect numbers out of order, you lose.
 
-## Implementation Algorithm
+### Implementation Algorithm
 1. **Initialization**: A grid-based board is created with a border and random positions for numbered tiles.
 2. **Player Movement**: The player can move using `w`, `a`, `s`, and `d` keys. The game checks for valid moves within the board boundaries.
 3. **Number Collection**: When the player presses `e`, the number at the current position is collected.
@@ -23,7 +24,7 @@ This is a simple grid-based board game where the player navigates through a boar
    - If numbers are collected out of order, the player loses.
 4. **Game Display**: The board is displayed after each move, showing the player’s position and the state of the tiles.
 
-## Code Description
+### Code Description
 The game is implemented in Python using the following main components:
 - **`getch` Function**: Handles single-character input for cross-platform compatibility.
 - **`Board` Class**: Manages the board state, player position, and game logic.
@@ -33,7 +34,7 @@ The game is implemented in Python using the following main components:
   - **`print_board` Method**: Displays the board in a visually intuitive format.
 - **`run` Function**: Main game loop that updates the board and processes user input.
 
-## Installation
+### Installation
 1. **Requirements**:
    - Python 3.8 or later
    - A terminal or command-line interface
@@ -42,7 +43,7 @@ The game is implemented in Python using the following main components:
    - Clone or download the script to your local machine.
    - Ensure Python is installed and accessible from the command line.
 
-## Execution
+### Execution
 1. Open a terminal or command-line interface.
 2. Navigate to the directory containing the script.
 3. Run the script using the command:
@@ -51,22 +52,22 @@ The game is implemented in Python using the following main components:
    ```
 4. Follow the on-screen instructions to play the game.
 
-## Example Usage
+### Example Usage
 1. Start the game by running the script.
 2. The initial board is displayed with numbers and the player position (`🟦`).
 3. Use the movement controls (`w`, `a`, `s`, `d`) to navigate the board.
 4. Press `e` to collect numbers in the correct order.
 5. Continue until you either win or lose.
 
-## Troubleshooting
+### Troubleshooting
 - **Input Issues**: If the controls do not respond as expected, ensure your terminal supports raw input mode.
 - **Compatibility**: For Windows users, the `msvcrt` module is used for input handling. Linux and macOS users rely on `termios` and `tty` modules.
 
-## Notes
+### Notes
 - The board size can be adjusted in the `run` function by changing the parameter passed to `Board(size)`. The default size is 10.
 - The script is designed for educational purposes and can be extended or modified for additional features.
 
-## Example OutPut:
+### Example OutPut:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹🟪🟪🟪🟪🟪🟪🟪🟪🟪🟪🔹

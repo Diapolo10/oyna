@@ -1,11 +1,12 @@
-### Falling Tower
+# Falling Tower
 
----
 
-#### **Introduction**
+
+## **Introduction**
 This is a simple terminal-based falling-block game where the player controls a moving block that must catch falling blocks. The game increases in difficulty as the space between the falling blocks narrows. It provides a fun and quick challenge, combining strategy and timing.
 
----
+
+## [grid base](./grid_base.py)
 
 ### **How to Play**
 1. **Objective**:
@@ -22,7 +23,7 @@ This is a simple terminal-based falling-block game where the player controls a m
 4. **Winning**:
    - The game continues indefinitely, and your goal is to survive as long as possible.
 
----
+
 
 ### **Code Algorithm**
 1. **Game Board Initialization**:
@@ -42,7 +43,7 @@ This is a simple terminal-based falling-block game where the player controls a m
 5. **Game Update**:
    - The board is redrawn at each step to reflect updated positions of the blocks and player.
 
----
+
 
 ### **Installation and Setup**
 1. **Prerequisites**:
@@ -63,7 +64,7 @@ This is a simple terminal-based falling-block game where the player controls a m
      python grid_base.py
      ```
 
----
+
 
 ### **How the Code Works**
 1. **Game Objects**:
@@ -81,9 +82,9 @@ This is a simple terminal-based falling-block game where the player controls a m
 4. **Main Loop**:
    - Continuously updates the board and redraws it until the game ends.
 
----
 
-## Example OutPut:
+
+### Example OutPut:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹                                       🔹

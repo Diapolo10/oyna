@@ -1,21 +1,19 @@
-### Game Documentation: **Super Mario Art Display**
+# Super Mario Art Display
 
----
 
-#### **Overview**
+## Overview
 This is a simple Python program that displays animated Super Mario art using ASCII and emoji characters. The art changes every 0.5 seconds to create an animated effect. This is not a traditional game with user interaction but rather a fun way to showcase Super Mario-themed images in the terminal or console.
 
----
+## [grid base](./grid_base.py)
 
-#### **How to Play/Use**
+### How to Play/Use
 
 1. **Start the program**: The animation will start automatically once the program is run.
 2. **Animation**: Two different Super Mario-themed art images will cycle in the terminal, switching every 0.5 seconds.
 3. **Exit the Program**: The program will keep running until you manually stop it. To exit, you can press `Ctrl+C` in the terminal.
 
----
 
-#### **Algorithm (Code Explanation)**
+### Algorithm (Code Explanation)
 
 1. **Images Array**: The program stores a list of pre-defined Super Mario images represented using emojis and ASCII characters. Each image is a string formatted to fit into a terminal or console window.
 
@@ -25,9 +23,8 @@ This is a simple Python program that displays animated Super Mario art using ASC
 
 4. **Sleep Function**: The `sleep(0.5)` command causes the program to pause for 0.5 seconds between displaying each image, creating the animation effect.
 
----
 
-#### **How to Install and Run the Code**
+### How to Install and Run the Code
 
 **Prerequisites**:
 - Python 3.x installed on your system.
@@ -49,14 +46,13 @@ This is a simple Python program that displays animated Super Mario art using ASC
 4. **Stop the Program**:
    - To stop the animation, simply press `Ctrl+C` in your terminal.
 
----
 
-#### **Important Notes**
+### Important Notes
 - The animation may vary depending on the size and resolution of your terminal window.
 - If the terminal window is too small, the images may not display correctly.
 - This is a fun animation program and not a traditional interactive game.
 
-## Example Output:
+### Example Output:
 ```
 
           🟥🟥🟥🟥🟥    🟨🟨🟨

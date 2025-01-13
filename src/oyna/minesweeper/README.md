@@ -1,18 +1,21 @@
-## Simple Guide to the Game Code
+# Minesweeper
 
-### Game Overview
+## Game Overview
 This code represents a basic **Minesweeper-style** game where the player navigates through a grid of cells that may contain bombs. The goal is to uncover all the safe cells without triggering a bomb. The player moves around using keyboard inputs and can flag suspected bomb cells, uncover hidden cells, or move around the grid.
+
+
+## [grid base](./grid_base.py)
 
 ### How to Play
 
 1. **Controls**:
-   - **w**: Move up
-   - **a**: Move left
-   - **s**: Move down
-   - **d**: Move right
-   - **e**: Uncover the cell (click action)
-   - **q**: Flag the cell as a suspected bomb
-   - **Space**: Mark a bomb (after triggering)
+   - **`w`**: Move up
+   - **`a`**: Move left
+   - **`s`**: Move down
+   - **`d`**: Move right
+   - **`e`**: Uncover the cell (click action)
+   - **`q`**: Flag the cell as a suspected bomb
+   - **`Space`**: Mark a bomb (after triggering)
 
 2. **Objective**:
    - The goal is to navigate the grid, uncover cells without hitting bombs, and flag suspected bombs. The player wins by uncovering all non-bomb cells, or loses if a bomb is triggered.
@@ -79,7 +82,7 @@ This code represents a basic **Minesweeper-style** game where the player navigat
 
 This game provides a simple yet fun implementation of a Minesweeper-style game in Python. It uses basic programming concepts such as classes, enums, and event-driven logic to create a playable game. The user interacts with the game via the terminal, making it an easy-to-run and straightforward gaming experience.
 
-## Example Output:
+### Example Output:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹                               🔹

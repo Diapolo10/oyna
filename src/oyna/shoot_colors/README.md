@@ -1,18 +1,19 @@
-# Shoot Color Game Documentation
+# Shoot Color
 
 ## Overview
 
 Shoot Color is a simple game in which the player controls a character that moves across a grid and shoots bubbles of different colors. The goal is to match three or more bubbles of the same color in a row, either horizontally or vertically. If the player successfully makes a match, the bubbles disappear and new bubbles appear, adding an extra layer of challenge. The game continues until the player chooses to exit.
 
+## [grid base](./grid_base.py)
 
 ### How to Play
 
 1. **Control the Player:**
-   - Use the **w**, **a**, **s**, and **d** keys to move the player and shoot bubbles:
-     - **w**: Shoot the bubble upwards.
-     - **a**: Move the player to the left.
-     - **s**: Change the color of the player's bubble.
-     - **d**: Move the player to the right.
+   - Use the **`w`**, **`a`**, **`s`**, and **`d`** keys to move the player and shoot bubbles:
+     - **`w`**: Shoot the bubble upwards.
+     - **`a`**: Move the player to the left.
+     - **`s`**: Change the color of the player's bubble.
+     - **`d`**: Move the player to the right.
 
 2. **Shoot Bubbles:**
    - The player can shoot bubbles in the direction they are facing.
@@ -29,8 +30,8 @@ Shoot Color is a simple game in which the player controls a character that moves
   - The game generates a new bubble at a random location and adds it to the grid.
 
 - **Player Movement:**
-  - The player moves left or right by pressing the **a** or **d** keys.
-  - The player can shoot bubbles upwards by pressing the **w** key.
+  - The player moves left or right by pressing the **`a`** or **`d`** keys.
+  - The player can shoot bubbles upwards by pressing the **`w`** key.
 
 - **Bubble Matching:**
   - When a bubble is shot, it moves upwards. If it matches two or more other bubbles of the same color, those bubbles disappear, and the player's score increases.
@@ -71,7 +72,7 @@ Shoot Color is a simple game in which the player controls a character that moves
 Shoot Color is a fun and simple game where you aim to match colored bubbles by controlling a player on a grid. It offers a mix of action and strategy, as you need to think quickly and plan your moves to create bubble combinations and clear the grid.
 
 
-## Example Output:
+### Example Output:
 ```
 🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹🔹
 🔹⚪️🔴🟡🔴⚪️🔵🟣🔵🟡🟣⚪️🔴🟣🔵🔴🔴🟣🔹

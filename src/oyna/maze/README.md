@@ -1,16 +1,18 @@
-# Maze Game Documentation
+# Maze
 
 ## Introduction
 The Maze Game is a simple text-based adventure game where the player navigates a maze, trying to reach the destination (marked with 🍓) while avoiding obstacles (external walls marked with 🔹 and internal walls marked with 🟪) and navigating through empty spaces (`  `). The player controls a character (🐥) that moves through the maze using keyboard inputs.
 
-## How to Play
+## [grid base](./grid_base.py)
+
+### How to Play
 - The player starts at the center of the maze.
 - Use the following keys to move the character:
-  - **w** - Move up
-  - **a** - Move left
-  - **s** - Move down
-  - **d** - Move right
-  - **Space** - Exit
+  - **`w`** - Move up
+  - **`a`** - Move left
+  - **`s`** - Move down
+  - **`d`** - Move right
+  - **`Space`** - Exit
 - The goal is to navigate the maze and reach the end (🍓) without hitting walls (🔹).
 
 ### Game Flow
@@ -19,7 +21,7 @@ The Maze Game is a simple text-based adventure game where the player navigates a
 3. **Goal**: The player wins when they reach the end (🍓).
 4. **Exit**: Press the space bar end the game.
 
-## How to Install and Run the Game
+### How to Install and Run the Game
 1. **Install Python**: Ensure you have Python 3.7 or higher installed on your system. You can download Python from [python.org](https://www.python.org/downloads/).
 
 2. **Clone or Download the Game**:
@@ -36,7 +38,7 @@ The Maze Game is a simple text-based adventure game where the player navigates a
      python grid_base.py
      ```
 
-## Algorithm Overview
+### Algorithm Overview
 The maze is generated dynamically at the beginning of the game using the following approach:
 - **Cell Representation**: Each cell in the maze is represented by an instance of the `Cell` class, which holds information about the cell's state (empty, wall, player, etc.) and its neighbors (left, right, up, down).
 
@@ -57,8 +59,8 @@ The maze is generated dynamically at the beginning of the game using the followi
   - The game continues until the player reaches the end (🍓) or chooses to exit the game by pressing space.
   - The `player_has_reached_the_end()` method checks whether the player has reached the destination.
 
-## Key Classes and Methods
-### `State` Enum
+### Key Classes and Methods
+#### `State` Enum
 Defines the possible states for each cell in the maze:
 - `BLOCK`: A blocked or unusable cell.
 - `EMPTY`: An empty cell where the player can move.
@@ -66,27 +68,27 @@ Defines the possible states for each cell in the maze:
 - `WALL`: A wall blocking movement.
 - `END`: The destination cell where the player wins.
 
-### `Action` Enum
+#### `Action` Enum
 Defines the possible actions the player can take:
 - `MOVE_UP`, `MOVE_DOWN`, `MOVE_LEFT`, `MOVE_RIGHT`: The possible movements.
 - `EXIT`: The action to mark the endpoint.
 
-### `Cell` Class
+#### `Cell` Class
 Represents a single cell in the maze with the following attributes:
 - `state`: The current state of the cell (empty, wall, etc.).
 - `player_is_here`: A flag to indicate whether the player is in this cell.
 - `set_neighbors()`: Sets the neighboring cells (left, right, up, down).
 - `take()`: Executes an action (move or exit).
 
-### `Board` Class
+#### `Board` Class
 Handles the entire maze grid, including cell setup, movement logic, and path generation.
 
-### `Game` Class
+#### `Game` Class
 Manages the game loop and user interaction:
 - `run()`: Starts the game and processes player input.
 - `clear_screen()`: Clears the terminal screen between game updates.
 - `print_board()`: Prints the current state of the maze.
 
 
-## Final Thoughts
+### Final Thoughts
 Enjoy navigating through the maze and trying to reach the endpoint (🍓)! The game provides an engaging and simple challenge, and you can keep playing to improve your skills in navigating the maze.

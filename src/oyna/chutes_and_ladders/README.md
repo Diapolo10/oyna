@@ -1,17 +1,18 @@
 
-# Documentation for Snakes and Ladders Game
+# Snakes and Ladders Game
 
 This is a console-based game where two players—represented by a cat (😸) and a dog (🐶)—race to reach the destination marked by a candy (🍭) while navigating obstacles and using ladders. Let’s dive into how to play and set up the game.
 
----
+
 
 ## 🎮 About the Game
 
 This is a two-player board game where the goal is to navigate from the start to the destination using dice rolls. Along the way, players may encounter ladders that can either help or hinder their progress. The game board is dynamic and includes obstacles, directions, and ladders, ensuring each game is a unique experience!
 
----
+## [grid base](./grid_base.py)
 
-## 🚀 How to Play
+
+### 🚀 How to Play
 
 1. **Game Start**: The game begins with both players at the bottom-left corner of the board.
 2. **Player Moves**:
@@ -23,9 +24,9 @@ This is a two-player board game where the goal is to navigate from the start to 
 
 **Note**: You can press the space bar (` `) to end your turn without moving.
 
----
 
-## 💻 Algorithm Overview
+
+### 💻 Algorithm Overview
 
 The game logic follows these steps:
 1. **Initialization**:
@@ -38,9 +39,9 @@ The game logic follows these steps:
 3. **Win Condition**:
    - The game checks after every turn if a player has reached the destination.
 
----
 
-## 🛠️ Installation and Setup
+
+### 🛠️ Installation and Setup
 
 1. **Requirements**:
    - Python 3.9 or higher.
@@ -50,20 +51,20 @@ The game logic follows these steps:
    python grid_base.py
    ```
 
----
 
-## 📝 Controls and Tips
+
+## #📝 Controls and Tips
 
 - **Roll the Dice**: Press any key to roll the dice and move.
 - **View Progress**: The board updates in real-time to show the players’ positions.
 - **Winning Tip**: Pay attention to the ladders—they can speed up your progress or slow you down!
 
----
 
-## 📊 Board Elements
+
+### 📊 Board Elements
 
 | Symbol  | Meaning                                   |
-| ------- | ----------------------------------------- |
+| ------- | ------------------------------------------ |
 | 🟪       | Regular block                             |
 | 🍭       | Destination (goal)                        |
 | 🔹       | Wall (impassable)                         |
@@ -72,9 +73,9 @@ The game logic follows these steps:
 | 🐶       | Enemy (Opponent)                          |
 | (empty) | End of game                               |
 
----
 
-## 🔍 Example Gameplay
+
+### 🔍 Example Gameplay
 
 - Start the game.
 - The player (😸) rolls a dice and moves 3 steps in the indicated direction.
@@ -98,6 +99,6 @@ The game logic follows these steps:
  You 😸: 2 Enemy  🐶: 1
  ```
 
----
+
 
 Enjoy the game! If you encounter any issues or have suggestions, feel free to reach out.

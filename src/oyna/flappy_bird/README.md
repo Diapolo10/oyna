@@ -1,6 +1,6 @@
 # [Flappy Bird](https://en.wikipedia.org/wiki/Flappy_Bird)
 
-**About the Game**
+## About the Game
 
 From Wikipedia, the free encyclopedia
 
@@ -16,9 +16,10 @@ In August 2014, a revised version of Flappy Bird, called Flappy Birds Family, wa
 
 "Flappy Bird" is a text-based survival game where the player (represented by a 🐣 symbol) must avoid falling blocks (🟪) by moving up or down within a confined space. The game ends if the player collides with a block, represented by a 💥 symbol.
 
----
+## [grid base](./grid_base.py)
 
-## **How to Play**
+
+### **How to Play**
 
 1. **Goal**: Stay alive as long as possible by avoiding the falling blocks.
 2. **Controls**:
@@ -27,10 +28,8 @@ In August 2014, a revised version of Flappy Bird, called Flappy Birds Family, wa
 3. **Scoring**: Your score increases the longer you survive.
 4. **Game Over**: The game ends if the player collides with a block.
 
----
 
-
-## **Algorithm Overview**
+### **Algorithm Overview**
 1. **Game Board**:
    - The board is a grid of cells.
    - Each cell can hold an empty space (  ), wall (🔹), player (🐣), block (🟪), or end state (💥).
@@ -45,24 +44,24 @@ In August 2014, a revised version of Flappy Bird, called Flappy Birds Family, wa
    - The game updates every 0.2 seconds.
    - The player's position, blocks, and score are updated in each step.
 
----
 
-## **Installation and Setup**
 
-### **Requirements**
+### **Installation and Setup**
+
+**Requirements**
 - Python 3.10 or higher.
 - `pynput` library for handling keyboard inputs.
 
-### **Installing Dependencies**
+**Installing Dependencies**
 Run the following command to install the `pynput` library:
 
 ```bash
 pip install pynput
 ```
 
----
 
-## **How to Run the Game**
+
+### **How to Run the Game**
 
 1. Save the code into a file named `grid_base.py`.
 2. Open a terminal in the same directory as the file.
@@ -74,11 +73,11 @@ python grid_base.py
 
 4. Enjoy the game! Your score will be displayed at the bottom.
 
----
 
-## **Game Structure**
 
-### **Main Classes and Functions**
+### **Game Structure**
+
+#### **Main Classes and Functions**
 - **`State`**: Defines the possible states of a cell (e.g., EMPTY, BLOCK, WALL, PLAYER, END).
 - **`Cell`**: Represents a single cell on the board.
 - **`Board`**:
@@ -86,14 +85,14 @@ python grid_base.py
   - Handles player movement, block creation, and block movement.
 - **`run()`**: The main function that starts and runs the game loop.
 
-### **Key Features**
+#### **Key Features**
 - **Keyboard Input**: The game listens for keypresses to control the player's movement.
 - **Dynamic Blocks**: Blocks appear at random intervals, adding a challenge to the game.
 - **Game Over Condition**: If the player collides with a block, the game ends.
 
----
 
-## **Example Gameplay**
+
+### **Example Gameplay**
 
 When the game starts, you'll see something like this:
 
@@ -116,6 +115,6 @@ When the game starts, you'll see something like this:
 
 Press keys to move 🐣 upward. Survive as long as possible to achieve a high score!
 
----
+
 
 Feel free to expand this game or customize it as you like!
