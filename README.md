@@ -64,6 +64,10 @@ This repository contains various games that highlight different aspects of Pytho
    ```bash
    git clone https://github.com/kamyarmg/oyna.git
    ```
+   **OR** Install it using pip
+   ```bash
+   pip install oyna
+   ```
 2. Navigate to the game directory you want to explore.
 3. Run the game using Python
 4. Enjoy and start learning!
