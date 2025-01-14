@@ -94,7 +94,7 @@ def is_solved(board: list[list[int]]) -> bool:
     return flat_board == correct
 
 
-def main() -> None:
+def run() -> None:
     board = initialize_board(size=4)
 
     while not is_solved(board):
@@ -109,4 +109,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    run()

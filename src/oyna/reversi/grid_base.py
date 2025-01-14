@@ -198,7 +198,7 @@ class Board:
             self.location = new_location
 
 
-def main() -> None:
+def run() -> None:
     board = Board()
     while True:
         board.print_board()
@@ -206,4 +206,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    run()

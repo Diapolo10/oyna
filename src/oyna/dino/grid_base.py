@@ -119,5 +119,9 @@ class Game:
             steps += 1
 
 
-if __name__ == "__main__":
+def run():
     Game().run()
+
+
+if __name__ == "__main__":
+    run()

@@ -231,5 +231,9 @@ class Game:
         self.board.player.player_is_here = False
 
 
-if __name__ == "__main__":
+def run():
     Game().run()
+
+
+if __name__ == "__main__":
+    run()

@@ -115,12 +115,16 @@ def on_press(key: keyboard.KeyCode) -> None:
         pass
 
 
-listener = keyboard.Listener(on_press=on_press)
-listener.start()
+def run() -> None:
+    listener = keyboard.Listener(on_press=on_press)
+    listener.start()
 
-while not game_over:
-    draw_board()
-    time.sleep(0.2)
-    drop()
+    while not game_over:
+        draw_board()
+        time.sleep(0.2)
+        drop()
+    print("Game Over!")
 
-print("Game Over!")
+
+if __name__ == "__main__":
+    run()

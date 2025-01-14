@@ -268,5 +268,9 @@ class Game:
         self._print_board()
 
 
-if __name__ == "__main__":
+def run():
     Game().run()
+
+
+if __name__ == "__main__":
+    run()
