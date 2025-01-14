@@ -119,7 +119,7 @@ class Game:
             steps += 1
 
 
-def run():
+def run() -> None:
     Game().run()
 
 

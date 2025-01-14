@@ -231,7 +231,7 @@ class Game:
         self.board.player.player_is_here = False
 
 
-def run():
+def run() -> None:
     Game().run()
 
 

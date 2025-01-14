@@ -194,7 +194,7 @@ class Game:
         print(self.board)
 
 
-def run():
+def run() -> None:
     Game().run()
 
 

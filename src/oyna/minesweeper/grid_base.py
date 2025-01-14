@@ -268,7 +268,7 @@ class Game:
         self._print_board()
 
 
-def run():
+def run() -> None:
     Game().run()
 
 
