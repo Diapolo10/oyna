@@ -15,40 +15,40 @@ This repository contains various games that highlight different aspects of Pytho
 
 <table>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/sudoku/"> Sudoku </a> </br><img src="https://github.com/kamyarmg/oyna/docs/images/sudoku.png" alt="Sudoku" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/twenty_forty_eight_2048/">2048</a> </br><img src="https://github.com/kamyarmg/oyna/docs/images/2048.png" alt="2048" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/matching/">Matching</a> </br><img src="https://github.com/kamyarmg/oyna/docs/images/matching.png" alt="Matching" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/sudoku/"> Sudoku </a> </br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/sudoku.png" alt="Sudoku" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/twenty_forty_eight_2048/">2048</a> </br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/2048.png" alt="2048" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/matching/">Matching</a> </br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/matching.png" alt="Matching" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/minesweeper/"> Minesweeper </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/minesweeper.png" alt="Minesweeper" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/find_difference/">Find Difference </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/find_difference.png" alt="Find Difference" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/maze/"> Maze</a> </br><img src="https://github.com/kamyarmg/oyna/docs/images/maze.png" alt="Maze" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/minesweeper/"> Minesweeper </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/minesweeper.png" alt="Minesweeper" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/find_difference/">Find Difference </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/find_difference.png" alt="Find Difference" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/maze/"> Maze</a> </br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/maze.png" alt="Maze" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/chimp/"> Chimp </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/chimp.png" alt="Chimp" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/snake/"> Snake </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/snake.png" alt="Snake" style="width:250px;"/> </td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/chutes_and_ladders/"> Chutes and Ladders </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/chutes_and_ladders.png" alt="Chutes and Ladders" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/chimp/"> Chimp </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/chimp.png" alt="Chimp" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/snake/"> Snake </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/snake.png" alt="Snake" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/chutes_and_ladders/"> Chutes and Ladders </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/chutes_and_ladders.png" alt="Chutes and Ladders" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/dino/"> Dino or Dinosaur Game </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/dino.png" alt="Dino" style="width:250px;"/></td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/bubble_shooter/"> Bubble Shooter </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/bubble_shooter.png" alt="Bubble Shooter" style="width:250px;"/></td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/flappy_bird/"> Flappy Bird </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/flappy_birds.png" alt="Flappy Bird" style="width:250px;"/> </td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/dino/"> Dino or Dinosaur Game </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/dino.png" alt="Dino" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/bubble_shooter/"> Bubble Shooter </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/bubble_shooter.png" alt="Bubble Shooter" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/flappy_bird/"> Flappy Bird </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/flappy_birds.png" alt="Flappy Bird" style="width:250px;"/> </td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/falling_tower/"> Falling Tower </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/falling_tower.png" alt="Falling Tower" style="width:250px;"/></td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/shoot_colors/"> Shoot Colors </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/shoot_colors.png" alt="Shoot Colors" style="width:250px;"/></td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/reversi/"> Reversi </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/reversi.png" alt="reversi" style="width:250px;"/>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/falling_tower/"> Falling Tower </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/falling_tower.png" alt="Falling Tower" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/shoot_colors/"> Shoot Colors </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/shoot_colors.png" alt="Shoot Colors" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/reversi/"> Reversi </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/reversi.png" alt="reversi" style="width:250px;"/>
       </td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/supermario_pixel/"> SuperMario Pixel </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/supermario_pixel.png" alt="SuperMario Pixel" style="width:250px;"/></td>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/tetris/"> Tetris </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/tetris.png" alt="Tetris" style="width:250px;"/>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/supermario_pixel/"> SuperMario Pixel </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/supermario_pixel.png" alt="SuperMario Pixel" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/tetris/"> Tetris </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/tetris.png" alt="Tetris" style="width:250px;"/>
       </td>
-      </td><td><a href="https://github.com/kamyarmg/oyna/src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
+      </td><td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/tik_tok_toe/"> Tik Tok Toe </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/tiktoktoe.png" alt="Tik Tok Toe" style="width:250px;"/></td>
    </tr>
    <tr>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/reverse_slide_puzzle/"> Reverse Slide Puzzle </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/reverse_slide_puzzle.png" alt="Reverse Slide Puzzle" style="width:250px"/>
-      <td><a href="https://github.com/kamyarmg/oyna/src/oyna/explosion/">UFO Explosion </a></br><img src="https://github.com/kamyarmg/oyna/docs/images/explosion.png" alt="UFO Explosion" style="width:250px;"/></td>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/reverse_slide_puzzle/"> Reverse Slide Puzzle </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/reverse_slide_puzzle.png" alt="Reverse Slide Puzzle" style="width:250px"/>
+      <td><a href="https://github.com/kamyarmg/oyna/tree/src/oyna/explosion/">UFO Explosion </a></br><img src="https://github.com/kamyarmg/oyna/tree/docs/images/explosion.png" alt="UFO Explosion" style="width:250px;"/></td>
 
    </tr>
 
@@ -73,4 +73,4 @@ This repository contains various games that highlight different aspects of Pytho
 4. Enjoy and start learning!
 
 ---
-To add or refactor a game or any other feature, please read the [CONTRIBUTING.md](https://github.com/kamyarmg/oyna/CONTRIBUTING.md) file first. After that, you can create a new game or make changes and submit a pull request.
+To add or refactor a game or any other feature, please read the [CONTRIBUTING.md](https://github.com/kamyarmg/oyna/tree/CONTRIBUTING.md) file first. After that, you can create a new game or make changes and submit a pull request.
