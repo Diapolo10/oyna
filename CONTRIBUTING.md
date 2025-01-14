@@ -19,6 +19,7 @@ The primary goal of **Oyna** is to help individuals learn Python by creating sim
 If you have a new solution or improvement for an existing game:
 - Add your solution in the relevant game folder.
 - Name the file as you wish, ensuring it is descriptive.
+- Create a function named `run` to run the game.
 - Update the folder's `README.md` to include your approach, alongside the existing ones.
 - Submit a **merge request** with your changes.
 
