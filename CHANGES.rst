@@ -1,5 +1,16 @@
 Release Notes
 *************
+1.0.1 (2025-01-16)
+==================
+
+**New Feature:**
+
+**Enhancements:**
+
+- Add the **pynput** to the project dependencies.
+
+**Bug Fixes:**
+- Updated broken links in README.md 
 
 1.0.0 (2025-01-15)
 ==================
