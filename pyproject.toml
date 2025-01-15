@@ -23,7 +23,7 @@ authors = [{ name = "Kamyar M.G.", email = "kmgurmia@gmail.com" }]
 maintainers = [{ name = "Kamyar M.G.", email = "kmgurmia@gmail.com" }]
 
 # The “headline” of our project
-description = "The Python Games Library for Playing and Learnin."
+description = "The Python Games Library for Playing and Learning."
 
 # A longer description of our project, to display on your project page on PyPI
 readme = "README.md"
