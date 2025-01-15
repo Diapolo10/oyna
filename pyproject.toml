@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 # When a field is dynamic, it is the build backend’s responsibility to fill it
 # https://packaging.python.org/en/latest/specifications/version-specifiers/
-version = "1.0.2"
+version = "1.0.3"
 # name of project on PyPI
 name = "oyna"
 
@@ -23,7 +23,7 @@ authors = [{ name = "Kamyar M.G.", email = "kmgurmia@gmail.com" }]
 maintainers = [{ name = "Kamyar M.G.", email = "kmgurmia@gmail.com" }]
 
 # The “headline” of our project
-description = "Data structure similar to JSON but more powerful"
+description = "The Python Games Library for Playing and Learnin."
 
 # A longer description of our project, to display on your project page on PyPI
 readme = "README.md"
