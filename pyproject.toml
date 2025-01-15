@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 [project]
 # When a field is dynamic, it is the build backend’s responsibility to fill it
 # https://packaging.python.org/en/latest/specifications/version-specifiers/
-version = "1.0.1"
+version = "1.0.2"
 # name of project on PyPI
 name = "oyna"
 
