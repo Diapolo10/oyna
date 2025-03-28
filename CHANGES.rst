@@ -1,43 +1,44 @@
 Release Notes
 *************
-1.0.1 (2025-01-16)
+
+1.1.0 (2025-03-28)
 ==================
 
 **New Feature:**
+
+- Add the Checkers Game
+
 
 **Enhancements:**
 
-- Add the **pynput** to the project dependencies.
 
 **Bug Fixes:**
-- Updated broken links in README.md 
-
-1.0.0 (2025-01-15)
+1.0.3 (2025-01-16)
 ==================
 
 **New Feature:**
 
-- Add the bubble_shooter Game.
-- Add the candy_crush Game.
-- Add the chimp Game.
-- Add the chutes_and_ladders Game.
-- Add the dino Game.
-- Add the ufo_explosion Game.
-- Add the falling_tower Game.
-- Add the find_difference Game.
-- Add the flappy_birds Game.
-- Add the matching Game.
-- Add the maze Game.
-- Add the minesweeper Game.
-- Add the reversi Game.
-- Add the reverse_slide_puzzle Game.
-- Add the shoot_colors Game.
-- Add the snake Game.
-- Add the sudoku Game.
-- Add the supermario_pixel Game.
-- Add the tetris Game.
-- Add the tik_tok_toe Game.
-- Add the twenty_forty_eight Game.
+- Add the Bubble_Shooter Game.
+- Add the Candy_Crush Game.
+- Add the Chimp Game.
+- Add the Chutes_And_Ladders Game.
+- Add the Dino Game.
+- Add the Ufo_Explosion Game.
+- Add the Falling_Tower Game.
+- Add the Find_Difference Game.
+- Add the Flappy_Birds Game.
+- Add the Matching Game.
+- Add the Maze Game.
+- Add the Minesweeper Game.
+- Add the Reversi Game.
+- Add the Reverse_Slide_Puzzle Game.
+- Add the Shoot_Colors Game.
+- Add the Snake Game.
+- Add the Sudoku Game.
+- Add the Supermario_Pixel Game.
+- Add the Tetris Game.
+- Add the Tik_Tok_Toe Game.
+- Add the Twenty_Forty_Eight Game.
 
 
 **Enhancements:**
