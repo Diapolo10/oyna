@@ -85,5 +85,18 @@ The code for the game consists of several key components:
 4. **print_board()**:
    - Displays the game board in the terminal, highlighting the selected piece and valid moves.
 
+### OutPut:
+```
+🔹⚫️🔹⚫️🔹⚫️🔹⚫️
+⚫️🔹⚫️🔹⚫️🔹⚫️🔹
+🔹⚫️🔹⚫️🔹⚫️🔹⚫️
+🔹🔹🔹🔹🔹🔹🔹🔹
+🔹🔹🔹🔹🔹🔹🔹🔹
+🔴🔹🔴🔹🔴🔹🔴🔹
+🔹🔴🔹🔴🔹🔴🔹🔴
+🔴🔹🔴🔹🔴🔹🔴🔹
+```
+
+
 ### Conclusion:
 This console-based Checkers game provides a simple yet engaging way to play against an AI. By following the instructions above, you can easily run and play the game in your terminal. The game's logic ensures fair play, and the AI provides a basic challenge for players.
