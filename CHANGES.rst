@@ -1,6 +1,18 @@
 Release Notes
 *************
 
+1.1.1 (2025-03-30)
+==================
+
+**New Feature:**
+
+- Add the Checkers Game
+
+**Enhancements:**
+
+**Bug Fixes:**
+- Correct the size of the images in the README.md file
+
 1.1.0 (2025-03-28)
 ==================
 
@@ -8,11 +20,10 @@ Release Notes
 
 - Add the Checkers Game
 
-
 **Enhancements:**
 
-
 **Bug Fixes:**
+
 1.0.3 (2025-01-16)
 ==================
 
