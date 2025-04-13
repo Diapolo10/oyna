@@ -1,5 +1,0 @@
-pre-commit
-pynput
-ruff
-setuptools
-tox
