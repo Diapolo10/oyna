@@ -60,7 +60,7 @@ ignore_missing_imports = true
 [tool.tox]
 legacy_tox_ini = """
         [tox:tox]
-        isolated_build = True
+        isolated_build = true
         skip_missing_interpreters = true
         requires =
             tox>=4
@@ -71,10 +71,8 @@ legacy_tox_ini = """
         wheel_build_env = .pkg
         use_frozen_constraints = true
         description = run unit tests - {envname}
-        skip_install = true
         deps =
             .
-
         commands =
             python -m unittest discover -s tests --failfast
 
@@ -83,13 +81,11 @@ legacy_tox_ini = """
         wheel_build_env = .pkg
         use_frozen_constraints = true
         description = run unit tests - {envname}
-        skip_install = true
         deps =
             .
             pytest
             pytest-xdist
             pytest-randomly
-
         commands =
             pytest {posargs:tests} -n 4
 
@@ -99,7 +95,6 @@ legacy_tox_ini = """
         skip_install = true
         deps =
             ruff
-
         commands = ruff check {posargs:.}
 
 
@@ -108,7 +103,6 @@ legacy_tox_ini = """
         skip_install = true
         deps =
             ruff
-
         commands = ruff format {posargs:.}
 
 
