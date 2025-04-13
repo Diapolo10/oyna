@@ -56,3 +56,68 @@ show_error_codes = true
 pretty = true
 strict = true
 ignore_missing_imports = true
+
+[tool.tox]
+legacy_tox_ini = """
+        [tox:tox]
+        isolated_build = True
+        skip_missing_interpreters = true
+        requires =
+            tox>=4
+        envlist = py3{13,12,11,10}
+
+        [testenv]
+        package = wheel
+        wheel_build_env = .pkg
+        use_frozen_constraints = true
+        description = run unit tests - {envname}
+        skip_install = true
+        deps =
+            .
+
+        commands =
+            python -m unittest discover -s tests --failfast
+
+        [testenv:parallel_test]
+        package = wheel
+        wheel_build_env = .pkg
+        use_frozen_constraints = true
+        description = run unit tests - {envname}
+        skip_install = true
+        deps =
+            .
+            pytest
+            pytest-xdist
+            pytest-randomly
+
+        commands =
+            pytest {posargs:tests} -n 4
+
+
+        [testenv:lint]
+        description = run linters
+        skip_install = true
+        deps =
+            ruff
+
+        commands = ruff check {posargs:.}
+
+
+        [testenv:format]
+        description = run formatter
+        skip_install = true
+        deps =
+            ruff
+
+        commands = ruff format {posargs:.}
+
+
+        [testenv:typecheck]
+        description = run type checks
+        skip_install = true
+        deps =
+            mypy
+
+        commands =
+            mypy {posargs:src tests}
+"""
